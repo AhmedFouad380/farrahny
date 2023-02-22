@@ -10,7 +10,25 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33ef5b4a-8ff8-4e9f-988a-eae388d73f55" name="Default Changelist" comment="" />
+    <list default="true" id="33ef5b4a-8ff8-4e9f-988a-eae388d73f55" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/OrderCheckoutRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/website/assets/img/map-marker.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/website/assets/js/locationpicker.jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/front/order_details.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/front/orders.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/frontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/frontController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/wishList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/wishList.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -165,11 +183,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\laravel\farrahny\resources\views\front" />
-      <recent name="C:\laravel\farrahny\public\website\assets\css" />
-      <recent name="C:\laravel\farrahny\resources\views\admin" />
-      <recent name="C:\laravel\Nebras\resources\views\admin" />
-      <recent name="C:\laravel\SmsNotifcation\resources\views\Admin" />
+      <recent name="D:\projects\my projects\farrahny\resources\views\front" />
+      <recent name="D:\projects\my projects\farrahny\app\Http\Requests" />
+      <recent name="D:\projects\my projects\farrahny\public\website\assets\img" />
+      <recent name="D:\projects\my projects\farrahny\public\website\assets\js" />
+      <recent name="D:\projects\my projects\farrahny" />
     </key>
   </component>
   <component name="RunManager">
@@ -212,6 +230,8 @@
       <workItem from="1676661007862" duration="9912000" />
       <workItem from="1676972446513" duration="290000" />
       <workItem from="1677003535056" duration="1471000" />
+      <workItem from="1677044079485" duration="957000" />
+      <workItem from="1677052720626" duration="20150000" />
     </task>
     <servers />
   </component>
@@ -243,11 +263,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/frontController.php</url>
-          <line>124</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/front/Providers.blade.php</url>
           <line>144</line>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CartRequest;
+use App\Http\Requests\OrderCheckoutRequest;
 use App\Models\Address;
 use App\Models\Admin;
 use App\Models\Cart;
@@ -11,6 +13,7 @@ use App\Models\Coupon;
 use App\Models\Event;
 use App\Models\Favorite;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\OrderDetails;
 use App\Models\Page;
 use App\Models\Product;
@@ -29,70 +32,77 @@ use Session;
 class frontController extends Controller
 {
 
-    public function home(){
+    public function home()
+    {
         return view('front.index');
     }
 
-    public function LoginUser(Request $request){
+    public function LoginUser(Request $request)
+    {
 
         $credentials = $request->only('email', 'password');
         $remember_me = $request->has('remember_me') ? true : false;
 
 
-        if (Auth::guard('web')->attempt($credentials ,$remember_me)) {
+        if (Auth::guard('web')->attempt($credentials, $remember_me)) {
             // Authentication passed...
             return redirect()->intended('/');
-        } else if (Auth::guard('provider')->attempt($credentials ,$remember_me)) {
+        } else if (Auth::guard('provider')->attempt($credentials, $remember_me)) {
             return redirect()->intended('/');
 
-        }else {
+        } else {
             return back()->with('error', 'email or password wrong');
         }
 
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
         $credentials = $request->only('email', 'password');
         $remember_me = $request->has('remember_me') ? true : false;
 
 
-        if (Auth::guard('admin')->attempt($credentials ,$remember_me)) {
+        if (Auth::guard('admin')->attempt($credentials, $remember_me)) {
             // Authentication passed...
             return redirect()->intended('/Dashboard');
-        } else if (Auth::guard('provider')->attempt($credentials ,$remember_me)) {
+        } else if (Auth::guard('provider')->attempt($credentials, $remember_me)) {
             return redirect()->intended('/ProviderDashboard');
 
-        }else if (Auth::guard('web')->attempt($credentials ,$remember_me)) {
+        } else if (Auth::guard('web')->attempt($credentials, $remember_me)) {
             return redirect()->intended('/');
 
-        }else {
+        } else {
             return back()->with('error', '');
         }
 
     }
 
-    public function logout(){
-        if(Auth::guard('admin')->check()){
+    public function logout()
+    {
+        if (Auth::guard('admin')->check()) {
             Auth::guard('admin')->logout();
 
         }
-        if(Auth::guard('provider')->check()){
-        Auth::guard('provider')->logout();
+        if (Auth::guard('provider')->check()) {
+            Auth::guard('provider')->logout();
         }
-        if(Auth::guard('web')->check()){
+        if (Auth::guard('web')->check()) {
             Auth::guard('web')->logout();
         }
 
 
-        return redirect('/')->with('message','success');
+        return redirect('/')->with('message', 'success');
     }
 
-    public function register(){
+    public function register()
+    {
         return view('front.register');
     }
 
-    public function registerUser(Request $request){
+
+    public function registerUser(Request $request)
+    {
         $data = $this->validate(request(), [
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
@@ -101,10 +111,10 @@ class frontController extends Controller
 
         ]);
         $data = new User();
-        $data->name=$request->name;
-        $data->email=$request->email;
-        $data->phone=$request->phone;
-        $data->password=Hash::make($request->password);
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->phone = $request->phone;
+        $data->password = Hash::make($request->password);
         $data->save();
         Auth::login($data);
         return redirect('/')->with('message', 'تم التعديل بنجاح ');
@@ -112,19 +122,20 @@ class frontController extends Controller
     }
 
 
-    public function UpdateProfile(Request $request){
+    public function UpdateProfile(Request $request)
+    {
         $data = $this->validate(request(), [
             'name' => 'required|string',
             'password' => 'nullable|confirmed',
-            'phone' => 'required|min:11|unique:users,id,'.$request->id,
+            'phone' => 'required|min:11|unique:users,id,' . $request->id,
 
         ]);
-        $data =  User::findOrFail($request->id);
-        $data->name=$request->name;
+        $data = User::findOrFail($request->id);
+        $data->name = $request->name;
 //        $data->email=$request->email;
-        $data->phone=$request->phone;
-        if($request->password){
-            $data->password=Hash::make($request->password);
+        $data->phone = $request->phone;
+        if ($request->password) {
+            $data->password = Hash::make($request->password);
         }
         $data->save();
         return back()->with('message', 'تم التعديل بنجاح ');
@@ -132,295 +143,406 @@ class frontController extends Controller
     }
 
 
-    public function event($title){
-        $data = Event::where('ar_title',$title)->orWhere('en_title',$title)->firstOrFail();
-        $categories = Category::where('is_active','active')->Where('event_id',$data->id)->get();
+    public function event($title)
+    {
+        $data = Event::where('ar_title', $title)->orWhere('en_title', $title)->firstOrFail();
+        $categories = Category::where('is_active', 'active')->Where('event_id', $data->id)->get();
 
-        return view('front.event',compact('data','categories'));
+        return view('front.event', compact('data', 'categories'));
     }
-    public function category($title){
-        $data = Category::where('ar_title',$title)->orWhere('en_title',$title)->firstOrFail();
-        $sponsored = Service::where('is_active','active')->Where('is_sponsored','active')->paginate(12);
-        $services = Service::where('is_active','active')->Where('category_id',$data->id)->paginate(12);
-        return view('front.category',compact('data','services','sponsored'));
+
+    public function category($title)
+    {
+        $data = Category::where('ar_title', $title)->orWhere('en_title', $title)->firstOrFail();
+        $sponsored = Service::where('is_active', 'active')->Where('is_sponsored', 'active')->paginate(12);
+        $services = Service::where('is_active', 'active')->Where('category_id', $data->id)->paginate(12);
+        return view('front.category', compact('data', 'services', 'sponsored'));
     }
-    public function service($title){
+
+    public function service($title)
+    {
         $data = Service::findOrFail($title);
 
-        return view('front.service',compact('data'));
+        return view('front.service', compact('data'));
     }
 
-    public function product_model(Request $request){
+    public function product_model(Request $request)
+    {
         $data = Product::findOrFail($request->id);
-        return view('front.product-model',compact('data'));
+        return view('front.product-model', compact('data'));
     }
-    public function product_details($id){
+
+    public function product_details($id)
+    {
         $data = Product::findOrFail($id);
-        return view('front.shop-product-full',compact('data'));
+        return view('front.shop-product-full', compact('data'));
     }
 
 
-
-    public function Search(Request $request){
-
-
-        $data = Product::where('is_active','active')->
-                where(function ($q) use ($request) {
-                    $q->where('ar_title','like','%'.$request->search.'%')->
-                    OrWhere('en_title','like','%'.$request->search.'%')->
-                    OrWhere('ar_description','like','%'.$request->search.'%')->
-                    OrWhere('en_description','like','%'.$request->search.'%');
-                });
-                if($request->category_id != 0){
-                    $data->where('category_id',$request->catgory_id);
-                }
-           $Products = $data->paginate(10);
-        return view('front.search', compact('Products'));
-    }
-    public function HotDeals(Request $request){
+    public function Search(Request $request)
+    {
 
 
-        $data = Product::where('is_active','active')->where('is_hot',1)->OrderBy('id','desc');
+        $data = Product::where('is_active', 'active')->
+        where(function ($q) use ($request) {
+            $q->where('ar_title', 'like', '%' . $request->search . '%')->
+            OrWhere('en_title', 'like', '%' . $request->search . '%')->
+            OrWhere('ar_description', 'like', '%' . $request->search . '%')->
+            OrWhere('en_description', 'like', '%' . $request->search . '%');
+        });
+        if ($request->category_id != 0) {
+            $data->where('category_id', $request->catgory_id);
+        }
         $Products = $data->paginate(10);
         return view('front.search', compact('Products'));
     }
 
-    public function cart(Request $request){
+    public function HotDeals(Request $request)
+    {
 
-        $Carts = Cart::where('user_id',Auth::guard('web')->id())->get();
 
-            return view('front.cart',compact('Carts'));
+        $data = Product::where('is_active', 'active')->where('is_hot', 1)->OrderBy('id', 'desc');
+        $Products = $data->paginate(10);
+        return view('front.search', compact('Products'));
     }
 
-    public function addCart(Request $request){
+
+    public function cartRemove($id)
+    {
+
+        $Carts = Cart::where('user_id', Auth::guard('web')->id())->where('id', $id)->delete();
+
+
+        return response()->json(['count' => Cart::where('user_id', Auth::guard('web')->id())->count()]);
+    }
+
+    public function addCart(Request $request)
+    {
         $Product = Service::findOrFail($request->id);
 
-                $cart = new Cart();
-                $cart->service_id = $Product->id;
-                $cart->user_id=Auth::guard('web')->id();
-                $cart->save();
+        $cart = new Cart();
+        $cart->service_id = $Product->id;
+        $cart->user_id = Auth::guard('web')->id();
+        $cart->save();
 
 
-        return response()->json(Cart::where('user_id',Auth::guard('web')->id())->count());
+        return response()->json(Cart::where('user_id', Auth::guard('web')->id())->count());
     }
 
-    public function addwishlist(Request $request){
+    public function addwishlist(Request $request)
+    {
         $Product = Service::findOrFail($request->id);
-            if(Favorite::where('user_id',Auth::guard('web')->id())->where('service_id',$Product->id)->count() > 0){
-                $cart =  Favorite::where('user_id',Auth::guard('web')->id())->where('service_id',$Product->id)->first()->delete();
-            }else {
-                $cart = new Favorite();
-                $cart->service_id = $request->id;
-                $cart->user_id = Auth::guard('web')->id();
-                $cart->save();
-            }
-        return response()->json(Wishlist::where('user_id',Auth::guard('web')->id())->count());
+        if (Favorite::where('user_id', Auth::guard('web')->id())->where('service_id', $Product->id)->count() > 0) {
+            $cart = Favorite::where('user_id', Auth::guard('web')->id())->where('service_id', $Product->id)->first()->delete();
+        } else {
+            $cart = new Favorite();
+            $cart->service_id = $request->id;
+            $cart->user_id = Auth::guard('web')->id();
+            $cart->save();
+        }
+        return response()->json(Wishlist::where('user_id', Auth::guard('web')->id())->count());
     }
 
-    public function deleteWithList(Request $request){
-        Wishlist::where('id',$request->id)->delete();
-        return response()->json(['message'=>'success']);
+    public function deleteWithList(Request $request)
+    {
+        Wishlist::where('id', $request->id)->delete();
+        return response()->json(['message' => 'success']);
 
     }
-    public function wishlist(){
+
+    public function wishlist()
+    {
 
         return view('front.wishList');
     }
 
-    public function qtyUp(Request $request){
+    public function qtyUp(Request $request)
+    {
         $cart = Cart::findOrFail($request->id);
-        $cart->count=$request->value;
+        $cart->count = $request->value;
         $cart->save();
-        return response()->json(Cart::where('user_id',Auth::guard('web')->id())->sum('count'));
+        return response()->json(Cart::where('user_id', Auth::guard('web')->id())->sum('count'));
 
     }
 
-    public function deleteCartItem(Request $request){
-         Cart::where('id',$request->id)->delete();
-        return response()->json(['message'=>'success']);
+    public function deleteCartItem(Request $request)
+    {
+        Cart::where('id', $request->id)->delete();
+        return response()->json(['message' => 'success']);
 
     }
 
-    public function deleteALl(Request $request){
-        Cart::where('user_id',Auth::guard('web')->id())->delete();
-        return response()->json(['message'=>'success']);
+    public function deleteALl(Request $request)
+    {
+        Cart::where('user_id', Auth::guard('web')->id())->delete();
+        return response()->json(['message' => 'success']);
 
     }
-        public function  ApplyCoupon(Request $request){
-       $coupon =  Coupon::where('name',$request->coupon)->first();
-       if(session()->get('coupon')){
-           return back()->with('CouponMessage','AlreadyAdd');
 
-       }
-       if(isset($coupon) && $coupon->use_count != $coupon->used_count && $coupon->is_active == 'active' && $coupon->expire_date >= \Carbon\Carbon::now()){
-           session()->put('coupon', $coupon->id);
+    public function ApplyCoupon(Request $request)
+    {
+        $coupon = Coupon::where('name', $request->coupon)->first();
+        if (session()->get('coupon')) {
+            return back()->with('CouponMessage', 'AlreadyAdd');
 
-           return redirect('cart')->with('CouponMessage','success');
-       }else{
-           return back()->with('CouponMessage','failed');
-       }
+        }
+        if (isset($coupon) && $coupon->use_count != $coupon->used_count && $coupon->is_active == 'active' && $coupon->expire_date >= \Carbon\Carbon::now()) {
+            session()->put('coupon', $coupon->id);
+
+            return redirect('cart')->with('CouponMessage', 'success');
+        } else {
+            return back()->with('CouponMessage', 'failed');
+        }
 
     }
-    public function Contact(){
+
+    public function Contact()
+    {
 
         return view('front.contact');
     }
-    public function Page($id){
-        $data = Page::where('en_title',$id)->firstOrFail();
-        return view('front.about',compact('data'));
+
+    public function Page($id)
+    {
+        $data = Page::where('en_title', $id)->firstOrFail();
+        return view('front.about', compact('data'));
     }
 
-    public function removeCoupon(){
+    public function removeCoupon()
+    {
 
         session()->forget('coupon');
 
-        return redirect('cart')->with('CouponMessage','success');
+        return redirect('cart')->with('CouponMessage', 'success');
 
     }
 
 
-    public function cancel_order(Request $request){
+    public function cancel_order(Request $request)
+    {
         $validator = Validator::make($request->all(), [
-            'order_id'=>'required|exists:orders,id',
+            'order_id' => 'required|exists:orders,id',
         ]);
         if ($validator->fails()) {
             return response()->json(['status' => validation(), 'msg' => $validator->messages()->first(), 'data' => (object)[]], validation());
         }
 
         $Order = Order::findOrFail($request->order_id);
-        if($Order->type ==  'pending'){
-            $Order->type='canceled';
+        if ($Order->type == 'pending') {
+            $Order->type = 'canceled';
             $Order->save();
-            return response()->json(msgdata($request, success(), 'success', (object)[]) ,success());
-        }else{
-            return response()->json(msgdata($request, error(), 'error', (object)[]) ,error());
+            return response()->json(msgdata($request, success(), 'success', (object)[]), success());
+        } else {
+            return response()->json(msgdata($request, error(), 'error', (object)[]), error());
         }
 
     }
-    public function RateOrder(Request $request){
+
+    public function RateOrder(Request $request)
+    {
         $validator = Validator::make($request->all(), [
-            'order_id'=>'required|exists:orders,id',
-            'rate'=>'required'
+            'order_id' => 'required|exists:orders,id',
+            'rate' => 'required'
         ]);
         if ($validator->fails()) {
             return response()->json(['status' => validation(), 'msg' => $validator->messages()->first(), 'data' => (object)[]], validation());
         }
 
         $Order = Order::findOrFail($request->order_id);
-        $Order->rate=$request->rate;
+        $Order->rate = $request->rate;
         $Order->save();
 
-        return response()->json(msgdata($request, success(), 'success', (object)[]) ,success());
+        return response()->json(msgdata($request, success(), 'success', (object)[]), success());
 
     }
 
 
-    public function StoreOrder(Request $request){
-    $this->validate(request(), [
-            'address_id'=>'exists:addresses,id',
-            'payment_type'=>'required'
+    public function StoreOrder(Request $request)
+    {
+        $this->validate(request(), [
+            'address_id' => 'exists:addresses,id',
+            'payment_type' => 'required'
         ]);
 
-        $Carts = Cart::where('user_id',Auth::guard('web')->id())->get();
-        if(count($Carts) == 0){
-            return response()->json(msgdata($request, error(), 'cart_empty', (object)[]) ,success());
+        $Carts = Cart::where('user_id', Auth::guard('web')->id())->get();
+        if (count($Carts) == 0) {
+            return response()->json(msgdata($request, error(), 'cart_empty', (object)[]), success());
         }
         $Order = new Order();
-        $Order->order_num=rand(9999999,999999999);
-        $Order->payment_type=$request->payment_type;
-        $Order->tax=Setting::find(1)->tax;
-        $Order->delivery_fees=Setting::find(1)->delivery_fees;
+        $Order->order_num = rand(9999999, 999999999);
+        $Order->payment_type = $request->payment_type;
+        $Order->tax = Setting::find(1)->tax;
+        $Order->delivery_fees = Setting::find(1)->delivery_fees;
         $address = Address::find($request->address_id);
-        $Order->lat=$address->lat;
-        $Order->lng	=$address->lng;
-        $Order->address_id=$request->address_id;
-        $Order->user_id=Auth::guard('web')->id();
-        $Order->note=$request->note;
-        if(session()->get('coupon')){
+        $Order->lat = $address->lat;
+        $Order->lng = $address->lng;
+        $Order->address_id = $request->address_id;
+        $Order->user_id = Auth::guard('web')->id();
+        $Order->note = $request->note;
+        if (session()->get('coupon')) {
             $coupon = Coupon::findOrFail(session()->get('coupon'));
-            $Order->coupon_id=$coupon->id;
-            $Order->coupon_percent=$coupon->percent;
+            $Order->coupon_id = $coupon->id;
+            $Order->coupon_percent = $coupon->percent;
         }
         $Order->save();
 
         $total_price = [];
-        foreach($Carts as $Cart){
-                $Item = Product::findOrFail($Cart->product_id);
-                $ItemShape = Shape::findOrFail($Cart->shape_id);
-                $OrderDetail = new OrderDetails();
-                $OrderDetail->product_id=$Cart->product_id;
-                $OrderDetail->shape_id=$Cart->shape_id;
-                $OrderDetail->user_id=Auth::guard('web')->id();
-                $OrderDetail->note=$Cart->note;
-                $OrderDetail->count=$Cart->count;
-                $OrderDetail->ar_title=$Item->ar_title;
-                $OrderDetail->en_title=$Item->en_title;
-                $OrderDetail->ar_title_shape=$ItemShape->ar_title;
-                $OrderDetail->en_title_shape=$ItemShape->en_title;
-                $OrderDetail->price=$ItemShape->StorageAvaliable->sell_price * $Cart->count;
-                $OrderDetail->storage_id=$ItemShape->torageAvaliable->id;
-                $OrderDetail->order_id=$Order->id;
-                $OrderDetail->save();
-                 $total_price[] = $Cart->count *  $ItemShape->StorageAvaliable->sell_price;
+        foreach ($Carts as $Cart) {
+            $Item = Product::findOrFail($Cart->product_id);
+            $ItemShape = Shape::findOrFail($Cart->shape_id);
+            $OrderDetail = new OrderDetails();
+            $OrderDetail->product_id = $Cart->product_id;
+            $OrderDetail->shape_id = $Cart->shape_id;
+            $OrderDetail->user_id = Auth::guard('web')->id();
+            $OrderDetail->note = $Cart->note;
+            $OrderDetail->count = $Cart->count;
+            $OrderDetail->ar_title = $Item->ar_title;
+            $OrderDetail->en_title = $Item->en_title;
+            $OrderDetail->ar_title_shape = $ItemShape->ar_title;
+            $OrderDetail->en_title_shape = $ItemShape->en_title;
+            $OrderDetail->price = $ItemShape->StorageAvaliable->sell_price * $Cart->count;
+            $OrderDetail->storage_id = $ItemShape->torageAvaliable->id;
+            $OrderDetail->order_id = $Order->id;
+            $OrderDetail->save();
+            $total_price[] = $Cart->count * $ItemShape->StorageAvaliable->sell_price;
         }
-        if(session()->get('coupon')){
+        if (session()->get('coupon')) {
             $coupon = Coupon::findOrFail(session()->get('coupon'));
-            $total = array_sum($total_price) - ((array_sum($total_price) * $coupon->percent )/ 100);
-        }else{
+            $total = array_sum($total_price) - ((array_sum($total_price) * $coupon->percent) / 100);
+        } else {
             $total = array_sum($total_price);
         }
 
-        $Order->total_price=$total +  Setting::find(1)->tax + Setting::find(1)->delivery_fees;
+        $Order->total_price = $total + Setting::find(1)->tax + Setting::find(1)->delivery_fees;
         $Order->save();
 
 
-        Cart::where('user_id',Auth::guard('web')->id())->delete();
+        Cart::where('user_id', Auth::guard('web')->id())->delete();
 
-        return redirect('/Profile/Orders')->with('Message','success');
+        return redirect('/Profile/Orders')->with('Message', 'success');
     }
 
-    public function profile(){
+    public function profile()
+    {
         $data = User::findOrFail(Auth::guard('web')->id());
-        $Orders = Order::where('user_id',$data->id)->OrderBy('id','desc')->paginate(10);
-        $addresses = Address::where('user_id',$data->id)->OrderBy('id','desc')->get();
+        $Orders = Order::where('user_id', $data->id)->OrderBy('id', 'desc')->paginate(10);
+        $addresses = Address::where('user_id', $data->id)->OrderBy('id', 'desc')->get();
 
-        return view('front.page-account',compact('data','Orders','addresses'));
+        return view('front.page-account', compact('data', 'Orders', 'addresses'));
     }
 
-    public function contactForm(Request $request){
+    public function contactForm(Request $request)
+    {
         $this->validate(request(), [
-            'name'=>'required',
-            'phone'=>'required',
-            'email'=>'required',
-            'subject'=>'required',
-            'message'=>'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
         ]);
 
 
         $data = new ContactForm();
-        $data->name=$request->name;
-        $data->phone=$request->phone;
-        $data->email=$request->email;
-        $data->subject=$request->subject;
-        $data->message=$request->message;
+        $data->name = $request->name;
+        $data->phone = $request->phone;
+        $data->email = $request->email;
+        $data->subject = $request->subject;
+        $data->message = $request->message;
         $data->save();
 
-        return back()->with('message','success');
+        return back()->with('message', 'success');
     }
 
-    public function ShapeView(Request $request){
+    public function ShapeView(Request $request)
+    {
         $data = Shape::findOrFail($request->id);
-        return view('front.shape-view',compact('data'));
+        return view('front.shape-view', compact('data'));
     }
 
-    public function Setting(){
+    public function Setting()
+    {
 
         $employee = User::findOrFail(Auth::guard('web')->id());
-        return view('Admin.Admin.Profile',compact('employee'));
+        return view('Admin.Admin.Profile', compact('employee'));
     }
 
-    public function Provider($id){
-        $data  =  Provider::findOrFail($id);
-        return  view('front.Providers',compact('data'));
+    public function Provider($id)
+    {
+        $data = Provider::findOrFail($id);
+        return view('front.Providers', compact('data'));
     }
+
+
+//cart
+    public function cart(Request $request)
+    {
+        $Carts = Cart::where('user_id', Auth::guard('web')->id())->orderBy('created_at', 'desc')->get();
+        return view('front.cart', compact('Carts'));
+    }
+
+    public function storeCart(CartRequest $request)
+    {
+        $data = $request->validated();
+        $data['user_id'] = Auth::guard('web')->id();
+        $service = Service::whereId($data['service_id'])->first();
+
+        $provider_id = $service->provider_id;
+        $data['provider_id'] = $provider_id;
+        Cart::create($data);
+        return redirect()->back()->with('message', 'تم الاضافة للسلة بنجاح ');
+    }
+
+    //order section ...
+    public function myOrders(Request $request)
+    {
+        $orders = Order::with('provider')->where('user_id', Auth::guard('web')->id())->orderBy('created_at', 'desc')->get();
+        return view('front.orders', compact('orders'));
+    }
+
+    public function orderDetails($id)
+    {
+        $Carts = OrderDetail::where('order_id', $id)->orderBy('created_at', 'desc')->get();
+        return view('front.order_details', compact('Carts'));
+    }
+
+    public function orderCheckout(OrderCheckoutRequest $request)
+    {
+        $data = $request->validated();
+        $cart_providers = Cart::where('user_id', Auth::guard('web')->id())->get()->groupBy('provider_id');
+        foreach ($cart_providers as $cart_provider) {
+            $total = 0;
+            $total_deposit = 0;
+            foreach ($cart_provider as $cart) {
+                $total = $total + $cart->Service->price;
+                $total_deposit = $total_deposit + $cart->Service->deposit;
+            }
+            $remain = $total - $total_deposit;
+
+            $data['total'] = $total;
+            $data['total_deposit'] = $total_deposit;
+            $data['remain'] = $remain;
+            $data['user_id'] = Auth::guard('web')->id();
+            $data['provider_id'] = $cart_provider->first()->provider_id;
+            $order = Order::create($data);
+
+            //save order details
+            foreach ($cart_provider as $cart) {
+                $detail_data['service_id'] = $cart->service_id;
+                $detail_data['service_name'] = $cart->Service->title;
+                $detail_data['deposit'] = $cart->Service->deposit;
+                $detail_data['price'] = $cart->Service->price;
+                $remain = $cart->Service->price - $cart->Service->deposit;
+                $detail_data['time'] = $cart->time;
+                $detail_data['date'] = $cart->date;
+                $detail_data['lat'] = $cart->lat;
+                $detail_data['lng'] = $cart->lng;
+                $detail_data['order_id'] = $order->id;
+                OrderDetail::create($detail_data);
+            }
+
+        }
+        Cart::where('user_id', Auth::guard('web')->id())->delete();
+        return redirect()->back()->with('message', 'تم حفظ الفاتورة بنجاح ');
+    }
+
 }

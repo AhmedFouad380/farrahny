@@ -7,7 +7,7 @@
 
     <div class="slider">
         @foreach(\App\Models\Slider::where('is_active','active')->get()  as $key  => $Slider)
-            <input type="radio" name="slider"  @if($key ==  0) checked class="m-left-radio" @endif/>
+            <input type="radio" name="slider" @if($key ==  0) checked class="m-left-radio" @endif/>
             <div class="slider__content">
                 <img src="{{$Slider->image}}"/>
                 <div class="slider__description">
@@ -17,9 +17,9 @@
                             <h1 class="text-break">{{$Slider->description}}</h1>
                             <h1></h1>
 
-                            <div class="d-flex mt-5" >
+                            <div class="d-flex mt-5">
                                 <div class="btn-jobs">
-                                    <button  href="{{$Slider->link}}" class="apply-btn-slide">
+                                    <button href="{{$Slider->link}}" class="apply-btn-slide">
                                         <span>{{__('lang.more')}}</span>
                                         <div class="btn-layer222"></div>
                                     </button>
@@ -49,20 +49,21 @@
             <div class="">
                 <div class="owl-carousel owl-carousel-p">
                     @foreach(\App\Models\Event::where('is_active','active')->get() as $event)
-                    <div class="carsouel-content over-xx" data-aos="fade-right">
-                        <a href="{{url('event',$event->title)}}">
-                        <div class="content-container">
-                            <div class="layer"></div>
-                            <div class="content-img">
-                                <img src="{{$event->image}}" alt="{{$event->title}}">
-                            </div>
-                            <div class="content">
-                                <p class="size-p">{{$event->title}}</p>
-                                <span class="d-block size-span">({{$event->Category->count()}}) {{__('lang.Category')}}</span>
-                            </div>
+                        <div class="carsouel-content over-xx" data-aos="fade-right">
+                            <a href="{{url('event',$event->title)}}">
+                                <div class="content-container">
+                                    <div class="layer"></div>
+                                    <div class="content-img">
+                                        <img src="{{$event->image}}" alt="{{$event->title}}">
+                                    </div>
+                                    <div class="content">
+                                        <p class="size-p">{{$event->title}}</p>
+                                        <span
+                                            class="d-block size-span">({{$event->Category->count()}}) {{__('lang.Category')}}</span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                        </a>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -84,31 +85,32 @@
             </div>
             @foreach(\App\Models\Service::where('is_active','active')->Orderby('id','desc')->where('is_recommend','active')->inRandomOrder()->limit(2)->get() as $key => $recommend)
 
-            <div class="col-md-6 col-lg-6 col-12 over-xx"  @if($key == 0) data-aos="fade-left"  @else data-aos="fade-right" @endif>
-                <div class="reco-for">
-                    <div class="basic-layer-reco"></div>
-                    <div class="reco-layer">
-                        <div class="layer1-reco"></div>
-                        <div class="d-flex justify-content-between lines" >
-                            <div class="layer2-reco"></div>
-                            <div class="layer3-reco"></div>
+                <div class="col-md-6 col-lg-6 col-12 over-xx" @if($key == 0) data-aos="fade-left"
+                     @else data-aos="fade-right" @endif>
+                    <div class="reco-for">
+                        <div class="basic-layer-reco"></div>
+                        <div class="reco-layer">
+                            <div class="layer1-reco"></div>
+                            <div class="d-flex justify-content-between lines">
+                                <div class="layer2-reco"></div>
+                                <div class="layer3-reco"></div>
+                            </div>
+                            <div class="layer4-reco"></div>
                         </div>
-                        <div class="layer4-reco"></div>
+                        <div class="reco-img">
+                            <img src="{{$recommend->image}}" alt="">
+                        </div>
+                        <div class="reco-content">
+                            <p class="fs-p">{{$recommend->title}}</p>
+                            <span>{{$recommend->Category->title}}</span>
+                        </div>
                     </div>
-                    <div class="reco-img">
-                        <img src="{{$recommend->image}}" alt="">
-                    </div>
-                    <div class="reco-content">
-                        <p class="fs-p">{{$recommend->title}}</p>
-                        <span>{{$recommend->Category->title}}</span>
+                    <div class="text-center order">
+                        <a class="link" href="{{url('service',$recommend->title)}}">{{__('lang.order now')}}</a>
                     </div>
                 </div>
-                <div class="text-center order">
-                    <a class="link" href="{{url('service',$recommend->title)}}">{{__('lang.order now')}}</a>
-                </div>
-            </div>
             @endforeach
-            <div class="d-flex align-items-end justify-content-end mb-2" >
+            <div class="d-flex align-items-end justify-content-end mb-2">
                 <div class="btn-jobs">
                     <a href="{{url('Recommended/Services')}}" class="apply-btn">
                         <span>{{__('lang.see more')}}</span>
@@ -125,54 +127,55 @@
             <div class="col-md-12 col-lg-12 col-12 mb-2">
                 <div class="owl-carousel owl-carousel-p ">
                     @foreach(\App\Models\Service::where('is_active','active')->where('is_recommend','active')->inRandomOrder()->limit(10)->get() as $key => $recommend)
-                    <div class="carsouel-content">
-                        <div class="bg-content">
-                            <div class="img-box-owl">
-                                <img src="{{$recommend->image}}" alt="{{$recommend->title}}">
-                            </div>
-                            <div class="padding-p d-flex justify-content-between">
-                                <div>
-                                    <h6 class="fw-bold">{{$recommend->title}}</h6>
-                                    <span class="gray-text">{{$recommend->Provider->name}}</span>
+                        <div class="carsouel-content">
+                            <div class="bg-content">
+                                <div class="img-box-owl">
+                                    <img src="{{$recommend->image}}" alt="{{$recommend->title}}">
                                 </div>
-                                <div class="">
-                                    <i class="fa-solid fa-heart addtowishlist " data-id="{{$recommend->id}}"></i>
-                                    <i class="fa-sharp fa-solid add fa-cart-shopping grayy" data-id="{{$recommend->id}}"></i>
+                                <div class="padding-p d-flex justify-content-between">
+                                    <div>
+                                        <h6 class="fw-bold">{{$recommend->title}}</h6>
+                                        <span class="gray-text">{{$recommend->Provider->name}}</span>
+                                    </div>
+                                    <div class="">
+                                        <i class="fa-solid fa-heart addtowishlist " data-id="{{$recommend->id}}"></i>
+                                        <i class="fa-sharp fa-solid fa-cart-shopping grayy" id="btn_add_cart"
+                                           data-id="{{$recommend->id}}"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="d-flex justify-content-bettwen mb-3">
-                                <div style="width: 80%;" class="d-flex">
+                                <div class="d-flex justify-content-bettwen mb-3">
+                                    <div style="width: 80%;" class="d-flex">
                                 <span class="rating-item d-block">
                                     <i class="fa fa-star gold" aria-hidden="true"></i>
                                 </span>
-                                    <span class="rating-item d-block">
+                                        <span class="rating-item d-block">
                                     <i class="fa fa-star gold" aria-hidden="true"></i>
                                 </span>
-                                    <span class="rating-item d-block">
+                                        <span class="rating-item d-block">
                                     <i class="fa fa-star gold" aria-hidden="true"></i>
                                 </span>
-                                    <span class="rating-item d-block">
+                                        <span class="rating-item d-block">
                                     <i class="fa fa-star gold" aria-hidden="true"></i>
                                 </span>
-                                    <span class="rating-item d-block">
+                                        <span class="rating-item d-block">
                                 <i class="fa fa-star gold" aria-hidden="true"></i>
                                 </span>
-                                </div>
-                                <p class="price" style="width: 20%">
-                                <div class="d-flex">
-                                    <span class="d-block egp-price"> {{$recommend->price}} </span>
-                                    <span class="egp-price d-block">egp</span>
-                                </div>
+                                    </div>
+                                    <p class="price" style="width: 20%">
+                                    <div class="d-flex">
+                                        <span class="d-block egp-price"> {{$recommend->price}} </span>
+                                        <span class="egp-price d-block">egp</span>
+                                    </div>
 
-                                </p>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
 
                 </div>
             </div>
-            <div class="col-md-12 col-lg-12 col-12 trans "data-aos="fade-left">
+            <div class="col-md-12 col-lg-12 col-12 trans " data-aos="fade-left" style="margin-top: 61px;">
                 <div class="bg-mosqu">
                     <div class="img-layer">
                         <div class="text-mosqu">
@@ -218,44 +221,44 @@
                         <div class="row">
                             @foreach(\App\Models\Provider::where('is_active','active')->where('is_top','active')->limit(9)->inRandomOrder()->get() as  $Provider)
 
-                            <div class="col-md-6 col-lg-4 col-12 mb-4">
-                                <div class="parent-box">
-                                    <div class="parent-box-img">
-                                        <img src="{{$Provider->image}}" alt="{{$Provider->name}}">
-                                    </div>
-                                    <div class="parent-box-content text-center">
-                                        <h5 class="text-capitalize text-break fw-bolder">{{$Provider->name}}</h5>
-                                        <a class="btn user-link">ID : {{$Provider->id}}</a>
-                                        <div class="d-flex justify-content-between w-75 m-auto mt-3">
-                                            <a href="" class="d-block border-right-a">
-                                                <i class="fa-brands fa-facebook orang size-icon"></i>
-                                            </a>
-                                            <a href="" class="d-block border-right-a">
-                                                <i class="fa-brands fa-square-instagram orang size-icon"></i>
-                                            </a>
-                                            <a href="" class="d-block no-border">
-                                                <i class="fa-brands fa-square-twitter orang size-icon"></i>
-                                            </a>
+                                <div class="col-md-6 col-lg-4 col-12 mb-4">
+                                    <div class="parent-box">
+                                        <div class="parent-box-img">
+                                            <img src="{{$Provider->image}}" alt="{{$Provider->name}}">
                                         </div>
-                                        <!-- <a class="link-a text-uppercase mt-3 d-block w-75 m-auto p-1">open account</a> -->
+                                        <div class="parent-box-content text-center">
+                                            <h5 class="text-capitalize text-break fw-bolder">{{$Provider->name}}</h5>
+                                            <a class="btn user-link">ID : {{$Provider->id}}</a>
+                                            <div class="d-flex justify-content-between w-75 m-auto mt-3">
+                                                <a href="" class="d-block border-right-a">
+                                                    <i class="fa-brands fa-facebook orang size-icon"></i>
+                                                </a>
+                                                <a href="" class="d-block border-right-a">
+                                                    <i class="fa-brands fa-square-instagram orang size-icon"></i>
+                                                </a>
+                                                <a href="" class="d-block no-border">
+                                                    <i class="fa-brands fa-square-twitter orang size-icon"></i>
+                                                </a>
+                                            </div>
+                                            <!-- <a class="link-a text-uppercase mt-3 d-block w-75 m-auto p-1">open account</a> -->
 
-                                        <div class="btn-jobs mt-0">
-                                            <a href="{{url('Provider',$Provider->id)}}">
-                                            <button href="" class="apply-btn-slide apply-btn-slide2 link-aa">
-                                                <span>{{__('lang.more')}}</span>
-                                                <div class="btn-layer222"></div>
-                                            </button>
-                                            </a>
+                                            <div class="btn-jobs mt-0">
+                                                <a href="{{url('Provider',$Provider->id)}}">
+                                                    <button href="" class="apply-btn-slide apply-btn-slide2 link-aa">
+                                                        <span>{{__('lang.more')}}</span>
+                                                        <div class="btn-layer222"></div>
+                                                    </button>
+                                                </a>
+                                            </div>
+
                                         </div>
-
                                     </div>
                                 </div>
-                            </div>
-                                @endforeach
+                            @endforeach
                         </div>
                     </div>
                 </div>
-                <div class="d-flex align-items-end justify-content-end trans-topp" >
+                <div class="d-flex align-items-end justify-content-end trans-topp">
                     <div class="btn-jobs">
                         <a href="{{url('Providers')}}" class="apply-btn">
                             <span>{{__('lang.see more')}}</span>

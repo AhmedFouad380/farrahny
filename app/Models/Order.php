@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class Order extends Model
 {
     use HasFactory;
 
     protected $guarded = [''];
 
-//    protected $casts = ['time'=>'timestraen:g:i a'];
-    public function Service()
+    public function provider()
     {
-        return $this->belongsTo(Service::class, 'service_id');
+        return $this->belongsTo(Provider::class, 'provider_id');
     }
 }

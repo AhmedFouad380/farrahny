@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'add_to_cart' => 'add to cart',
+
     'UserName' => 'User Name  ',
     'Regions' => 'Regions ',
     'Branches' => 'Branches ',

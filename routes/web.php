@@ -18,7 +18,6 @@ Route::get('/', function () {
 });
 
 
-
 Route::get('/Admin/login', function () {
     return view('auth.login');
 });
@@ -45,18 +44,22 @@ Route::get('register', function () {
 Route::get('contact', function () {
     return view('front.contact');
 });
-Route::get('cart', [\App\Http\Controllers\frontController::class, 'cart']);
 
-Route::group(['middleware'=>['web']],function (){
+Route::group(['middleware' => ['web']], function () {
     Route::get('cart', [\App\Http\Controllers\frontController::class, 'cart']);
+    Route::post('cart/store', [\App\Http\Controllers\frontController::class, 'storeCart'])->name('cart.store');
     Route::get('add-cart', [\App\Http\Controllers\frontController::class, 'addCart']);
     Route::get('store-rate', [\App\Http\Controllers\frontController::class, 'stareRate']);
-    Route::get('deleteCart/{id}', [\App\Http\Controllers\frontController::class, 'deleteCart']);
     Route::get('add-wishlist', [\App\Http\Controllers\frontController::class, 'addwishlist']);
     Route::get('wishlist', [\App\Http\Controllers\frontController::class, 'wishlist']);
+    Route::get('cart/remove/{id}', [\App\Http\Controllers\frontController::class, 'cartRemove'])->name('cart.remove');
+
+    Route::get('orders', [\App\Http\Controllers\frontController::class, 'myOrders'])->name('my_orders');
+    Route::post('order/checkout', [\App\Http\Controllers\frontController::class, 'orderCheckout'])->name('order.checkout');
+    Route::get('orders/details/{id}', [\App\Http\Controllers\frontController::class, 'orderDetails'])->name('orders.details');
 
 });
- Route::group(['middleware' => ['admin']], function () {
+Route::group(['middleware' => ['admin']], function () {
 
     Route::get('/Dashboard', function () {
         return view('admin.index');
@@ -141,15 +144,12 @@ Route::group(['middleware'=>['web']],function (){
     });
 
 
-
-
-
     Route::get('ServiceImage/{id}', [\App\Http\Controllers\Admin\ServiceImageController::class, 'index']);
     Route::get('ServiceImage_datatable', [\App\Http\Controllers\Admin\ServiceImageController::class, 'datatable'])->name('ServiceImage.datatable.data');
     Route::get('delete-ServiceImage', [\App\Http\Controllers\Admin\ServiceImageController::class, 'destroy']);
     Route::post('store-ServiceImage', [\App\Http\Controllers\Admin\ServiceImageController::class, 'store']);
     Route::get('/add-button-ServiceImage/{id}', function ($id) {
-        return view('admin/ServiceImage/button',compact('id'));
+        return view('admin/ServiceImage/button', compact('id'));
     });
 
     Route::get('Messages_setting', [\App\Http\Controllers\Admin\MessagesController::class, 'index']);
