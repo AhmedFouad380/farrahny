@@ -41,7 +41,7 @@
                               </div>
                               <div class="">
                                   <i class="fa-solid fa-heart   addtowishlist " style="color: #000000;" data-id="{{$data->Service->id}}"></i>
-                                  <i class="fa-sharp fa-solid add fa-cart-shopping grayy" data-id="{{$data->Service->id}}"></i>
+                                  <i class="fa-sharp fa-solid fa-cart-shopping grayy" id="btn_add_cart" data-id="{{$data->Service->id}}"></i>
                               </div>
                               </div>
 
