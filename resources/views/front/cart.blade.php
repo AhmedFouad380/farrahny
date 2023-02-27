@@ -112,6 +112,7 @@
                 @php
                    $remain = array_sum($total) - array_sum($total_deposit);
                 @endphp
+
                 <div class="row mt-3">
                     <div class="col-md-6 col-lg-6 col-6">
                         <span class="d-block color-g fw-bolder">{{trans('lang.total')}} ({{trans('lang.including_tax')}} )</span>
@@ -121,11 +122,15 @@
                                 class="orang fw-bolder">{{trans('lang.currency')}}</span></span>
                     </div>
                 </div>
+                    <form action="{{url('ApplyCoupon')}}" method="post" >
                 <div class="cart-input1 mt-3">
-                    <input type="text" placeholder="{{trans('lang.add_coupon')}}" class="d-bolck">
+
+                        <input type="text" required name="coupon" placeholder="{{trans('lang.add_coupon')}}" class="d-bolck">
                     <button class="d-block">{{trans('lang.Apply')}}</button>
                 </div>
-                <form action="{{route('order.checkout')}}" method="post">
+                    </form>
+
+                    <form action="{{route('order.checkout')}}" method="post">
                     @csrf
                     <div class="col-md-12 col-lg-12 col-12 text-center mt-3">
                         <button type="submit" class="btn conf-btn">{{trans('lang.confirm_order')}}</button>
@@ -270,4 +275,49 @@
     </div>
 
 
+@endsection
+@section('js')
+    @if(Session('CouponMessage') && Session('CouponMessage') == 'success')
+        <script>
+
+            Swal.fire({
+                icon: 'success',
+                title: "{{__('lang.Success')}}",
+                text: "{{__('lang.Success_text')}}",
+                type: "success",
+                timer: 1000,
+                showConfirmButton: false
+
+            });
+        </script
+    @endif
+
+
+    @if(Session('CouponMessage') && Session('CouponMessage') == 'failed')
+        <script>
+
+            Swal.fire({
+                icon: 'error',
+                title: "{{__('lang.worning')}}",
+                text: "{{__('lang.coupon is wrong')}}",
+                type: "error",
+                timer: 3000,
+                showConfirmButton: false
+            });
+        </script>
+    @endif
+    @if(Session('CouponMessage') && Session('CouponMessage') == 'AlreadyAdd')
+        <script>
+
+            Swal.fire({
+                icon: 'error',
+                title: "{{__('lang.worning')}}",
+                text: "{{__('lang.coupon is already add')}}",
+                type: "error",
+                timer: 3000,
+                showConfirmButton: false
+            });
+        </script>
+
+    @endif
 @endsection

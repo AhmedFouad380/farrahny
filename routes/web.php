@@ -53,6 +53,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('add-wishlist', [\App\Http\Controllers\frontController::class, 'addwishlist']);
     Route::get('wishlist', [\App\Http\Controllers\frontController::class, 'wishlist']);
     Route::get('cart/remove/{id}', [\App\Http\Controllers\frontController::class, 'cartRemove'])->name('cart.remove');
+    Route::post('ApplyCoupon', [\App\Http\Controllers\frontController::class, 'ApplyCoupon']);
+    Route::get('removeCoupon', [\App\Http\Controllers\frontController::class, 'removeCoupon']);
 
     Route::get('orders', [\App\Http\Controllers\frontController::class, 'myOrders'])->name('my_orders');
     Route::post('order/checkout', [\App\Http\Controllers\frontController::class, 'orderCheckout'])->name('order.checkout');
@@ -160,8 +162,30 @@ Route::group(['middleware' => ['admin']], function () {
         return view('Admin/Message/button');
     });
 
+    Route::get('Coupons_Setting', [\App\Http\Controllers\Admin\CouponController::class, 'index']);
+    Route::get('Coupons_datatable', [\App\Http\Controllers\Admin\CouponController::class, 'datatable'])->name('Coupons.datatable.data');
+    Route::get('delete-Coupons', [\App\Http\Controllers\Admin\CouponController::class, 'destroy']);
+    Route::post('store-Coupons', [\App\Http\Controllers\Admin\CouponController::class, 'store']);
+    Route::get('Coupons-edit/{id}', [\App\Http\Controllers\Admin\CouponController::class, 'edit']);
+    Route::post('update-Coupons', [\App\Http\Controllers\Admin\CouponController::class, 'update']);
+    Route::get('/add-button-Coupons', function () {
+        return view('admin/Coupons/button');
+    });
+
+    Route::get('Orders', [\App\Http\Controllers\Admin\OrderController::class, 'index']);
+    Route::get('Restaurants-Orders/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'Restaurants_Orders']);
+    Route::get('User-Orders/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'User_Orders']);
+
+    Route::get('Order_detail/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'Order_detail']);
+    Route::get('Order_datatable', [\App\Http\Controllers\Admin\OrderController::class, 'datatable'])->name('Order.datatable.data');
+    Route::get('delete-Order', [\App\Http\Controllers\Admin\OrderController::class, 'destroy']);
+    Route::get('/add-button-Order', function () {
+        return view('admin/Order/button');
+    });
+    Route::post('update-Order-states', [\App\Http\Controllers\Admin\OrderController::class, 'updateOrderStates']);
 
 });
+
 Route::group(['middleware' => ['Provider']], function () {
     Route::get('/ProviderDashboard', function () {
         return view('admin.index');

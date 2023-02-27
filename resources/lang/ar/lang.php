@@ -619,5 +619,14 @@ return [
     'top provider' => 'افضل مقدمي الخدمات',
     'Enter your email' => 'ادخل البريد الالكتروني ',
     'forget password ?' => 'نسيت كلمة المرور ؟',
-    'booking now' => 'احجز الان'
+    'booking now' => 'احجز الان',
+    'Coupons' => 'اكواد الخصم',
+    'discount' => 'الخصم',
+    'max_used' => 'الحد الاقصى للاستخدام',
+    'expire_date' => 'تاريخ الانتهاء',
+    'count_used' => 'عدد مرات الاستخدام',
+    'order-status'=>'حالة الطلب',
+    'payment-type'=>'حالة الدفع',
+    'total'=>'الاجمالي',
+    'order-details'=>'التفاصيل',
 ];

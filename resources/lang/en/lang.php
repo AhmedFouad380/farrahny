@@ -606,6 +606,14 @@ return [
     'login'=>'login ',
     'Enter your email'=>'Enter your email ',
     'forget password ?'=>'forget password ?',
-    'booking now'=>'booking now'
-
+    'booking now'=>'booking now',
+    'Coupons' => 'Coupons',
+    'discount' => 'discount',
+    'max_used' => 'max used',
+    'expire_date' => 'expire date',
+    'count_used' => 'used count',
+    'order-status'=>'order status',
+    'payment-type'=>'payment status',
+    'total'=>'total',
+    'order-details'=>'Details',
 ];

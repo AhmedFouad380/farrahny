@@ -12,6 +12,12 @@
   <component name="ChangeListManager">
     <list default="true" id="33ef5b4a-8ff8-4e9f-988a-eae388d73f55" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2023_02_22_162833_create_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2023_02_22_162833_create_orders_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,6 +220,9 @@
       <workItem from="1676661007862" duration="9912000" />
       <workItem from="1676972446513" duration="290000" />
       <workItem from="1677003535056" duration="4111000" />
+      <workItem from="1677420409896" duration="1108000" />
+      <workItem from="1677429378370" duration="875000" />
+      <workItem from="1677433396567" duration="6827000" />
     </task>
     <servers />
   </component>
@@ -237,10 +246,10 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="499" y="163" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.816@0.0.1536.816" timestamp="1676149377300" />
-    <state x="425" y="185" key="run.anything.popup" timestamp="1676681594588">
+    <state x="425" y="185" key="run.anything.popup" timestamp="1677443401110">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="425" y="185" key="run.anything.popup/0.0.1536.816@0.0.1536.816" timestamp="1676681594588" />
+    <state x="425" y="185" key="run.anything.popup/0.0.1536.816@0.0.1536.816" timestamp="1677443401110" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
