@@ -3,22 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Auth;
 
-class CategoryController extends Controller
+class SubscriptionController extends Controller
 {
     public function index()
     {
-        return view('admin.Category.index');
+        return view('admin.subscriptions.index');
     }
 
     public function datatable(Request $request)
     {
-        $data = Category::orderBy('id', 'desc');
-
+        $data = Subscription::orderBy('id', 'desc');
         return DataTables::of($data)
             ->addColumn('checkbox', function ($row) {
                 $checkbox = '';
@@ -26,16 +25,6 @@ class CategoryController extends Controller
                                     <input class="form-check-input" type="checkbox" value="' . $row->id . '" />
                                 </div>';
                 return $checkbox;
-            })
-            ->AddColumn('title', function ($row) {
-                if (Session()->get('lang') == 'ar') {
-                    return $row->ar_title;
-                } else {
-                    return $row->en_title;
-                }
-            })
-            ->AddColumn('event', function ($row) {
-                return $row->Event->title;
             })
             ->editColumn('is_active', function ($row) {
                 $is_active = '<div class="badge badge-light-success fw-bolder">Active</div>';
@@ -47,11 +36,10 @@ class CategoryController extends Controller
                 }
             })
             ->addColumn('actions', function ($row) {
-                $actions = ' <a href="' . url("Category-edit/" . $row->id) . '" class="btn btn-active-light-info">Edit <i class="bi bi-pencil-fill"></i>  </a>';
+                $actions = ' <a href="' . url("subscriptions-edit/" . $row->id) . '" class="btn btn-active-light-info">Edit <i class="bi bi-pencil-fill"></i>  </a>';
                 return $actions;
-
             })
-            ->rawColumns(['actions', 'checkbox', 'name', 'is_active', 'branch'])
+            ->rawColumns(['actions', 'checkbox', 'is_active',])
             ->make();
 
     }
@@ -74,27 +62,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
         $this->validate(request(), [
-            'ar_title' => 'required|string',
-            'en_title' => 'required|string',
+            'name_ar' => 'required|string|max:255',
+            'name_en' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'service_count' => 'required|numeric|min:1',
+            'service_image_count' => 'required|numeric|min:1',
+            'days_count' => 'required|numeric|min:1',
+            'is_video' => 'nullable|string',
             'is_active' => 'nullable|string',
-
         ]);
-
-
-        $user = new Category;
-        $user->ar_title = $request->ar_title;
-        $user->en_title = $request->en_title;
-        $user->created_by = Auth::guard('admin')->id();
-        $user->is_active = $request->is_active;
-        $user->event_id = $request->event_id;
-        if ($request->image) {
-            $user->image = $request->image;
-        }
-
-
-        $user->save();
-
+        Subscription::create($data);
         return redirect()->back()->with('message', 'تم الاضافة بنجاح ');
 
 
@@ -119,8 +98,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $employee = Category::findOrFail($id);
-        return view('admin.Category.edit', compact('employee'));
+        $data = Subscription::findOrFail($id);
+        return view('admin.subscriptions.edit', compact('data'));
     }
 
     /**
@@ -133,25 +112,17 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         $data = $this->validate(request(), [
-            'ar_title' => 'required|string',
-            'en_title' => 'required|string',
+            'name_ar' => 'required|string|max:255',
+            'name_en' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'service_count' => 'required|numeric|min:1',
+            'service_image_count' => 'required|numeric|min:1',
+            'days_count' => 'required|numeric|min:1',
+            'is_video' => 'nullable|string',
             'is_active' => 'nullable|string',
-
         ]);
-
-
-        $user = Category::whereId($request->id)->first();
-        $user->ar_title = $request->ar_title;
-        $user->en_title = $request->en_title;
-        $user->event_id = $request->event_id;
-        $user->created_by = Auth::guard('admin')->id();
-        $user->is_active = $request->is_active;
-        if ($request->image) {
-            $user->image = $request->image;
-        }
-        $user->save();
-
-        return redirect(url('Categories_setting'))->with('message', 'تم التعديل بنجاح ');
+        Subscription::whereId($request->id)->update($data);
+        return redirect(url('subscriptions'))->with('message', 'تم التعديل بنجاح ');
     }
 
     /**
@@ -163,25 +134,10 @@ class CategoryController extends Controller
     public function destroy(Request $request)
     {
         try {
-            Category::whereIn('id', $request->id)->delete();
+            Subscription::whereIn('id', $request->id)->delete();
         } catch (\Exception $e) {
             return response()->json(['message' => 'Failed']);
         }
         return response()->json(['message' => 'Success']);
-    }
-
-    public function getCategory($id)
-    {
-//        if(App::currentLocale() == "ar"){
-//            $data  = Category::where('event_id',$id)->pluck('id','ar_title');
-//
-//        }else{
-//            $data  = Category::where('event_id',$id)->pluck('id','en_title');
-//        }
-
-        $data = Category::where('event_id', $id)->get();
-//        dd($id,$data);
-        return view('admin.Service.parts.categories', compact('data'));
-//        return response()->json($data);
     }
 }

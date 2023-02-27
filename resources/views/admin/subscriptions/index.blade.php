@@ -1,10 +1,12 @@
 @extends('layout.layout')
-@section('title',__('lang.Admins'))
+@section('title',__('lang.subscriptions'))
 @section('css')
     <link href="{{ URL::asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet"
           type="text/css"/>
     <link href="{{ URL::asset('assets/plugins/custom/prismjs/prismjs.bundle.css')}}" rel="stylesheet"
           type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css" integrity="sha512-In/+MILhf6UMDJU4ZhDL0R0fEpsp4D3Le23m6+ujDWXwl3whwpucJG1PEmI3B07nyJx+875ccs+yX2CqQJUxUw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 @endsection
 
 @section('style')
@@ -28,14 +30,14 @@
             <!--begin::Page title-->
             <div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-2 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
                 <!--begin::Heading-->
-                <h1 class="text-dark fw-bolder my-0 fs-2">{{__('lang.Admins')}} </h1>
+                <h1 class="text-dark fw-bolder my-0 fs-2">{{__('lang.subscriptions')}} </h1>
                 <!--end::Heading-->
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb fw-bold fs-base my-1">
                     <li class="breadcrumb-item text-muted">
                         <a href="{{url('/Dashboard')}}" class="text-muted">{{__('lang.Dashboard')}}</a>
                     </li>
-                    <li class="breadcrumb-item text-muted">{{__('lang.Admins')}}</li>
+                    <li class="breadcrumb-item text-muted">{{__('lang.subscriptions')}}</li>
                 </ul>
                 <!--end::Breadcrumb-->
             </div>
@@ -147,10 +149,13 @@
                                 </div>
                             </th>
 
-                            <th class="min-w-125px">{{__('lang.name')}}</th>
-                            <th class="min-w-125px">{{__('lang.phone')}}</th>
-                            <th class="min-w-125px">{{__('lang.email')}}</th>
-                            <th class="min-w-125px">{{__('lang.active')}}</th>
+                            <th class="min-w-125px">{{__('lang.ar_title')}}</th>
+                            <th class="min-w-125px">{{__('lang.en_title')}}</th>
+{{--                            <th class="min-w-125px">{{__('lang.service_count')}}</th>--}}
+{{--                            <th class="min-w-125px">{{__('lang.service_image_count')}}</th>--}}
+{{--                            <th class="min-w-125px">{{__('lang.days_count')}}</th>--}}
+{{--                            <th class="min-w-125px">{{__('lang.is_video')}}</th>--}}
+                            <th class="min-w-125px">{{__('lang.is_active')}}</th>
                             <th class="min-w-125px">{{__('lang.Actions')}}</th>
                         </tr>
                         <!--end::Table row-->
@@ -172,6 +177,9 @@
 @endsection
 
 @section('script')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script src="{{ URL::asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 
     <script type="text/javascript">
@@ -196,23 +204,26 @@
                     // {extend: 'colvis', className: 'btn secondary', text: 'إظهار / إخفاء الأعمدة '}
                 ],
                 ajax: {
-                    url: '{{ route('Admin.datatable.data') }}',
+                    url: '{{ route('subscriptions.datatable.data') }}',
                     data: {
 
                     }
                 },
                 columns: [
                     {data: 'checkbox', name: 'checkbox', "searchable": false, "orderable": false},
-                    {data: 'name', name: 'name', "searchable": true, "orderable": true},
-                    {data: 'phone', name: 'phone', "searchable": true, "orderable": true},
-                    {data: 'email', name: 'email', "searchable": true, "orderable": true},
+                    {data: 'name_ar', name: 'name_ar', "searchable": true, "orderable": true},
+                    {data: 'name_en', name: 'name_en', "searchable": true, "orderable": true},
+                    // {data: 'service_count', name: 'service_count', "searchable": true, "orderable": true},
+                    // {data: 'service_image_count', name: 'service_image_count', "searchable": true, "orderable": true},
+                    // {data: 'days_count', name: 'days_count', "searchable": true, "orderable": true},
+                    // {data: 'is_video', name: 'is_video', "searchable": true, "orderable": true},
                     {data: 'is_active', name: 'is_active', "searchable": true, "orderable": true},
                     {data: 'actions', name: 'actions', "searchable": false, "orderable": false},
 
                 ]
             });
             $.ajax({
-                url: "{{ URL::to('/add-button-Admin')}}",
+                url: "{{ URL::to('/add-button-subscriptions')}}",
                 success: function (data) { $('.add_button').append(data); },
                 dataType: 'html'
             });

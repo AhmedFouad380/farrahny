@@ -16,7 +16,11 @@ class ServiceController extends Controller
     }
     public function datatable(Request $request)
     {
-        $data = Service::orderBy('id', 'desc');
+        $data = Service::Query();
+        if(auth()->guard('provider')->check()){
+            $data = $data->where('provider_id',auth('provider')->user()->id);
+        }
+        $data = $data->orderBy('id', 'desc');
 
         return DataTables::of($data)
             ->addColumn('checkbox', function ($row) {

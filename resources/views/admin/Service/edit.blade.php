@@ -25,7 +25,7 @@
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb fw-bold fs-base my-1">
                     <li class="breadcrumb-item text-muted">
-                        <a href="{{url('/')}}" class="text-muted">{{__('lang.Dashboard')}}</a>
+                        <a href="{{url('/Dashboard')}}" class="text-muted">{{__('lang.Dashboard')}}</a>
                     </li>
                     <li class="breadcrumb-item text-muted">{{__('lang.Services')}}</li>
                     <li class="breadcrumb-item text-muted">{{__('lang.Users_Edit')}}</li>

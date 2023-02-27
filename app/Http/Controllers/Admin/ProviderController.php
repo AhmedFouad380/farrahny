@@ -141,7 +141,7 @@ class ProviderController extends Controller
     public function update(Request $request)
     {
         $data = $this->validate(request(), [
-            'id' => 'required|exists:users,id',
+            'id' => 'required|exists:providers,id',
             'email' => 'required|email|unique:providers,email,' . $request->id,
             'password' => 'nullable|confirmed',
             'phone' => 'required|min:8|unique:providers,phone,' . $request->id,
@@ -149,8 +149,8 @@ class ProviderController extends Controller
             'ar_name' => 'required|string',
             'en_name' => 'required|string',
             'owner_name' => 'required|string',
-            'image'=>'required',
-            'cover'=>'required',
+            'image'=>'sometimes',
+            'cover'=>'sometimes',
             'lat'=>'required',
             'lng'=>'required',
         ]);

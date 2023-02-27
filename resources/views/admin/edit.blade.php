@@ -20,7 +20,7 @@
     <ul class="breadcrumb breadcrumb-dot fw-bold text-gray-600 fs-7 my-1">
         <!--begin::Item-->
         <li class="breadcrumb-item text-gray-600">
-            <a href="{{ url('/') }}" class="text-gray-600 text-hover-primary">لوحة القيادة</a>
+            <a href="{{ url('/Dashboard') }}" class="text-gray-600 text-hover-primary">لوحة القيادة</a>
         </li>
         <!--end::Item-->
         <!--begin::Item-->

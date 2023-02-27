@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Provider\AuthProviderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Route::post('Login', [\App\Http\Controllers\frontController::class, 'login']);
 Route::get('logout', [\App\Http\Controllers\frontController::class, 'logout']);
 Route::post('LoginUser', [\App\Http\Controllers\frontController::class, 'LoginUser']);
 Route::post('registerUser', [\App\Http\Controllers\frontController::class, 'registerUser']);
+
+//provider
+Route::get('provider/register', [AuthProviderController::class, 'registerPage'])->name('provider.register');
+Route::post('provider/register/store', [AuthProviderController::class, 'register'])->name('provider.register.store');
 
 
 Route::get('event/{title}', [\App\Http\Controllers\frontController::class, 'event']);
@@ -64,6 +69,19 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/Dashboard', function () {
         return view('admin.index');
     });
+
+    Route::get('subscriptions', [\App\Http\Controllers\Admin\SubscriptionController::class, 'index'])->name('subscriptions');
+
+//    Route::get('Services_setting', [\App\Http\Controllers\Admin\SubscriptionController::class, 'index']);
+    Route::get('subscriptions_datatable', [\App\Http\Controllers\Admin\SubscriptionController::class, 'datatable'])->name('subscriptions.datatable.data');
+    Route::get('delete-subscriptions', [\App\Http\Controllers\Admin\SubscriptionController::class, 'destroy']);
+    Route::post('store-subscriptions', [\App\Http\Controllers\Admin\SubscriptionController::class, 'store']);
+    Route::get('subscriptions-edit/{id}', [\App\Http\Controllers\Admin\SubscriptionController::class, 'edit']);
+    Route::post('update-subscriptions', [\App\Http\Controllers\Admin\SubscriptionController::class, 'update']);
+    Route::get('/add-button-subscriptions', function () {
+        return view('admin/subscriptions/button');
+    });
+
 
     Route::get('Admin_setting', [\App\Http\Controllers\Admin\AdminController::class, 'index']);
     Route::get('Admin_datatable', [\App\Http\Controllers\Admin\AdminController::class, 'datatable'])->name('Admin.datatable.data');
@@ -132,7 +150,6 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/add-button-Event', function () {
         return view('admin/Event/button');
     });
-    Route::get('get-Category/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'getCategory']);
     Route::get('Categories_setting', [\App\Http\Controllers\Admin\CategoryController::class, 'index']);
     Route::get('Category_datatable', [\App\Http\Controllers\Admin\CategoryController::class, 'datatable'])->name('Category.datatable.data');
     Route::get('delete-Category', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy']);
@@ -178,6 +195,13 @@ Route::group(['middleware' => ['Provider']], function () {
         return view('admin/Service/button');
     });
 });
+
+//this for provider and admin
+Route::group(['middleware' => ['admin','Provider']], function () {
+
+Route::get('get-Category/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'getCategory']);
+});
+
 
 
 Route::get('lang/{lang}', function ($lang) {

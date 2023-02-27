@@ -10,15 +10,19 @@ use Illuminate\Support\Facades\App;
 class Provider extends Authenticatable
 {
     use HasFactory;
+
     protected $appends = ['name'];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
     public function getNameAttribute()
     {
-        if ($locale = App::currentLocale() == "ar") {
+        if (App::currentLocale() == "ar") {
             return $this->ar_name;
         } else {
             return $this->en_name;
         }
     }
+
     public function getImageAttribute($image)
     {
         if (!empty($image)) {
@@ -35,6 +39,7 @@ class Provider extends Authenticatable
             $this->attributes['image'] = $imageFields;
         }
     }
+
     public function getCoverAttribute($image)
     {
         if (!empty($image)) {
@@ -52,7 +57,8 @@ class Provider extends Authenticatable
         }
     }
 
-    public function Services(){
-        return $this->HasMany(Service::class,'provider_id');
+    public function Services()
+    {
+        return $this->HasMany(Service::class, 'provider_id');
     }
 }
