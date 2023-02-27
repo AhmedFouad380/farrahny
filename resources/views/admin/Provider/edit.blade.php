@@ -1,7 +1,9 @@
 @extends('layout.layout')
 
 @section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css" integrity="sha512-In/+MILhf6UMDJU4ZhDL0R0fEpsp4D3Le23m6+ujDWXwl3whwpucJG1PEmI3B07nyJx+875ccs+yX2CqQJUxUw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css"
+          integrity="sha512-In/+MILhf6UMDJU4ZhDL0R0fEpsp4D3Le23m6+ujDWXwl3whwpucJG1PEmI3B07nyJx+875ccs+yX2CqQJUxUw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
 @endsection
 
@@ -15,20 +17,28 @@
     </style>
 @endsection
 @section('header')
-    <div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
+    <div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header"
+         data-kt-sticky-offset="{default: '200px', lg: '300px'}">
         <!--begin::Container-->
         <div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
             <!--begin::Page title-->
-            <div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-2 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
+            <div
+                class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-2 pb-lg-0"
+                data-kt-swapper="true" data-kt-swapper-mode="prepend"
+                data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
                 <!--begin::Heading-->
                 <h1 class="text-dark fw-bolder my-0 fs-2">{{__('lang.Users_Edit')}} </h1>
                 <!--end::Heading-->
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb fw-bold fs-base my-1">
                     <li class="breadcrumb-item text-muted">
-                        <a href="{{url('/')}}" class="text-muted">{{__('lang.Dashboard')}}</a>
+                        <a href="{{url('/Dashboard')}}" class="text-muted">{{__('lang.Dashboard')}}</a>
                     </li>
-                    <li class="breadcrumb-item text-muted">{{__('lang.Provider')}}</li>
+                    <li class="breadcrumb-item text-muted">
+                        <a href="{{url('/Providers_setting')}}" class="text-muted">
+                            {{__('lang.Providers')}}
+                        </a>
+                    </li>
                     <li class="breadcrumb-item text-muted">{{__('lang.Users_Edit')}}</li>
 
                 </ul>
@@ -41,9 +51,14 @@
                 <div class="btn btn-icon btn-active-icon-primary" id="kt_aside_toggle">
                     <!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
                     <span class="svg-icon svg-icon-2x">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z" fill="black" />
-											<path opacity="0.3" d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z" fill="black" />
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none">
+											<path
+                                                d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z"
+                                                fill="black"/>
+											<path opacity="0.3"
+                                                  d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z"
+                                                  fill="black"/>
 										</svg>
 									</span>
                     <!--end::Svg Icon-->
@@ -51,7 +66,7 @@
                 <!--end::Aside mobile toggle-->
                 <!--begin::Logo-->
                 <a href="../../demo7/dist/index.html" class="d-flex align-items-center">
-                    <img alt="Logo" src="{{asset('assets/media/logos/logo-demo7.svg')}}" class="h-30px" />
+                    <img alt="Logo" src="{{asset('assets/media/logos/logo-demo7.svg')}}" class="h-30px"/>
                 </a>
                 <!--end::Logo-->
             </div>
@@ -140,10 +155,13 @@
                 <!--begin::Content-->
                 <div id="kt_account_settings_profile_details" class="collapse show">
                     <!--begin::Form-->
-                    <form id="kt_account_profile_details_form" enctype="multipart/form-data" action="{{url('update-Provider')}}" class="form"
+                    <form id="kt_account_profile_details_form" enctype="multipart/form-data"
+                          action="{{url('update-Provider')}}" class="form"
                           method="post">
-                    @csrf
-                    <!--begin::Card body-->
+                        @csrf
+                        <input type="hidden" name="id" value="{{$employee->id}}" required/>
+
+                        <!--begin::Card body-->
                         <div class="card-body border-top p-9">
                             <!--begin::Input group-->
 
@@ -165,9 +183,9 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <div class="col-md-7">
-                                    <input type="file" name="cover"  data-default-file="{{$employee->cover}}"
+                                    <input type="file" name="cover" data-default-file="{{$employee->cover}}"
                                            class="dropify form-control form-control-solid mb-3 mb-lg-0"
-                                           placeholder="" value="" />
+                                           placeholder="" value=""/>
                                 </div>
                                 <!--end::Input-->
                             </div>
@@ -180,7 +198,7 @@
                                 <!--begin::Input-->
                                 <input type="text" name="ar_name"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                       placeholder="" value="{{$employee->ar_name}}"  required/>
+                                       placeholder="" value="{{$employee->ar_name}}" required/>
                                 <!--end::Input-->
                             </div>
                             <div class="fv-row mb-7">
@@ -200,10 +218,9 @@
                                 <!--begin::Input-->
                                 <input type="text" name="owner_name"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                       placeholder="" value="{{$employee->owner_name}}"  required/>
+                                       placeholder="" value="{{$employee->owner_name}}" required/>
                                 <!--end::Input-->
                             </div>
-                            <input type="hidden" name="id" value="{{$employee->id}}" required/>
 
                             <!--end::Input group-->
                             <div class="fv-row mb-7">
@@ -213,8 +230,8 @@
                                 <!--begin::Input-->
                                 <input type="email" name="email"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                       placeholder="البريد الالكتروني" value="{{$employee->email}}"
-                                       />
+                                       placeholder="{{__('lang.email')}}" value="{{$employee->email}}"
+                                />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
@@ -225,7 +242,7 @@
                                 <!--begin::Input-->
                                 <input type="tel" name="phone" id="phone" maxlength="8" minlength="8"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                       placeholder="رقم الهاتف" value="{{$employee->phone}}" required/>
+                                       placeholder="{{__('lang.phone')}}" value="{{$employee->phone}}" required/>
                                 <!--end::Input-->
                                 <span id="error-validation" style="color:red"></span>
 
@@ -239,7 +256,7 @@
                                 <!--begin::Input-->
                                 <input type="password" name="password"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                       placeholder="" value="" />
+                                       placeholder="" value=""/>
                                 <!--end::Input-->
                             </div>
                             <div class="fv-row mb-7">
@@ -278,40 +295,41 @@
                                     <input
                                         class="form-check-input form-control form-control-solid mb-3 mb-lg-0"
                                         name="is_top" type="checkbox"
-                                        value="active" id="flexSwitchDefault" @if($employee->is_top == 'active') checked @endif/>
+                                        value="active" id="flexSwitchDefault"
+                                        @if($employee->is_top == 'active') checked @endif/>
                                 </div>
                             </div>
 
 
-                        <div class="fv-row mb-7">
-                            <!--begin::Label-->
-                            <label class="required fw-bold fs-6 mb-2"> {{__('lang.address')}}</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            <input type="text" name="address" id="address"
-                                   class="form-control form-control-solid mb-3 mb-lg-0"
-                                   placeholder="" value="{{$employee->address}}" required/>
-                            <!--end::Input-->
-                            <span id="error-validation" style="color:red"></span>
-                        </div>
-                        <div class="fv-row mb-7">
-                            <label class="required fw-bold fs-6 mb-2">Map </label>
-                            <input type="text" id="search_input" placeholder=" أبحث  بالمكان او اضغط على الخريطه"/>
-                            <input type="hidden" id="information"/>
-                            <div id="us1" style="width: 100%; height: 400px;"></div>
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="required fw-bold fs-6 mb-2"> {{__('lang.address')}}</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="text" name="address" id="address"
+                                       class="form-control form-control-solid mb-3 mb-lg-0"
+                                       placeholder="" value="{{$employee->address}}" required/>
+                                <!--end::Input-->
+                                <span id="error-validation" style="color:red"></span>
+                            </div>
+                            <div class="fv-row mb-7">
+                                <label class="required fw-bold fs-6 mb-2">Map </label>
+                                <input type="text" id="search_input" placeholder=" أبحث  بالمكان او اضغط على الخريطه"/>
+                                <input type="hidden" id="information"/>
+                                <div id="us1" style="width: 100%; height: 400px;"></div>
 
-                        </div>
-                    <?php
+                            </div>
+                        <?php
 
-                    $lat =  $employee->lat;
-                    $lng = $employee->lng;
+                        $lat = $employee->lat;
+                        $lng = $employee->lng;
 
-                    ?>
-                    <!--begin::Form Group-->
+                        ?>
+                        <!--begin::Form Group-->
 
-                        <input type="hidden" value="{{$lat}}" id="lat" name="lat">
-                        <input type="hidden" value="{{$lng}}" id="lng" name="lng">
-                        <!--end::Input group-->
+                            <input type="hidden" value="{{$lat}}" id="lat" name="lat">
+                            <input type="hidden" value="{{$lng}}" id="lng" name="lng">
+                            <!--end::Input group-->
                         </div>
 
 
@@ -319,7 +337,8 @@
                         <!--begin::Actions-->
 
                         <div class="card-footer d-flex justify-content-end py-6 px-9">
-                            <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">{{__('lang.save')}}
+                            <button type="submit" class="btn btn-primary"
+                                    id="kt_account_profile_details_submit">{{__('lang.save')}}
                             </button>
                         </div>
                         <!--end::Actions-->
@@ -336,9 +355,11 @@
 @endsection
 
 @section('script')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"
+            integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-    $('.dropify').dropify();
+        $('.dropify').dropify();
 
     </script>
     <script type="text/javascript"
@@ -423,14 +444,14 @@
     </script>
 
     <script>
-        $('#phone').change( function () {
+        $('#phone').change(function () {
             var val = $(this).val();
             var id = {{$employee->id}};
 
             $.ajax({
                 type: "GET",
-                    url: "{{url('checkPhoneValidationUser')}}",
-                data: {'phone': val ,'id':id},
+                url: "{{url('checkPhoneValidationUser')}}",
+                data: {'phone': val, 'id': id},
                 success: function (data) {
                     if (data == true) {
 

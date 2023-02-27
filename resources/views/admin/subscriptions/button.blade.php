@@ -1,4 +1,4 @@
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 <div class="dt-buttons flex-wrap">
 
@@ -46,8 +46,7 @@
                 <!--begin::Modal body-->
                 <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                     <!--begin::Form-->
-                    <form id="" enctype="multipart/form-data" class="form" method="post"
-                          action="{{url('store-Service')}}">
+                    <form id="" enctype="multipart/form-data" class="form" method="post" action="{{url('store-subscriptions')}}">
                     @csrf
                     <!--begin::Scroll-->
                         <div class="d-flex flex-column scroll-y me-n7 pe-7"
@@ -58,24 +57,14 @@
                              data-kt-scroll-wrappers="#kt_modal_add_user_scroll"
                              data-kt-scroll-offset="300px">
 
-                            <div class="fv-row mb-7">
-                                <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">{{__('lang.image')}}</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <input type="file" name="image" required
-                                       class="form-control dropify  form-control-solid mb-3 mb-lg-0"
-                                       placeholder="" value=""
-                                />
-                                <!--end::Input-->
-                            </div>
+
                             <!--begin::Input group-->
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.ar_title')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="ar_title"
+                                <input type="text" name="name_ar"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
                                        placeholder="" value="" required/>
                                 <!--end::Input-->
@@ -85,100 +74,64 @@
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.en_title')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="en_title"
+                                <input type="text" name="name_en"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
                                        placeholder="" value="" required/>
                                 <!--end::Input-->
                             </div>
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">{{__('lang.video')}}</label>
+                                <label class="required fw-bold fs-6 mb-2">{{__('lang.subscription_price')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="video"
+                                <input type="number" name="price" min="0" step="any"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                       placeholder="" value=""/>
+                                       placeholder="" value="" />
+                                <!--end::Input-->
+                            </div>
+
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="required fw-bold fs-6 mb-2">{{__('lang.service_count')}}</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="number" name="service_count" min="1" required
+                                       class="form-control form-control-solid mb-3 mb-lg-0"
+                                       placeholder="" value="" />
                                 <!--end::Input-->
                             </div>
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">{{__('lang.deposit')}}</label>
+                                <label class="required fw-bold fs-6 mb-2">{{__('lang.service_image_count')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="number" name="deposit"
+                                <input type="number" name="service_image_count" min="1" required
                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                       placeholder="" value="" required/>
+                                       placeholder="" value="" />
                                 <!--end::Input-->
                             </div>
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">{{__('lang.price')}}</label>
+                                <label class="required fw-bold fs-6 mb-2">{{__('lang.days_count')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="number" name="price"
+                                <input type="number" name="days_count" min="1" required
                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                       placeholder="" value="" required/>
+                                       placeholder="" value="" />
                                 <!--end::Input-->
                             </div>
                             <div class="fv-row mb-7">
-                                <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">{{__('lang.event')}}</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <select name="event_id" id="event_id" class="form-control select2" required>
-                                    <option >{{__('lang.choose_event')}}</option>
-
-                                @foreach(\App\Models\Event::all()  as $event)
-                                        <option value="{{$event->id}}">{{$event->title}}</option>
-                                    @endforeach
-                                </select>
-                                <!--end::Input-->
-                            </div>
-
-                            <div class="fv-row mb-7" id="category_cont" style="display: none;">
-                                <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">{{__('lang.category')}}</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <select name="category_id" id="category_id" class="form-control select2" required>
-                                </select>
-                                <!--end::Input-->
-                            </div>
-                            @if(Auth::guard('admin')->check())
-
-                                <div class="fv-row mb-7">
-                                    <!--begin::Label-->
-                                    <label class="required fw-bold fs-6 mb-2">{{__('lang.provider')}}</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <select name="provider_id" class="form-control select2" required>
-                                        @foreach(\App\Models\Provider::all()  as $event)
-                                            <option value="{{$event->id}}">{{$event->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    <!--end::Input-->
+                                <div
+                                    class="form-check form-switch form-check-custom form-check-solid">
+                                    <label class="form-check-label" for="flexSwitchDefault2">{{__('lang.is_video')}}
+                                        ؟</label>
+                                    <input class="form-check-input" name="is_video" type="hidden"
+                                           value="0" id="flexSwitchDefault2"/>
+                                    <input
+                                        class="form-check-input form-control form-control-solid mb-3 mb-lg-0"
+                                        name="is_video" type="checkbox"
+                                        value="1" id="flexSwitchDefault2" />
                                 </div>
-                            @else
-                                <input type="hidden" value="{{auth('provider')->user()->id}}" name="provider_id">
-                            @endif
-                        <!--end::Input group--> <!--begin::Input group-->
-
-
-                            <div class="fv-row mb-7">
-                                <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">{{__('lang.ar_description')}}</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <textarea name="ar_description" required class="form-control" rows="5"></textarea>
-                                <!--end::Input-->
-                            </div>
-                            <div class="fv-row mb-7">
-                                <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">{{__('lang.en_description')}}</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <textarea name="en_description" required class="form-control" rows="5"></textarea>
-                                <!--end::Input-->
                             </div>
                             <div class="fv-row mb-7">
                                 <div
@@ -193,40 +146,6 @@
                                         value="active" id="flexSwitchDefault" checked/>
                                 </div>
                             </div>
-                            <!--end::Input group-->
-                            @if(Auth::guard('admin')->check())
-
-                                <div class="fv-row mb-7">
-                                    <div
-                                        class="form-check form-switch form-check-custom form-check-solid">
-                                        <label class="form-check-label"
-                                               for="flexSwitchDefault">{{__('lang.is_recommend')}}
-                                            ؟</label>
-                                        <input class="form-check-input" name="is_recommend" type="hidden"
-                                               value="inactive" id="flexSwitchDefault"/>
-                                        <input
-                                            class="form-check-input form-control form-control-solid mb-3 mb-lg-0"
-                                            name="is_recommend" type="checkbox"
-                                            value="active" id="flexSwitchDefault" checked/>
-                                    </div>
-                                </div>
-                                <div class="fv-row mb-7">
-                                    <div
-                                        class="form-check form-switch form-check-custom form-check-solid">
-                                        <label class="form-check-label"
-                                               for="flexSwitchDefault">{{__('lang.is_sponsored')}}
-                                            ؟</label>
-                                        <input class="form-check-input" name="is_sponsored" type="hidden"
-                                               value="inactive" id="flexSwitchDefault"/>
-                                        <input
-                                            class="form-check-input form-control form-control-solid mb-3 mb-lg-0"
-                                            name="is_sponsored" type="checkbox"
-                                            value="active" id="flexSwitchDefault" checked/>
-                                    </div>
-                                </div>
-
-                        @endif
-                        <!--end::Input group-->
 
 
                         </div>
@@ -289,7 +208,7 @@
                 if (result.value) {
                     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                     $.ajax({
-                        url: '{{url("delete-Service")}}',
+                        url: '{{url("delete-subscriptions")}}',
                         type: "get",
                         data: {'id': dataList, _token: CSRF_TOKEN},
                         dataType: "JSON",
@@ -317,13 +236,13 @@
 </script>
 
 <script>
-    $('#phone').change(function () {
+    $('#phone').change( function () {
         var val = $(this).val();
 
         $.ajax({
             type: "GET",
             url: "{{url('checkPhoneValidationUser')}}",
-            data: {'phone': val},
+            data: {'phone': val },
             success: function (data) {
                 if (data == true) {
 
@@ -337,31 +256,19 @@
             }
         })
     })
-    $('#event_id').change(function () {
-        var event = $(this).val();
-        $.ajax({
-            url: "{{url('/')}}/get-Category/" + event,
-            dataType: 'html',
-            type: 'get',
-            success: function (data) {
-                $('#category_cont').show();
-                // $('#lbl_subject_cont').show();
-                $('#category_id').html(data);
-            }
-        });
-    });
-    {{--$("#event_id").on('click ,change', function () {--}}
-    {{--    var wahda = $(this).val();--}}
 
-    {{--    if (wahda != '') {--}}
-    {{--        $.get("{{ URL::to('/get-Category')}}" + '/' + wahda, function ($data) {--}}
-    {{--            var outs = "";--}}
-    {{--            $.each($data, function (title, id) {--}}
-    {{--                console.log(title)--}}
-    {{--                outs += '<option value="' + id + '">' + title + '</option>'--}}
-    {{--            });--}}
-    {{--            $('#category_id').html(outs);--}}
-    {{--        });--}}
-    {{--    }--}}
-    {{--});--}}
+    $("#event_id").on('click ,change',function () {
+        var wahda = $(this).val();
+
+        if (wahda != '') {
+            $.get("{{ URL::to('/get-Category')}}" + '/' + wahda, function ($data) {
+                var outs = "";
+                $.each($data, function (title, id) {
+                    console.log(title)
+                    outs += '<option value="' + id + '">' + title + '</option>'
+                });
+                $('#category_id').html(outs);
+            });
+        }
+    });
 </script>

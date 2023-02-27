@@ -187,7 +187,7 @@
                     @if(Auth::guest())
                         <li class="nav-item become-provider">
                             <a class="nav-link provider"
-                               href="{{url('ProviderRegister')}}">{{__('lang.become a provider')}}</a>
+                               href="{{route('provider.register')}}">{{__('lang.become a provider')}}</a>
                         </li>
                     @endif
                     <li class="nav-item">

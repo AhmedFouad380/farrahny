@@ -27,7 +27,7 @@
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb fw-bold fs-base my-1">
                     <li class="breadcrumb-item text-muted">
-                        <a href="{{url('/')}}" class="text-muted">{{__('lang.Dashboard')}}</a>
+                        <a href="{{url('/Dashboard')}}" class="text-muted">{{__('lang.Dashboard')}}</a>
                     </li>
                 </ul>
                 <!--end::Breadcrumb-->
@@ -127,7 +127,7 @@
                 <div class="row g-5 g-xl-8">
                     <div class="col-xl-3">
                         <!--begin::Statistics Widget 5-->
-                        <a href="#" class="card bg-body hoverable card-xl-stretch mb-xl-8">
+                        <a href="{{url('Services_setting')}}" class="card bg-body hoverable card-xl-stretch mb-xl-8">
                             <!--begin::Body-->
                             <div class="card-body">
                                 <!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
@@ -149,7 +149,7 @@
                     </div>
                     <div class="col-xl-3">
                         <!--begin::Statistics Widget 5-->
-                        <a href="#" class="card bg-dark hoverable card-xl-stretch mb-xl-8">
+                        <a href="{{url('orders')}}" class="card bg-dark hoverable card-xl-stretch mb-xl-8">
                             <!--begin::Body-->
                             <div class="card-body">
                                 <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm008.svg-->
@@ -170,7 +170,7 @@
                     </div>
                     <div class="col-xl-3">
                         <!--begin::Statistics Widget 5-->
-                        <a href="#" class="card bg-warning hoverable card-xl-stretch mb-xl-8">
+                        <a href="{{url('Events_setting')}}" class="card bg-warning hoverable card-xl-stretch mb-xl-8">
                             <!--begin::Body-->
                             <div class="card-body">
                                 <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
@@ -190,7 +190,7 @@
                     </div>
                     <div class="col-xl-3">
                         <!--begin::Statistics Widget 5-->
-                        <a href="#" class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8">
+                        <a href="{{url('Providers_setting')}}" class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8">
                             <!--begin::Body-->
                             <div class="card-body">
                                 <!--begin::Svg Icon | path: icons/duotune/graphs/gra007.svg-->

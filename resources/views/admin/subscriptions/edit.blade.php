@@ -1,9 +1,10 @@
 @extends('layout.layout')
-
+@section('title',__('lang.edit'))
 @section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css" integrity="sha512-In/+MILhf6UMDJU4ZhDL0R0fEpsp4D3Le23m6+ujDWXwl3whwpucJG1PEmI3B07nyJx+875ccs+yX2CqQJUxUw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css"
+          integrity="sha512-In/+MILhf6UMDJU4ZhDL0R0fEpsp4D3Le23m6+ujDWXwl3whwpucJG1PEmI3B07nyJx+875ccs+yX2CqQJUxUw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 @endsection
-
 @section('style')
     <style>
         @media (min-width: 992px) {
@@ -14,11 +15,15 @@
     </style>
 @endsection
 @section('header')
-    <div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
+    <div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header"
+         data-kt-sticky-offset="{default: '200px', lg: '300px'}">
         <!--begin::Container-->
         <div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
             <!--begin::Page title-->
-            <div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-2 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
+            <div
+                class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-2 pb-lg-0"
+                data-kt-swapper="true" data-kt-swapper-mode="prepend"
+                data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
                 <!--begin::Heading-->
                 <h1 class="text-dark fw-bolder my-0 fs-2">{{__('lang.Users_Edit')}} </h1>
                 <!--end::Heading-->
@@ -27,7 +32,7 @@
                     <li class="breadcrumb-item text-muted">
                         <a href="{{url('/Dashboard')}}" class="text-muted">{{__('lang.Dashboard')}}</a>
                     </li>
-                    <li class="breadcrumb-item text-muted">{{__('lang.Categories')}}</li>
+                    <li class="breadcrumb-item text-muted">{{__('lang.subscriptions')}}</li>
                     <li class="breadcrumb-item text-muted">{{__('lang.Users_Edit')}}</li>
 
                 </ul>
@@ -40,9 +45,14 @@
                 <div class="btn btn-icon btn-active-icon-primary" id="kt_aside_toggle">
                     <!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
                     <span class="svg-icon svg-icon-2x">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z" fill="black" />
-											<path opacity="0.3" d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z" fill="black" />
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none">
+											<path
+                                                d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z"
+                                                fill="black"/>
+											<path opacity="0.3"
+                                                  d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z"
+                                                  fill="black"/>
 										</svg>
 									</span>
                     <!--end::Svg Icon-->
@@ -50,7 +60,7 @@
                 <!--end::Aside mobile toggle-->
                 <!--begin::Logo-->
                 <a href="../../demo7/dist/index.html" class="d-flex align-items-center">
-                    <img alt="Logo" src="{{asset('assets/media/logos/logo-demo7.svg')}}" class="h-30px" />
+                    <img alt="Logo" src="{{asset('assets/media/logos/logo-demo7.svg')}}" class="h-30px"/>
                 </a>
                 <!--end::Logo-->
             </div>
@@ -120,9 +130,7 @@
 @section('content')
     <div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
         <!--begin::Post-->
-
         <div class="content flex-row-fluid" id="kt_content">
-
             <!--begin::Basic info-->
             <div class="card mb-5 mb-xl-10">
                 <!--begin::Card header-->
@@ -139,24 +147,25 @@
                 <!--begin::Content-->
                 <div id="kt_account_settings_profile_details" class="collapse show">
                     <!--begin::Form-->
-                    <form enctype="multipart/form-data" id="kt_account_profile_details_form" action="{{url('update-Category')}}" class="form"
+                    <form enctype="multipart/form-data" id="kt_account_profile_details_form"
+                          action="{{url('update-subscriptions')}}" class="form"
                           method="post">
-                    @csrf
-                    <!--begin::Card body-->
+                        @csrf
+                        <input type="hidden" name="id"
+                               class="form-control form-control-solid mb-3 mb-lg-0"
+                               placeholder="" value="{{old('id',$data->id)}}" required/>
+                        <!--begin::Card body-->
                         <div class="card-body border-top p-9">
                             <!--begin::Input group-->
-
                             <!--end::Input group-->
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.ar_title')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="hidden" name="id" value="{{$employee->id}}" required/>
-
-                                <input type="text" name="ar_title"
+                                <input type="text" name="name_ar"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                       placeholder="" value="{{$employee->ar_title}}" required/>
+                                       placeholder="" value="{{old('name_ar',$data->name_ar)}}" required/>
                                 <!--end::Input-->
                             </div>
                             <div class="fv-row mb-7">
@@ -164,38 +173,65 @@
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.en_title')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="en_title"
+                                <input type="text" name="name_en"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                       placeholder="" value="{{$employee->en_title}}" required/>
+                                       placeholder="" value="{{old('name_en',$data->name_en)}}" required/>
                                 <!--end::Input-->
                             </div>
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">{{__('lang.event')}}</label>
+                                <label class="required fw-bold fs-6 mb-2">{{__('lang.subscription_price')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <select name="event_id"  class="form-control select2" required>
-                                    @foreach(\App\Models\Event::all()  as $event)
-                                        <option @if($event->id == $employee->event_id) selected @endif value="{{$event->id}}">{{$event->title}}</option>
-                                    @endforeach
-                                </select>
+                                <input type="number" name="price" min="0" step="any" required
+                                       class="form-control form-control-solid mb-3 mb-lg-0"
+                                       placeholder="" value="{{old('price',$data->price)}}"/>
                                 <!--end::Input-->
                             </div>
-                            <!--end::Input group-->  <!--begin::Input group-->
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">{{__('lang.image')}}</label>
+                                <label class="required fw-bold fs-6 mb-2">{{__('lang.service_count')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="file" name="image"  data-default-file="{{$employee->image}}"
-                                       class="form-control dropify form-control-solid mb-3 mb-lg-0"
-                                       placeholder="" value=""
-                                />
+                                <input type="number" name="service_count" min="1" required
+                                       class="form-control form-control-solid mb-3 mb-lg-0"
+                                       placeholder="" value="{{old('service_count',$data->service_count)}}"/>
                                 <!--end::Input-->
                             </div>
-
-                            <!--end::Input group-->
-                            <!--end::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="required fw-bold fs-6 mb-2">{{__('lang.service_image_count')}}</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="number" name="service_image_count" min="1" required
+                                       class="form-control form-control-solid mb-3 mb-lg-0"
+                                       placeholder=""
+                                       value="{{old('service_image_count',$data->service_image_count)}}"/>
+                                <!--end::Input-->
+                            </div>
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="required fw-bold fs-6 mb-2">{{__('lang.days_count')}}</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="number" name="days_count" min="1" required
+                                       class="form-control form-control-solid mb-3 mb-lg-0"
+                                       value="{{old('days_count',$data->days_count)}}"/>
+                                <!--end::Input-->
+                            </div>
+                            <div class="fv-row mb-7">
+                                <div
+                                    class="form-check form-switch form-check-custom form-check-solid">
+                                    <label class="form-check-label" for="flexSwitchDefault2">{{__('lang.is_video')}}
+                                        ؟</label>
+                                    <input class="form-check-input" name="is_video" type="hidden"
+                                           value="0" id="flexSwitchDefault2"/>
+                                    <input
+                                        class="form-check-input form-control form-control-solid mb-3 mb-lg-0"
+                                        name="is_video" type="checkbox"
+                                        value="1" id="flexSwitchDefault2" @if($data->is_video == 1) checked @endif />
+                                </div>
+                            </div>
                             <div class="fv-row mb-7">
                                 <div
                                     class="form-check form-switch form-check-custom form-check-solid">
@@ -203,21 +239,17 @@
                                         ؟</label>
                                     <input class="form-check-input" name="is_active" type="hidden"
                                            value="inactive" id="flexSwitchDefault"/>
-                                    <input class="form-check-input form-control form-control-solid mb-3 mb-lg-0"
-                                           name="is_active" type="checkbox"
-                                           value="active" id="flexSwitchDefault"
-                                           @if($employee->is_active == 'active') checked @endif />
+                                    <input
+                                        class="form-check-input form-control form-control-solid mb-3 mb-lg-0"
+                                        name="is_active" type="checkbox"
+                                        value="active" id="flexSwitchDefault"
+                                        @if($data->is_active == 'active') checked @endif />
                                 </div>
                             </div>
-                            <!--end::Input group-->
-
-
                         </div>
-                        <!--end::Scroll-->
-                        <!--begin::Actions-->
-
                         <div class="card-footer d-flex justify-content-end py-6 px-9">
-                            <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">{{__('lang.save')}}
+                            <button type="submit" class="btn btn-primary"
+                                    id="kt_account_profile_details_submit">{{__('lang.save')}}
                             </button>
                         </div>
                         <!--end::Actions-->
@@ -227,59 +259,15 @@
                 <!--end::Content-->
             </div>
             <!--end::Basic info-->
-
         </div>
         <!--end::Post-->
     </div>
 @endsection
-
 @section('script')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"
+            integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $('.dropify').dropify();
-
     </script>
-    <script>
-        $('#phone').change( function () {
-            var val = $(this).val();
-            var id = {{$employee->id}};
-
-            $.ajax({
-                type: "GET",
-                    url: "{{url('checkPhoneValidationUser')}}",
-                data: {'phone': val ,'id':id},
-                success: function (data) {
-                    if (data == true) {
-
-                        var text = 'عفوا رقم الهاتف موجود بالفعل';
-                        $('#error-validation').html(text)
-                    } else {
-                        var text = '';
-                        $('#error-validation').html(text)
-
-                    }
-                }
-            })
-        })
-
-
-        $("#state").change(function () {
-            var wahda = $(this).val();
-
-            if (wahda != '') {
-                $.get("{{ URL::to('/get-branch')}}" + '/' + wahda, function ($data) {
-                    var outs = "";
-                    $.each($data, function (title, id) {
-                        console.log(title)
-                        outs += '<option value="' + id + '">' + title + '</option>'
-                    });
-                    $('#branche').html(outs);
-                });
-            }
-        });
-    </script>
-
-
-
 @endsection
-
