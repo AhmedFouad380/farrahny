@@ -559,6 +559,46 @@ $lng = '46.709548950195305';
     };
 </script>
 
+<?php
+$errors = session()->get("errors");
+?>
+
+@if( session()->has("errors"))
+    <?php
+    $e = implode(' - ', $errors->all());
+    ?>
+
+    <script>
+        Swal.fire({
+            icon: 'warning',
+            title: "برجاء التأكد من البيانات.",
+            text: "{{$e}} ",
+            type: "error",
+            timer: 5000,
+            showConfirmButton: false
+        });
+    </script>
+
+@endif
+
+
+<?php
+$message = session()->get("message");
+?>
+
+@if( session()->has("message"))
+
+
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: "{{__('lang.Success')}}.",
+            text: "{{__('lang.Success_text')}} ",
+            timer: 5000,
+        });
+    </script>
+
+@endif
 @yield('js')
 </body>
 </html>
