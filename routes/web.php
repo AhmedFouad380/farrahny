@@ -14,6 +14,9 @@ use App\Http\Controllers\Provider\AuthProviderController;
 |
 */
 
+Route::post('store_contact',[\App\Http\Controllers\frontController::class,'store_contact']);
+
+
 Route::get('/', function () {
     return view('front.index');
 });
@@ -60,6 +63,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('cart/remove/{id}', [\App\Http\Controllers\frontController::class, 'cartRemove'])->name('cart.remove');
     Route::post('ApplyCoupon', [\App\Http\Controllers\frontController::class, 'ApplyCoupon']);
     Route::get('removeCoupon', [\App\Http\Controllers\frontController::class, 'removeCoupon']);
+    Route::get('search', [\App\Http\Controllers\frontController::class, 'search']);
+    Route::get('Providers', [\App\Http\Controllers\frontController::class, 'Providers']);
 
     Route::get('orders', [\App\Http\Controllers\frontController::class, 'myOrders'])->name('my_orders');
     Route::post('order/checkout', [\App\Http\Controllers\frontController::class, 'orderCheckout'])->name('order.checkout');
@@ -187,6 +192,14 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('update-Coupons', [\App\Http\Controllers\Admin\CouponController::class, 'update']);
     Route::get('/add-button-Coupons', function () {
         return view('admin/Coupons/button');
+    });
+
+    Route::get('Contact_Setting', [\App\Http\Controllers\Admin\ContactController::class, 'index']);
+    Route::get('Contact_datatable', [\App\Http\Controllers\Admin\ContactController::class, 'datatable'])->name('Contact.datatable.data');
+    Route::get('delete-Contact', [\App\Http\Controllers\Admin\ContactController::class, 'destroy']);
+
+    Route::get('/add-button-Contact', function () {
+        return view('admin/Contact/button');
     });
 
     Route::get('Orders', [\App\Http\Controllers\Admin\OrderController::class, 'index']);

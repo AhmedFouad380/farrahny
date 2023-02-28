@@ -1,5 +1,5 @@
 @extends('front.layout')
-@section('title',$data->title)
+@section('title',__('lang.search'))
 @section('css')
     <style>
         .page-item.active .page-link {
@@ -12,7 +12,6 @@
 
     </style>
 @endsection
-
 @section('content')
         <div class="carousel-line"></div>
         <!-- <<<<<< end nav bar >>>>>> -->
@@ -85,7 +84,7 @@
             <div class="row">
               <div class="col-12 col-md-12 col-lg-12 mb-5 over-xx" data-aos="fade-down">
                   <div class="m-auto w-50 text-center mt-4">
-                      <h2 class="events text-capitalize position-relative">{{$data->title}}</h2>
+                      <h2 class="events text-capitalize position-relative">{{__('lang.search')}}</h2>
                       <div class="events-line m-auto">
                          <div class="dott"></div>
                       </div>
@@ -98,7 +97,7 @@
           <div class="bg-rings">
             <div class="container-width">
                 <div class="row py-5">
-                    @foreach($services as $service)
+                    @foreach($Products as $service)
                     <div class="col-md-6 col-lg-3 col-12 mb-4">
                         <div class="carsouel-content">
                             <div class="bg-content">
@@ -154,39 +153,40 @@
                         </div>
                     </div>
                     @endforeach
-                        <nav style="background: none!important;" aria-label=" navigation example">
-                            @php
-                                $paginator =$services->appends(request()->input())->links()->paginator;
-                                    if ($paginator->currentPage() < 2 ){
-                                        $link = $paginator->currentPage();
-                                    }else{
-                                         $link = $paginator->currentPage() -1;
-                                    }
-                                    if($paginator->currentPage() == $paginator->lastPage()){
-                                               $last_links = $paginator->currentPage();
-                                    }else{
-                                               $last_links = $paginator->currentPage() +1;
 
-                                    }
-                            @endphp
-                            @if ($paginator->lastPage() > 1)
-                                <ul class="pagination">
-                                    <li class="{{ ($paginator->currentPage() == 1) ? ' disabled' : '' }} page-item">
-                                        <a class="page-link" href="{{ $paginator->url(1) }}">{{__('lang.first')}} </a>
-                                    </li>
-                                    @for ($i = $link; $i <= $last_links; $i++)
-                                        <li class="{{ ($paginator->currentPage() == $i) ? ' active' : '' }} page-item">
-                                            <a class="page-link" href="{{ $paginator->url($i) }}">{{ $i }}</a>
+                            <nav style="background: none!important;" aria-label=" navigation example">
+                                @php
+                                    $paginator =$Products->appends(request()->input())->links()->paginator;
+                                        if ($paginator->currentPage() < 2 ){
+                                            $link = $paginator->currentPage();
+                                        }else{
+                                             $link = $paginator->currentPage() -1;
+                                        }
+                                        if($paginator->currentPage() == $paginator->lastPage()){
+                                                   $last_links = $paginator->currentPage();
+                                        }else{
+                                                   $last_links = $paginator->currentPage() +1;
+
+                                        }
+                                @endphp
+                                @if ($paginator->lastPage() > 1)
+                                    <ul class="pagination">
+                                        <li class="{{ ($paginator->currentPage() == 1) ? ' disabled' : '' }} page-item">
+                                            <a class="page-link" href="{{ $paginator->url(1) }}">{{__('lang.first')}} </a>
                                         </li>
-                                    @endfor
-                                    <li class="{{ ($paginator->currentPage() == $paginator->lastPage()) ? ' disabled' : '' }} page-item">
-                                        <a class="page-link"
-                                           href="{{ $paginator->url($paginator->lastPage()) }}">{{__('lang.Last')}} </a>
-                                    </li>
-                                </ul>
-                            @endif
+                                        @for ($i = $link; $i <= $last_links; $i++)
+                                            <li class="{{ ($paginator->currentPage() == $i) ? ' active' : '' }} page-item">
+                                                <a class="page-link" href="{{ $paginator->url($i) }}">{{ $i }}</a>
+                                            </li>
+                                        @endfor
+                                        <li class="{{ ($paginator->currentPage() == $paginator->lastPage()) ? ' disabled' : '' }} page-item">
+                                            <a class="page-link"
+                                               href="{{ $paginator->url($paginator->lastPage()) }}">{{__('lang.Last')}} </a>
+                                        </li>
+                                    </ul>
+                                @endif
 
-                        </nav>
+                            </nav>
 
                 </div>
             </div>

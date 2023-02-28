@@ -8,6 +8,7 @@ use App\Models\Address;
 use App\Models\Admin;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\ContactForm;
 use App\Models\Coupon;
 use App\Models\Event;
@@ -154,7 +155,7 @@ class frontController extends Controller
     public function category($title)
     {
         $data = Category::where('ar_title', $title)->orWhere('en_title', $title)->firstOrFail();
-        $sponsored = Service::where('is_active', 'active')->Where('is_sponsored', 'active')->paginate(12);
+        $sponsored = Service::where('is_active', 'active')->Where('is_sponsored', 'active')->inRandomOrder()->paginate(12);
         $services = Service::where('is_active', 'active')->Where('category_id', $data->id)->paginate(12);
         return view('front.category', compact('data', 'services', 'sponsored'));
     }
@@ -183,18 +184,25 @@ class frontController extends Controller
     {
 
 
-        $data = Product::where('is_active', 'active')->
+        $data = Service::where('is_active', 'active')->
         where(function ($q) use ($request) {
             $q->where('ar_title', 'like', '%' . $request->search . '%')->
             OrWhere('en_title', 'like', '%' . $request->search . '%')->
             OrWhere('ar_description', 'like', '%' . $request->search . '%')->
             OrWhere('en_description', 'like', '%' . $request->search . '%');
         });
-        if ($request->category_id != 0) {
-            $data->where('category_id', $request->catgory_id);
-        }
-        $Products = $data->paginate(10);
-        return view('front.search', compact('Products'));
+
+        $Products = $data->paginate(12);
+        $sponsored=Service::where('is_active', 'active')->where('is_recommend','active')->inRandomOrder()->limit(10)->get();
+        return view('front.search', compact('Products','sponsored'));
+    }
+    public function Providers(Request $request)
+    {
+
+
+        $Providers = Provider::where('is_active', 'active')->paginate(12);
+        $sponsored=Service::where('is_active', 'active')->where('is_recommend','active')->inRandomOrder()->limit(10)->get();
+        return view('front.Providers', compact('Providers','sponsored'));
     }
 
     public function HotDeals(Request $request)
@@ -240,7 +248,7 @@ class frontController extends Controller
             $cart->user_id = Auth::guard('web')->id();
             $cart->save();
         }
-        return response()->json(Wishlist::where('user_id', Auth::guard('web')->id())->count());
+        return response()->json(Favorite::where('user_id', Auth::guard('web')->id())->count());
     }
 
     public function deleteWithList(Request $request)
@@ -543,6 +551,26 @@ class frontController extends Controller
         }
         Cart::where('user_id', Auth::guard('web')->id())->delete();
         return redirect()->back()->with('message', 'تم حفظ الفاتورة بنجاح ');
+    }
+    public function store_contact(Request $request){
+        $this->validate(request(), [
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
+
+        $data = new Contact();
+        $data->name=$request->name;
+        $data->email=$request->email;
+        $data->phone=$request->phone;
+        $data->subject=$request->subject;
+        $data->message=$request->message;
+        $data->save();
+
+        return back()->with('message','success');
     }
 
 }

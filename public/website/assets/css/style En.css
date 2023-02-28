@@ -1018,7 +1018,6 @@ input[type="radio"]:checked {
   border-radius: 8px;
   text-transform: capitalize;
   margin-top: 1rem;
-  width: 75%;
 }
 
 .apply-btn-slide2 {

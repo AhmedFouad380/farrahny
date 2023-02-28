@@ -39,10 +39,11 @@
                                     </a>
                                   <span class="gray-text">{{$data->Service->Provider->name}}</span>
                               </div>
-                              <div class="">
-                                  <i class="fa-solid fa-heart   addtowishlist " style="color: #000000;" data-id="{{$data->Service->id}}"></i>
-                                  <i class="fa-sharp fa-solid fa-cart-shopping grayy" id="btn_add_cart" data-id="{{$data->Service->id}}"></i>
-                              </div>
+                                  <div class="">
+                                      <i class="fa-solid fa-heart addtowishlist @if($data->Service->is_favorite==1) orang @endif" data-id="{{$data->Service->id}}"></i>
+                                      <i class="fa-sharp fa-solid fa-cart-shopping grayy" id="btn_add_cart"
+                                         data-id="{{$data->Service->id}}"></i>
+                                  </div>
                               </div>
 
                                 <div class="d-flex justify-content-bettwen mb-3">

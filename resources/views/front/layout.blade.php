@@ -125,7 +125,7 @@
                                     <i class="fa-solid fa-heart icon-first-nav"></i>
                                     @if(\App\Models\Favorite::where('user_id',Auth::guard('web')->id())->count() > 0)
                                         <span
-                                            class="counter">{{\App\Models\Favorite::where('user_id',Auth::guard('web')->id())->count()}}</span>
+                                          id="CountFavorite"  class="counter">{{\App\Models\Favorite::where('user_id',Auth::guard('web')->id())->count()}}</span>
                                     @endif
                                 </a>
                             </div>
@@ -243,47 +243,33 @@
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5">
             <div class="col">
                 <div class="m-top-sm">
-                    <h5 class=" border-h text-break text-uppercase">FARRAHNY Partner</h5>
-                    <a href="#" class=" footer-text d-block text-break">JOIN US THE JOURNEY</a>
-                    <a href="#" class=" footer-text d-block text-break">About Us</a>
-                    <a href="#" class=" footer-text d-block text-break">Contact Us</a>
-                    <a href="#" class=" footer-text d-block text-break">Promos</a>
-                    <a href="#" class=" footer-text d-block text-break">Become an AmbassadorEY</a>
+                    <h5 class=" border-h text-break text-uppercase">{{__('lang.Events')}} </h5>
+                    @foreach(\App\Models\Event::where('is_active','active')->limit(5)->get() as $event)
+                    <a href="{{url('event',$event->title)}}" class=" footer-text d-block text-break">{{$event->title}}</a>
+                    @endforeach
                 </div>
             </div>
             <div class="col">
                 <div class="m-top-sm">
-                    <h5 class=" border-h text-uppercase">FARRAHNY</h5>
-                    <a href="#" class=" footer-text d-block text-break">About Us</a>
-                    <a href="#" class=" footer-text d-block text-break">Contact Us</a>
-                    <a href="#" class=" footer-text d-block text-break">Promos</a>
-                    <a href="#" class=" footer-text d-block text-break">Become an AmbassadorEY</a>
+                    <h5 class=" border-h text-break text-uppercase">{{__('lang.Categories')}}</h5>
+                    @foreach(\App\Models\Category::where('is_active','active')->limit(5)->get() as $event)
+                        <a href="{{url('category',$event->title)}}" class=" footer-text d-block text-break">{{$event->title}}</a>
+                    @endforeach
                 </div>
             </div>
             <div class="col">
                 <div class="m-top-sm">
-                    <h5 class=" border-h text-break text-uppercase">POLICY</h5>
-                    <a href="#" class=" footer-text d-block text-break">Terms of Usage</a>
-                    <a href="#" class=" footer-text d-block text-break">Privacy Policy</a>
-                    <a href="#" class=" footer-text d-block text-break">Cancelation Policy</a>
+                    <h5 class=" border-h text-uppercase">{{__('lang.Pages')}}</h5>
+                    @foreach(\App\Models\Page::where('place','!=','header')->limit(5)->get() as $event)
+                        <a href="{{url('event',$event->title)}}" class=" footer-text d-block text-break">{{$event->title}}</a>
+                    @endforeach
                 </div>
             </div>
-            <div class="col">
-                <div class="m-top-sm">
-                    <h5 class=" border-h text-break text-uppercase">EVENTS</h5>
-                    <a href="#" class=" footer-text d-block text-break">Wedding</a>
-                    <a href="#" class=" footer-text d-block text-break">Engagement</a>
-                    <a href="#" class=" footer-text d-block text-break">Birthday</a>
-                    <a href="#" class=" footer-text d-block text-break">Babyshower</a>
-                    <a href="#" class=" footer-text d-block text-break">Graduation</a>
 
-                </div>
-            </div>
             <div class="col">
                 <div class="m-top-sm">
-                    <h5 class=" border-h text-break text-uppercase">SUBSCRIBE</h5>
-                    <p class="footer-text">Subscribe to our newsletter, so that you can be the first to know about new
-                        offers and promotions.</p>
+                    <h5 class=" border-h text-break text-uppercase">{{__('lang.SUBSCRIBE')}}</h5>
+                    <p class="footer-text">{{__('lang.Subscribe Description')}}.</p>
                     <form class="d-flex">
                         <input class="form-control footer-search nav-search" type="search"
                                placeholder="enter email adrees" aria-label="Search">
@@ -429,6 +415,7 @@ $lng = '46.709548950195305';
 <script>
 
     $('.addtowishlist').click(function () {
+
         var id = $(this).data('id');
             @if(Auth::guard('web')->check())
         var check = true;
@@ -442,7 +429,8 @@ $lng = '46.709548950195305';
                 url: "{{url('add-wishlist')}}",
                 data: {"id": id},
                 success: function (data) {
-                    $(this).toggleClass('orang');
+                    $('#CountFavorite').html(data)
+
                     Swal.fire({
                         icon: 'success',
                         title: "{{__('lang.Success')}}",
@@ -454,6 +442,8 @@ $lng = '46.709548950195305';
 
                 }
             })
+            $(this).toggleClass('orang');
+
         } else {
             Swal.fire({
                 icon: 'error',

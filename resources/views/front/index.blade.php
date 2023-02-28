@@ -106,20 +106,11 @@
                         </div>
                     </div>
                     <div class="text-center order">
-                        <a class="link" href="{{url('service',$recommend->title)}}">{{__('lang.order now')}}</a>
+                        <a class="link" href="{{url('service',$recommend->id)}}">{{__('lang.order now')}}</a>
                     </div>
                 </div>
             @endforeach
-            <div class="d-flex align-items-end justify-content-end mb-2">
-                <div class="btn-jobs">
-                    <a href="{{url('Recommended/Services')}}" class="apply-btn">
-                        <span>{{__('lang.see more')}}</span>
-                        <div class="btn-layer btn-layer2"></div>
-                    </a>
 
-                </div>
-
-            </div>
         </div>
     </div>
     <div class="container-fluied reco-over over-xx" data-aos="fade-up-left">
@@ -130,15 +121,20 @@
                         <div class="carsouel-content">
                             <div class="bg-content">
                                 <div class="img-box-owl">
-                                    <img src="{{$recommend->image}}" alt="{{$recommend->title}}">
+                                    <a href="{{url('service',$recommend->id)}}">
+                                        <img src="{{$recommend->image}}" alt="{{$recommend->title}}">
+                                    </a>
+
                                 </div>
                                 <div class="padding-p d-flex justify-content-between">
                                     <div>
-                                        <h6 class="fw-bold">{{$recommend->title}}</h6>
+                                        <a href="{{url('service',$recommend->id)}}">
+                                            <h6 style="color: #000000;">{{$recommend->title}}</h6>
+                                        </a>
                                         <span class="gray-text">{{$recommend->Provider->name}}</span>
                                     </div>
                                     <div class="">
-                                        <i class="fa-solid fa-heart addtowishlist " data-id="{{$recommend->id}}"></i>
+                                        <i class="fa-solid fa-heart addtowishlist @if($recommend->is_favorite==1) orang @endif" data-id="{{$recommend->id}}"></i>
                                         <i class="fa-sharp fa-solid fa-cart-shopping grayy" id="btn_add_cart"
                                            data-id="{{$recommend->id}}"></i>
                                     </div>
@@ -229,17 +225,7 @@
                                         <div class="parent-box-content text-center">
                                             <h5 class="text-capitalize text-break fw-bolder">{{$Provider->name}}</h5>
                                             <a class="btn user-link">ID : {{$Provider->id}}</a>
-                                            <div class="d-flex justify-content-between w-75 m-auto mt-3">
-                                                <a href="" class="d-block border-right-a">
-                                                    <i class="fa-brands fa-facebook orang size-icon"></i>
-                                                </a>
-                                                <a href="" class="d-block border-right-a">
-                                                    <i class="fa-brands fa-square-instagram orang size-icon"></i>
-                                                </a>
-                                                <a href="" class="d-block no-border">
-                                                    <i class="fa-brands fa-square-twitter orang size-icon"></i>
-                                                </a>
-                                            </div>
+
                                             <!-- <a class="link-a text-uppercase mt-3 d-block w-75 m-auto p-1">open account</a> -->
 
                                             <div class="btn-jobs mt-0">

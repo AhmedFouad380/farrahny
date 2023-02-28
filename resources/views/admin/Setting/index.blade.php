@@ -185,22 +185,6 @@
                                         <label class="required fw-bold fs-6 mb-2">linked in :</label>
                                         <input class="form-control form-control-solid" type="text" name="linked_in" value="{{$Setting->linked_in}}">
                                     </div>
-                                    <div class="fv-row mb-7">
-                                        <label class="required fw-bold fs-6 mb-2">{{__('lang.experience_count')}} :</label>
-                                        <input class="form-control form-control-solid" type="number" name="experience_count" value="{{$Setting->experience_count}}">
-                                    </div>
-                                    <div class="fv-row mb-7">
-                                        <label class="required fw-bold fs-6 mb-2">{{__('lang.clients_count')}} :</label>
-                                        <input class="form-control form-control-solid" type="number" name="clients_count" value="{{$Setting->clients_count}}">
-                                    </div>
-                                    <div class="fv-row mb-7">
-                                        <label class="required fw-bold fs-6 mb-2">{{__('lang.projects_count')}} :</label>
-                                        <input class="form-control form-control-solid" type="number" name="projects_count" value="{{$Setting->projects_count}}">
-                                    </div>
-                                    <div class="fv-row mb-7">
-                                        <label class="required fw-bold fs-6 mb-2">{{__('lang.awards_count')}} :</label>
-                                        <input class="form-control form-control-solid" type="number" name="experience_count" value="{{$Setting->awards_count}}">
-                                    </div>
 
 
 
@@ -251,7 +235,32 @@
 
 @section('script')
 
-
+    <script>
+        function myMap() {
+            var mapProp = {
+                center: new google.maps.LatLng({{$lat}},{{$lng}}),
+                zoom: 5,
+            };
+            var map = new google.maps.Map(document.getElementById("us1"), mapProp);
+        }
+    </script>
+    <script
+        src="http://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=myMap"></script>
+    <script src="{{ asset('website/assets/js/locationpicker.jquery.js')}}"></script>
+    <script>
+        $('#us1').locationpicker({
+            location: {
+                latitude: {{$lat}},
+                longitude: {{$lng}}
+            },
+            radius: 300,
+            markerIcon: "{{url('/website/assets/img/map-marker.png')}}",
+            inputBinding: {
+                latitudeInput: $('#lat'),
+                longitudeInput: $('#lng')
+            }
+        });
+    </script>
 
 @endsection
 
