@@ -16,15 +16,18 @@
                             <h1 class="text-uppercase text-break">{{$Slider->title}}</h1>
                             <h1 class="text-break">{{$Slider->description}}</h1>
                             <h1></h1>
-
-                            <div class="d-flex mt-5">
-                                <div class="btn-jobs">
-                                    <button href="{{$Slider->link}}" class="apply-btn-slide">
-                                        <span>{{__('lang.more')}}</span>
-                                        <div class="btn-layer222"></div>
-                                    </button>
+                            @if($Slider->link)
+                                <div class="d-flex mt-5">
+                                    <div class="btn-jobs">
+                                        <form action="{{$Slider->link}}">
+                                            <button type="submit" class="apply-btn-slide">
+                                                <span>{{__('lang.more')}}</span>
+                                                <div class="btn-layer222"></div>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -106,7 +109,12 @@
                         </div>
                     </div>
                     <div class="text-center order">
+
                         <a class="link" href="{{url('service',$recommend->id)}}">{{__('lang.order now')}}</a>
+
+{{--                        <a class="link"id="btn_add_cart"--}}
+{{--                           data-id="{{$recommend->id}}">{{__('lang.order now')}}</a>--}}
+
                     </div>
                 </div>
             @endforeach
@@ -141,26 +149,62 @@
                                 </div>
                                 <div class="d-flex justify-content-bettwen mb-3">
                                     <div style="width: 80%;" class="d-flex">
-                                <span class="rating-item d-block">
-                                    <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
-                                        <span class="rating-item d-block">
-                                    <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
-                                        <span class="rating-item d-block">
-                                    <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
-                                        <span class="rating-item d-block">
-                                    <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
-                                        <span class="rating-item d-block">
-                                <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
+                                        @if($recommend->rate == 1)
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                        @elseif($recommend->rate == 2)
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                        @elseif($recommend->rate == 3)
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                        @elseif($recommend->rate == 4)
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                        @elseif($recommend->rate == 5)
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="false"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                        @endif
                                     </div>
                                     <p class="price" style="width: 20%">
                                     <div class="d-flex">
                                         <span class="d-block egp-price"> {{$recommend->price}} </span>
-                                        <span class="egp-price d-block">egp</span>
+                                        <span class="egp-price d-block">{{trans('lang.currency')}}</span>
                                     </div>
 
                                     </p>

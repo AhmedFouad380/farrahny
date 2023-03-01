@@ -44,7 +44,8 @@
                 <!--begin::Modal body-->
                 <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                     <!--begin::Form-->
-                    <form id="" enctype="multipart/form-data" class="form" method="post" action="{{url('store-Slider')}}">
+                    <form id="" enctype="multipart/form-data" class="form" method="post"
+                          action="{{url('store-Slider')}}">
                     @csrf
                     <!--begin::Scroll-->
                         <div class="d-flex flex-column scroll-y me-n7 pe-7"
@@ -81,9 +82,9 @@
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.link')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="link"
+                                <input type="url" name="link"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                       placeholder="" value="" required/>
+                                       placeholder="" value="{{old('link')}}"/>
                                 <!--end::Input-->
                             </div>
 
@@ -216,13 +217,13 @@
 </script>
 
 <script>
-    $('#phone').change( function () {
+    $('#phone').change(function () {
         var val = $(this).val();
 
         $.ajax({
             type: "GET",
             url: "{{url('checkPhoneValidationUser')}}",
-            data: {'phone': val },
+            data: {'phone': val},
             success: function (data) {
                 if (data == true) {
 

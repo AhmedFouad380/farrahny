@@ -25,6 +25,7 @@
                             <th scope="col">{{trans('lang.deposit')}} </th>
                             <th scope="col">{{trans('lang.remain')}} </th>
                             <th scope="col">{{trans('lang.order_time')}} </th>
+                            <th scope="col">{{trans('lang.status')}} </th>
                             <th scope="col">{{trans('lang.order_details')}}</th>
                         </tr>
                         </thead>
@@ -51,7 +52,9 @@
                                 </td>
                                 <td>
                                     <span class="fw-bolder">{{$row->created_at->format('Y-m-d g:i a')}}</span>
-
+                                </td>
+                                <td>
+                                    <span class="fw-bolder">{{trans('lang.'.$row->status)}}</span>
                                 </td>
                                 <td>
                                     <a href="{{route('orders.details',$row->id)}}" style="color: black;">
@@ -59,17 +62,12 @@
                                     </a>
                                 </td>
                             </tr>
-
                         @endforeach
-
                         </tbody>
                     </table>
                 </div>
             </div>
-
         </div>
-
-
         <!-- <div class="row">
              <div class="col-md-6 col-6 col-6 mb-5">
                 <h6 class="text-capitalize">

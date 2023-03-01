@@ -129,5 +129,56 @@
 
 
 
+{{--<div class="container-fluied reco-over over-xx bg-hhh" data-aos="fade-up-left">--}}
+{{--    <div class="m-auto w-50 text-center mt-4">--}}
+{{--        <h2 class="events text-capitalize position-relative">{{__('lang.recommended for you')}}</h2>--}}
+{{--        <div class="events-line m-auto">--}}
+{{--            <div class="dott"></div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--    <div class="row">--}}
+{{--        <div class="col-md-12 col-lg-12 col-12 mb-2">--}}
+{{--            <div class="owl-carousel owl-carousel-p ">--}}
+{{--                @foreach(\App\Models\Service::inRandomOrder()->limit(6)->get() as $serv)--}}
+{{--                <div class="carsouel-content">--}}
+{{--                    <div class="bg-content">--}}
+{{--                        <div class="img-box-owl">--}}
+{{--                            <img src="{{$serv->image}}" alt="{{$serv->title}}">--}}
+{{--                        </div>--}}
+{{--                        <div class="padding-p d-flex justify-content-between">--}}
+{{--                            <div>--}}
+{{--                                <h6>{{$serv->title}}</h6>--}}
+{{--                                <span class="gray-text">{{$serv->Provider->name}}</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="">--}}
+{{--                                <i class="fa-solid fa-heart addtowishlist " data-id="{{$serv->id}}"  ></i>--}}
+{{--                                <i class="fa-sharp fa-solid fa-cart-shopping grayy add " id="btn_add_cart" data-id="{{$serv->id}}"></i>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="d-flex justify-content-bettwen mb-3">--}}
+{{--                            <div style="width: 80%;" class="d-flex">--}}
+{{--                                <span class="rating-item d-block">--}}
+{{--                                    <i class="fa fa-star gold" aria-hidden="true"></i>--}}
+{{--                                </span>--}}
+{{--                                <span class="rating-item d-block">--}}
+{{--                                    <i class="fa fa-star gold" aria-hidden="true"></i>--}}
+{{--                                </span>--}}
+{{--                                <span class="rating-item d-block">--}}
+{{--                                    <i class="fa fa-star gold" aria-hidden="true"></i>--}}
+{{--                                </span>--}}
+{{--                                <span class="rating-item d-block">--}}
+{{--                                    <i class="fa fa-star gold" aria-hidden="true"></i>--}}
+{{--                                </span>--}}
+{{--                                <span class="rating-item d-block">--}}
+{{--                                <i class="fa fa-star gold" aria-hidden="true"></i>--}}
+{{--                                </span>--}}
+{{--                            </div>--}}
+{{--                            <p class="price" style="width: 20%">--}}
+{{--                            <div class="d-flex">--}}
+{{--                                <span class="d-block egp-price">{{$serv->deposit}}</span>--}}
+{{--                                <span class="egp-price d-block">egp</span>--}}
+{{--                            </div>--}}
+
+
 
 @endsection

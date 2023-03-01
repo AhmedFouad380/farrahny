@@ -66,7 +66,7 @@
                               <p class="price" style="width: 20%">
                               <div class="d-flex">
                                   <span class="d-block egp-price" style="color: #000000">  {{$spo->price}}</span>
-                                  <span class="egp-price d-block" style="color: #000000">egp</span>
+                                  <span class="egp-price d-block" style="color: #000000">{{trans('lang.currency')}}</span>
                               </div>
 
                               </p>

@@ -1,6 +1,14 @@
 <?php
 
 return [
+    'requires_location' => 'يتطلب موقع',
+    'choose_rate' => 'اختر التقييم',
+
+    'rate_service' => 'تقييم الخدمة',
+    'rejected' => 'مرفوض',
+    'accepted' => 'مقبول',
+    'completed' => 'مكتمل',
+    'make_sure_info' => 'برجاء التأكد من البيانات',
     'choose_event' => 'اختر المناسبة',
     'choose_category' => 'اختر القسم',
     'no_categories' => 'لا يوجد اقسام',
@@ -30,7 +38,6 @@ return [
     'confirm_order' => 'تأكيد الطلب',
     'including_tax' => 'بالضريبة',
     'sub_total' => 'الاجمالي الفرعي',
-    'total' => 'الاجمالي',
     'taxes' => 'الضريبة',
     'product_image' => 'صورة المنتج',
     'delete' => 'حذف',
@@ -336,7 +343,6 @@ return [
     'select_ad' => 'اختر العقار',
     'contract_data' => 'بيانات التعاقد',
     'ShowSellContract' => 'عرض عقد مبايعه رقم ',
-    'print' => 'طباعة التعاقد ',
     'Contracts' => 'العقود  ',
     'bonds' => 'السندات ',
     'RentContract' => 'عقود التأجير',

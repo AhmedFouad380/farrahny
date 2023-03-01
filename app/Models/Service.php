@@ -11,15 +11,19 @@ class Service extends Model
 {
     use HasFactory;
 
+
     protected $appends = ['title','description','is_favorite'];
+
+
     public function getTitleAttribute()
-{
-    if ($locale = App::currentLocale() == "ar") {
-        return $this->ar_title;
-    } else {
-        return $this->en_title;
+    {
+        if ($locale = App::currentLocale() == "ar") {
+            return $this->ar_title;
+        } else {
+            return $this->en_title;
+        }
     }
-}
+
     public function getIsFavoriteAttribute()
     {
         if (Auth::guard('web')->check() && Favorite::where('user_id',Auth::guard('web')->id())->where('service_id',$this->id)->count() >0) {
@@ -37,6 +41,7 @@ class Service extends Model
             return $this->en_description;
         }
     }
+
     public function getImageAttribute($image)
     {
         if (!empty($image)) {
@@ -54,18 +59,29 @@ class Service extends Model
         }
     }
 
-    public function Event(){
-        return  $this->belongsTo(Event::class ,'event_id');
+    public function Event()
+    {
+        return $this->belongsTo(Event::class, 'event_id');
     }
 
-    public function Category(){
-        return  $this->belongsTo(Category::class ,'category_id');
+    public function Category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
-    public function Provider(){
-        return  $this->belongsTo(Provider::class ,'provider_id');
+
+    public function Provider()
+    {
+        return $this->belongsTo(Provider::class, 'provider_id');
     }
-    public function images(){
-        return  $this->hasMany(ServiceImage::class ,'service_id');
+
+    public function images()
+    {
+        return $this->hasMany(ServiceImage::class, 'service_id');
+    }
+
+    public function Reviews()
+    {
+        return $this->hasMany(ServiceRate::class, 'service_id');
     }
 
 

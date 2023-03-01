@@ -68,7 +68,10 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('orders', [\App\Http\Controllers\frontController::class, 'myOrders'])->name('my_orders');
     Route::post('order/checkout', [\App\Http\Controllers\frontController::class, 'orderCheckout'])->name('order.checkout');
+    Route::post('rates/store', [\App\Http\Controllers\frontController::class, 'ratesStore'])->name('rates.store');
     Route::get('orders/details/{id}', [\App\Http\Controllers\frontController::class, 'orderDetails'])->name('orders.details');
+
+    Route::get('service_date', [\App\Http\Controllers\frontController::class, 'service_date'])->name('service_date');
 
 });
 Route::group(['middleware' => ['admin']], function () {
