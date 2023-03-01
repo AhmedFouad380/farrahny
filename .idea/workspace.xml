@@ -176,16 +176,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/front" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Admin" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\my projects\farrahny\app\Http\Controllers\Admin" />
       <recent name="C:\laravel\farrahny\resources\views\front" />
       <recent name="C:\laravel\farrahny\public\website\assets\css" />
       <recent name="C:\laravel\farrahny\resources\views\admin" />
       <recent name="C:\laravel\Nebras\resources\views\admin" />
-      <recent name="C:\laravel\SmsNotifcation\resources\views\Admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -199,7 +199,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="33ef5b4a-8ff8-4e9f-988a-eae388d73f55" name="Default Changelist" comment="" />
+      <changelist id="1b423340-8312-472b-82c9-2d81f359c609" name="Default Changelist" comment="" />
       <created>1673792366727</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -263,6 +263,10 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="553" y="166" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1677499033668" />
+    <state x="478" y="147" width="579" height="530" key="find.popup" timestamp="1677692803011">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="478" y="147" width="579" height="530" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1677692803011" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1677459729985">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

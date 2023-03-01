@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'income_by_sign_up_providers' => 'Income by sign up providers',
+
     'requires_location' => 'Requires location',
     'choose_rate' => 'Choose rate',
     'rate_service' => 'Rate service',
