@@ -174,9 +174,9 @@
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.link')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="link"
+                                <input type="url" name="link"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                       placeholder="" value="{{$employee->link}}"required/>
+                                       placeholder="" value="{{$employee->link}}" />
                                 <!--end::Input-->
                             </div>
 
@@ -203,7 +203,7 @@
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.image')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="file" name="image" required data-default-file="{{$employee->image}}"
+                                <input type="file" name="image" data-default-file="{{$employee->image}}"
                                        class="form-control dropify form-control-solid mb-3 mb-lg-0"
                                        placeholder="" value=""
                                 />

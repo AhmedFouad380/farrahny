@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CartRequest;
 use App\Http\Requests\OrderCheckoutRequest;
+use App\Http\Requests\RatesStoreRequest;
 use App\Models\Address;
 use App\Models\Admin;
 use App\Models\Cart;
@@ -20,6 +21,7 @@ use App\Models\Page;
 use App\Models\Product;
 use App\Models\Provider;
 use App\Models\Service;
+use App\Models\ServiceRate;
 use App\Models\Setting;
 use App\Models\Shape;
 use App\Models\User;
@@ -500,6 +502,33 @@ class frontController extends Controller
         return redirect()->back()->with('message', 'تم الاضافة للسلة بنجاح ');
     }
 
+    public function ratesStore(RatesStoreRequest $request)
+    {
+        $data = $request->validated();
+        $data['user_id'] = Auth::guard('web')->id();
+        $order_details = OrderDetail::whereId($data['order_details_id'])->first();
+
+        $data['service_id'] = $order_details->service_id;
+        $data['provider_id'] = $order_details->order->provider_id;
+        ServiceRate::create($data);
+
+        $order_details->is_rated = $data['rate'];
+        $order_details->save();
+
+
+        $target = Service::findOrFail($order_details->service_id);
+        $count_rates = $target->Reviews->count();
+        if ($count_rates == 0) {
+            $rate = 0;
+        } else {
+            $sum_rates = $target->Reviews->sum('rate');
+            $rate = $sum_rates / $count_rates;
+        }
+        $target->rate = (integer)$rate;
+        $target->save();
+        return redirect()->back()->with('message', 'تم الاضافة للسلة بنجاح ');
+    }
+
     //order section ...
     public function myOrders(Request $request)
     {
@@ -509,8 +538,15 @@ class frontController extends Controller
 
     public function orderDetails($id)
     {
+        $order = Order::findOrFail($id);
         $Carts = OrderDetail::where('order_id', $id)->orderBy('created_at', 'desc')->get();
-        return view('front.order_details', compact('Carts'));
+        return view('front.order_details', compact('Carts', 'order'));
+    }
+
+    public function service_date(Request $request)
+    {
+        $service = Service::findOrFail($request->id);
+        return $service->requires_location;
     }
 
     public function orderCheckout(OrderCheckoutRequest $request)

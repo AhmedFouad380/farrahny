@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSubscriptionColumnsToProvider extends Migration
+class AddRateColumnToServices extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddSubscriptionColumnsToProvider extends Migration
      */
     public function up()
     {
-        Schema::table('providers', function (Blueprint $table) {
-            $table->foreignId('subscription_id')->nullable()->constrained('subscriptions')->cascadeOnDelete();
+        Schema::table('services', function (Blueprint $table) {
+            $table->double('rate')->default(0);
+            $table->tinyInteger('requires_location')->default(0);
+
         });
     }
 
@@ -25,7 +27,7 @@ class AddSubscriptionColumnsToProvider extends Migration
      */
     public function down()
     {
-        Schema::table('providers', function (Blueprint $table) {
+        Schema::table('services', function (Blueprint $table) {
             //
         });
     }

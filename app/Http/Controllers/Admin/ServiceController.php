@@ -8,17 +8,19 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Auth;
+
 class ServiceController extends Controller
 {
     public function index()
     {
         return view('admin.Service.index');
     }
+
     public function datatable(Request $request)
     {
         $data = Service::Query();
-        if(auth()->guard('provider')->check()){
-            $data = $data->where('provider_id',auth('provider')->user()->id);
+        if (auth()->guard('provider')->check()) {
+            $data = $data->where('provider_id', auth('provider')->user()->id);
         }
         $data = $data->orderBy('id', 'desc');
 
@@ -31,10 +33,10 @@ class ServiceController extends Controller
                 return $checkbox;
             })
             ->AddColumn('title', function ($row) {
-                if(Session()->get('lang') == 'ar'){
-                    return  $row->ar_title;
-                }else{
-                    return  $row->en_title;
+                if (Session()->get('lang') == 'ar') {
+                    return $row->ar_title;
+                } else {
+                    return $row->en_title;
                 }
             })
             ->AddColumn('event', function ($row) {
@@ -55,14 +57,13 @@ class ServiceController extends Controller
                     return $not_active;
                 }
             })
-
             ->addColumn('actions', function ($row) {
                 $actions = ' <a href="' . url("Service-edit/" . $row->id) . '" class="btn btn-active-light-info">Edit <i class="bi bi-pencil-fill"></i>  </a>';
                 $actions .= ' <a href="' . url("ServiceImage/" . $row->id) . '" class="btn btn-danger"> <i class="bi bi-image"></i>  </a>';
                 return $actions;
 
             })
-            ->rawColumns(['actions', 'checkbox', 'name', 'is_active','branch'])
+            ->rawColumns(['actions', 'checkbox', 'name', 'is_active', 'branch'])
             ->make();
 
     }
@@ -94,25 +95,28 @@ class ServiceController extends Controller
 
 
         $user = new Service();
-        $user->ar_title=$request->ar_title;
-        $user->en_title=$request->en_title;
-        $user->ar_description=$request->ar_description;
-        $user->en_description=$request->en_description;
-        $user->deposit=$request->deposit;
-        $user->price=$request->price;
-        $user->video=$request->video;
-        $user->category_id=$request->category_id;
-        $user->is_active=$request->is_active;
-        if($request->is_sponsored){
-            $user->is_sponsored=$request->is_sponsored;
+        $user->ar_title = $request->ar_title;
+        $user->en_title = $request->en_title;
+        $user->ar_description = $request->ar_description;
+        $user->en_description = $request->en_description;
+        $user->deposit = $request->deposit;
+        $user->price = $request->price;
+        $user->video = $request->video;
+        $user->category_id = $request->category_id;
+        $user->is_active = $request->is_active;
+        if ($request->is_sponsored) {
+            $user->is_sponsored = $request->is_sponsored;
         }
-        if($request->is_recommend){
-            $user->is_recommend=$request->is_recommend;
+        if ($request->is_recommend) {
+            $user->is_recommend = $request->is_recommend;
         }
-        $user->provider_id=$request->provider_id;
-        $user->event_id=$request->event_id;
-        if($request->image){
-            $user->image=$request->image;
+        if ($request->requires_location) {
+            $user->requires_location = $request->requires_location;
+        }
+        $user->provider_id = $request->provider_id;
+        $user->event_id = $request->event_id;
+        if ($request->image) {
+            $user->image = $request->image;
         }
 
 
@@ -164,25 +168,28 @@ class ServiceController extends Controller
 
 
         $user = Service::whereId($request->id)->first();
-        $user->ar_title=$request->ar_title;
-        $user->en_title=$request->en_title;
-        $user->ar_description=$request->ar_description;
-        $user->en_description=$request->en_description;
-        $user->deposit=$request->deposit;
-        $user->price=$request->price;
-        $user->video=$request->video;
-        $user->category_id=$request->category_id;
-        $user->is_active=$request->is_active;
-        if($request->is_sponsored){
-            $user->is_sponsored=$request->is_sponsored;
+        $user->ar_title = $request->ar_title;
+        $user->en_title = $request->en_title;
+        $user->ar_description = $request->ar_description;
+        $user->en_description = $request->en_description;
+        $user->deposit = $request->deposit;
+        $user->price = $request->price;
+        $user->video = $request->video;
+        $user->category_id = $request->category_id;
+        $user->is_active = $request->is_active;
+        if ($request->is_sponsored) {
+            $user->is_sponsored = $request->is_sponsored;
         }
-        if($request->is_recommend){
-            $user->is_recommend=$request->is_recommend;
+        if ($request->is_recommend) {
+            $user->is_recommend = $request->is_recommend;
         }
-        $user->provider_id=$request->provider_id;
-        $user->event_id=$request->event_id;
-        if($request->image){
-            $user->image=$request->image;
+        if ($request->requires_location) {
+            $user->requires_location = $request->requires_location;
+        }
+        $user->provider_id = $request->provider_id;
+        $user->event_id = $request->event_id;
+        if ($request->image) {
+            $user->image = $request->image;
         }
 
         $user->save();

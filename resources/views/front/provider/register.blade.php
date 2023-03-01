@@ -54,7 +54,8 @@
                                         required>
                                     <option selected>{{__('lang.choose_subscription_type')}}</option>
                                     @foreach(\App\Models\Subscription::active()->get() as $row)
-                                        <option value="{{$row->id}}">{{$row->name}} ({{$row->service_count}} {{__('lang.services')}}) - ({{$row->days_count}} {{__('lang.days')}}) - ({{$row->price}} {{__('lang.price')}})</option>
+                                        <option value="{{$row->id}}"
+                                        @if(old('subscription_id') == $row->id) selected @endif >{{$row->name}} ({{$row->service_count}} {{__('lang.services')}}) - ({{$row->days_count}} {{__('lang.days')}}) - ({{$row->price}} {{__('lang.price')}})</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -62,14 +63,14 @@
                                 <span class="sign-form d-block position-absolute">
                                     <i class="fa-solid fa-phone"></i>
                                 </span>
-                                <input type="tel" placeholder="{{__('lang.phone')}}" name="phone"
+                                <input type="tel" placeholder="{{__('lang.phone')}}" name="phone" value="{{old('phone')}}"
                                        class="form-control mb-3 login-form text-capitalize">
                             </div>
                             <div class="d-flex position-relative">
                                 <span class="sign-form d-block position-absolute">
                                     <i class="fa-solid fa-envelope"></i>
                                 </span>
-                                <input type="email" placeholder="{{__('lang.email')}}" name="email"
+                                <input type="email" placeholder="{{__('lang.email')}}" name="email" value="{{old('email')}}"
                                        class="form-control mb-3 login-form text-capitalize">
                             </div>
                             <div class="d-flex position-relative">

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSubscriptionColumnsToProvider extends Migration
+class AddRatedColumnToOrderDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddSubscriptionColumnsToProvider extends Migration
      */
     public function up()
     {
-        Schema::table('providers', function (Blueprint $table) {
-            $table->foreignId('subscription_id')->nullable()->constrained('subscriptions')->cascadeOnDelete();
+        Schema::table('order_details', function (Blueprint $table) {
+            $table->tinyInteger('is_rated')->default(0);
+
         });
     }
 
@@ -25,7 +26,7 @@ class AddSubscriptionColumnsToProvider extends Migration
      */
     public function down()
     {
-        Schema::table('providers', function (Blueprint $table) {
+        Schema::table('order_details', function (Blueprint $table) {
             //
         });
     }

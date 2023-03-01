@@ -33,7 +33,7 @@
         <div class="container">
             <div class=" row nav-logo">
                 <div class="col-md-12 col-lg-6 col-12 d-flex align-items-center">
-                    <a class="navbar-brand d-block">
+                    <a href="{{url('/')}}" class="navbar-brand d-block">
                         <img src="{{asset('website/assets/img/Farrahny logo English type.png')}}" alt="">
                     </a>
                     <div class="d-flex ms-auto">
@@ -322,7 +322,7 @@ $lng = '46.709548950195305';
                         <input type="date" required id="txt_date" name="date"
                                class="form-control center">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="location_container">
                         <label for="txt_phone_code">{{trans('lang.location')}}</label>
                         <div id="" class="form-group row">
                             <div class="col-sm-12 ">
@@ -394,7 +394,21 @@ $lng = '46.709548950195305';
             id = $(this).data('id');
             $('#txt_service_id').val(id);
 
-            $('#cart-modal').modal('toggle');
+            $.ajax({
+                type: "GET",
+                url: "{{route('service_date')}}",
+                data: {"id": id},
+                success: function (data) {
+                    if (data == 1) {
+                        $('#location_container').show();
+                    } else {
+                        $('#location_container').hide();
+                    }
+                    $('#cart-modal').modal('toggle');
+                }
+            })
+
+
         } else {
             Swal.fire({
                 icon: 'error',
@@ -459,49 +473,50 @@ $lng = '46.709548950195305';
 
         }
     })
-    $(".add").click(function () {
-        var id = $(this).data('id')
 
-            @if(Auth::guard('web')->check())
-        var check = true;
-            @else
-        var check = false;
-        @endif
-        if (check) {
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            $.ajax({
-                type: "GET",
-                url: "{{url('add-cart')}}",
-                data: {"id": id},
-                success: function (data) {
-                    $('#CountCart').html(data)
+    {{--$(".add").click(function () {--}}
+    {{--    var id = $(this).data('id')--}}
 
-                    Swal.fire({
-                        icon: 'success',
-                        title: "{{__('lang.Success')}}",
-                        text: "{{__('lang.Success_text')}}",
-                        type: "success",
-                        timer: 1000,
-                        showConfirmButton: false
-                    });
+    {{--        @if(Auth::guard('web')->check())--}}
+    {{--    var check = true;--}}
+    {{--        @else--}}
+    {{--    var check = false;--}}
+    {{--    @endif--}}
+    {{--    if (check) {--}}
+    {{--        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');--}}
+    {{--        $.ajax({--}}
+    {{--            type: "GET",--}}
+    {{--            url: "{{url('add-cart')}}",--}}
+    {{--            data: {"id": id},--}}
+    {{--            success: function (data) {--}}
+    {{--                $('#CountCart').html(data)--}}
 
-                }
-            })
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: "{{__('lang.error')}}",
-                text: "{{ __('lang.PleaseLogin') }}",
-                type: "error",
-                timer: 5000,
-                confirmButtonText: '{{__('lang.Login')}}',
-            }).then(function (result) {
-                window.location.href = "{{url('login')}}";
-            });
+    {{--                Swal.fire({--}}
+    {{--                    icon: 'success',--}}
+    {{--                    title: "{{__('lang.Success')}}",--}}
+    {{--                    text: "{{__('lang.Success_text')}}",--}}
+    {{--                    type: "success",--}}
+    {{--                    timer: 1000,--}}
+    {{--                    showConfirmButton: false--}}
+    {{--                });--}}
+
+    {{--            }--}}
+    {{--        })--}}
+    {{--    } else {--}}
+    {{--        Swal.fire({--}}
+    {{--            icon: 'error',--}}
+    {{--            title: "{{__('lang.error')}}",--}}
+    {{--            text: "{{ __('lang.PleaseLogin') }}",--}}
+    {{--            type: "error",--}}
+    {{--            timer: 5000,--}}
+    {{--            confirmButtonText: '{{__('lang.Login')}}',--}}
+    {{--        }).then(function (result) {--}}
+    {{--            window.location.href = "{{url('login')}}";--}}
+    {{--        });--}}
 
 
-        }
-    })
+    {{--    }--}}
+    {{--})--}}
 
     function delete_alert(row_id, route) {
         Swal.fire({
@@ -561,7 +576,7 @@ $errors = session()->get("errors");
     <script>
         Swal.fire({
             icon: 'warning',
-            title: "برجاء التأكد من البيانات.",
+            title: "{{trans('lang.make_sure_info')}}",
             text: "{{$e}} ",
             type: "error",
             timer: 5000,

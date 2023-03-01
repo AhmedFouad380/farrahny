@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CartRequest extends FormRequest
+class RatesStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,11 +20,8 @@ class CartRequest extends FormRequest
     public function rules()
     {
         return [
-            'service_id' => 'required|exists:services,id',
-            'date' => 'required|date|after:'.Carbon::now(),
-            'time' => 'required',
-            'lat' => 'nullable',
-            'lng' => 'nullable',
+            'order_details_id' => 'required|exists:order_details,id',
+            'rate' => 'required|in:1,2,3,4,5',
         ];
     }
 }
