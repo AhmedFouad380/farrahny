@@ -198,6 +198,14 @@ Route::group(['middleware' => ['admin']], function () {
         return view('admin/Contact/button');
     });
 
+
+});
+
+Route::group(['middleware' => ['Provider']], function () {
+    Route::get('/ProviderDashboard', function () {
+        return view('admin.index');
+    });
+
     Route::get('Orders', [\App\Http\Controllers\Admin\OrderController::class, 'index']);
     Route::get('Restaurants-Orders/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'Restaurants_Orders']);
     Route::get('User-Orders/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'User_Orders']);
@@ -209,14 +217,6 @@ Route::group(['middleware' => ['admin']], function () {
         return view('admin/Order/button');
     });
     Route::post('update-Order-states', [\App\Http\Controllers\Admin\OrderController::class, 'updateOrderStates']);
-
-});
-
-Route::group(['middleware' => ['Provider']], function () {
-    Route::get('/ProviderDashboard', function () {
-        return view('admin.index');
-    });
-
 
     Route::get('Services_setting', [\App\Http\Controllers\Admin\ServiceController::class, 'index']);
     Route::get('Service_datatable', [\App\Http\Controllers\Admin\ServiceController::class, 'datatable'])->name('Service.datatable.data');

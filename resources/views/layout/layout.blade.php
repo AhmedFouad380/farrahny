@@ -339,7 +339,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     </a>
                                                 </div>
                                                 <div class="menu-item">
-                                                    <a class="menu-link" href="{{url('')}}">
+                                                    <a class="menu-link" href="{{url('Orders')}}">
 															<span class="menu-icon">
 																<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 																<span class="svg-icon svg-icon-2">

@@ -236,12 +236,12 @@
                 },
                 columns: [
                     {data: 'checkbox', name: 'checkbox', "searchable": false, "orderable": false},
-                    {data: 'order_num', name: 'order_num', "searchable": true, "orderable": true},
+                    {data: 'id', name: 'id', "searchable": true, "orderable": true},
                     {data: 'user_name', name: 'user_name', "searchable": true, "orderable": true},
                     {data: 'user_phone', name: 'user_phone', "searchable": true, "orderable": true},
-                    {data: 'type', name: 'type', "searchable": true, "orderable": true},
-                    {data: 'payment_type', name: 'payment_type', "searchable": true, "orderable": true},
-                    {data: 'total_price', name: 'payment_type', "searchable": true, "orderable": true},
+                    {data: 'status', name: 'status', "searchable": true, "orderable": true},
+                    {data: 'payment_status', name: 'payment_status', "searchable": true, "orderable": true},
+                    {data: 'total', name: 'total', "searchable": true, "orderable": true},
                     {data: 'actions', name: 'actions', "searchable": false, "orderable": false},
 
                 ]

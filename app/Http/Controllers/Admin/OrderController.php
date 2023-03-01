@@ -26,8 +26,11 @@ class OrderController extends Controller
     public function datatable(Request $request)
     {
         $data = Order::orderBy('id', 'desc');
-        if($request->type && $request->type != 0){
-            $data->where('type',$request->type);
+        if(Auth::guard('provider')->check()){
+            $data->where('provider_id',Auth::guard('provider')->id());
+        }
+        if($request->status && $request->status != 0){
+            $data->where('status',$request->status);
         }
         if($request->user_id && $request->user_id != 0){
             $data->where('user_id',$request->user_id);
@@ -64,37 +67,26 @@ class OrderController extends Controller
             })
 
 
-            ->editColumn('payment_type', function ($row) {
-                if($row->payment_type == 'credit'){
-                    $type = '<div class="badge badge-info fw-bolder"> فيزا </div>';
-                }elseif($row->payment_type == 'cash'){
-                    $type = '<div class="badge badge-light-success fw-bolder"> كاش</div>';
-                }
 
-                return $type;
-            })
-            ->editColumn('is_payed', function ($row) {
-                if($row->is_payed == 0){
+            ->editColumn('payment_status', function ($row) {
+                if($row->payment_status == 'not_payed'){
                     $type = '<div class="badge badge-info fw-bolder"> لم يتم الدفع </div>';
-                }elseif($row->is_payed == 1){
+                }elseif($row->payment_status == 'payed'){
                     $type = '<div class="badge badge-light-success fw-bolder"> تم الدفع</div>';
                 }
 
                 return $type;
             })
-            ->editColumn('type', function ($row) {
-                if($row->type == 'pending'){
+            ->editColumn('status', function ($row) {
+                if($row->status == 'pending'){
                     $type = '<div class="badge badge-warning fw-bolder"> طلب جديد</div>';
-                }elseif($row->type == 'preparing'){
-                    $type = '<div class="badge badge-warning fw-bolder"> جاري التجهير</div>';
-                } elseif($row->type == 'on_way'){
-                    $type = '<div class="badge badge-info fw-bolder"> جاري التوصيل</div>';
-                }elseif($row->type == 'delivered'){
-                    $type = '<div class="badge badge-light-success fw-bolder"> تم التوصيل</div>';
-                }elseif($row->type == 'canceled'){
+                }elseif($row->status == 'accepted'){
+                    $type = '<div class="badge badge-warning fw-bolder"> تم القبول</div>';
+                }elseif($row->status == 'completed'){
+                    $type = '<div class="badge badge-light-success fw-bolder"> مكتملة</div>';
+                }elseif($row->status == 'rejected'){
                     $type = '<div class="badge badge-danger fw-bolder"> تم الالغاء</div>';
                 }
-
                 return $type;
             })
 
@@ -108,7 +100,7 @@ class OrderController extends Controller
             })
 
 
-            ->rawColumns(['actions', 'checkbox', 'name', 'type','payment_type','is_payed'])
+            ->rawColumns(['actions', 'checkbox', 'name', 'status','payment_status','is_payed'])
             ->make();
 
     }
