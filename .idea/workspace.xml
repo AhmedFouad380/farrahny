@@ -21,19 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="33ef5b4a-8ff8-4e9f-988a-eae388d73f55" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/frontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/frontController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Service.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Service.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/website/assets/css/style En.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/website/assets/css/style En.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/Setting/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/Setting/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/Providers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/Providers.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/category.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/contact.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/wishList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/wishList.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/ProviderMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/ProviderMiddleware.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -243,7 +231,8 @@
       <workItem from="1677592356549" duration="2076000" />
       <workItem from="1677606067766" duration="639000" />
       <workItem from="1677607831685" duration="525000" />
-      <workItem from="1677608880205" duration="5016000" />
+      <workItem from="1677608880205" duration="7476000" />
+      <workItem from="1677688137993" duration="1302000" />
     </task>
     <servers />
   </component>

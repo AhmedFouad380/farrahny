@@ -21,7 +21,7 @@ class ProviderMiddleware
         } elseif(Auth::guard('provider')->check()){
             return $next($request);
         }else {
-            return redirect('login');
+            return 1;
         }
     }
 }

@@ -168,13 +168,6 @@ Route::group(['middleware' => ['admin']], function () {
     });
 
 
-    Route::get('ServiceImage/{id}', [\App\Http\Controllers\Admin\ServiceImageController::class, 'index']);
-    Route::get('ServiceImage_datatable', [\App\Http\Controllers\Admin\ServiceImageController::class, 'datatable'])->name('ServiceImage.datatable.data');
-    Route::get('delete-ServiceImage', [\App\Http\Controllers\Admin\ServiceImageController::class, 'destroy']);
-    Route::post('store-ServiceImage', [\App\Http\Controllers\Admin\ServiceImageController::class, 'store']);
-    Route::get('/add-button-ServiceImage/{id}', function ($id) {
-        return view('admin/ServiceImage/button', compact('id'));
-    });
 
     Route::get('Messages_setting', [\App\Http\Controllers\Admin\MessagesController::class, 'index']);
     Route::get('Messages_datatable', [\App\Http\Controllers\Admin\MessagesController::class, 'datatable'])->name('Messages.datatable.data');
@@ -231,12 +224,22 @@ Route::group(['middleware' => ['Provider']], function () {
     Route::get('/add-button-Service', function () {
         return view('admin/Service/button');
     });
+
+    Route::get('ServiceImage/{id}', [\App\Http\Controllers\Admin\ServiceImageController::class, 'index']);
+    Route::get('ServiceImage_datatable', [\App\Http\Controllers\Admin\ServiceImageController::class, 'datatable'])->name('ServiceImage.datatable.data');
+    Route::get('delete-ServiceImage', [\App\Http\Controllers\Admin\ServiceImageController::class, 'destroy']);
+    Route::post('store-ServiceImage', [\App\Http\Controllers\Admin\ServiceImageController::class, 'store']);
+    Route::get('/add-button-ServiceImage/{id}', function ($id) {
+        return view('admin/ServiceImage/button', compact('id'));
+    });
+
+    Route::get('get-Category/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'getCategory']);
+
 });
 
 //this for provider and admin
 Route::group(['middleware' => ['admin','Provider']], function () {
 
-Route::get('get-Category/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'getCategory']);
 });
 
 
