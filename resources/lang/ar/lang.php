@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'income_by_sign_up_providers' => 'الدخل عن طريق انشاء حسابات مقدمين الخدمة',
     'requires_location' => 'يتطلب موقع',
     'choose_rate' => 'اختر التقييم',
 

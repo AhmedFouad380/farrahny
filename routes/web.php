@@ -14,7 +14,7 @@ use App\Http\Controllers\Provider\AuthProviderController;
 |
 */
 
-Route::post('store_contact',[\App\Http\Controllers\frontController::class,'store_contact']);
+Route::post('store_contact', [\App\Http\Controllers\frontController::class, 'store_contact']);
 
 
 Route::get('/', function () {
@@ -76,9 +76,8 @@ Route::group(['middleware' => ['web']], function () {
 });
 Route::group(['middleware' => ['admin']], function () {
 
-    Route::get('/Dashboard', function () {
-        return view('admin.index');
-    });
+    Route::get('Dashboard', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('dashboard');
+
 
     Route::get('subscriptions', [\App\Http\Controllers\Admin\SubscriptionController::class, 'index'])->name('subscriptions');
 
@@ -237,11 +236,10 @@ Route::group(['middleware' => ['Provider']], function () {
 });
 
 //this for provider and admin
-Route::group(['middleware' => ['admin','Provider']], function () {
+Route::group(['middleware' => ['admin', 'Provider']], function () {
 
-Route::get('get-Category/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'getCategory']);
+    Route::get('get-Category/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'getCategory']);
 });
-
 
 
 Route::get('lang/{lang}', function ($lang) {
