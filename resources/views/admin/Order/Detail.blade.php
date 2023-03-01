@@ -36,7 +36,7 @@
         </li>
         <!--end::Item-->
         <!--begin::Item-->
-        <li class="breadcrumb-item text-gray-500">تفاصيل طلب رقم : {{$data->order_num}}</li>
+        <li class="breadcrumb-item text-gray-500">تفاصيل طلب رقم : {{$data->id}}</li>
         <!--end::Item-->
     </ul>
     <!--end::Breadcrumb-->
@@ -68,14 +68,14 @@
                                     <div class="d-flex align-items-center mb-1">
                                         <a href="#" class="text-gray-800 text-hover-primary fs-2 fw-bolder me-3">طلب رقم : {{$data->order_num}}</a>
                                             <span class="badge badge-light-success me-auto">
-                                            @if($data->type == 'preparing')
-                                                جاري التحضير
-                                            @elseif($data->type == 'on_way')
+                                            @if($data->type == 'pending')
+                                                {{__('lang.pending')}}
+                                            @elseif($data->type == 'accepted')
                                                 جاري التوصيل
-                                            @elseif($data->type == 'delivered')
+                                            @elseif($data->type == 'completed')
                                                 تم التوصيل
-                                            @elseif($data->type == 'canceled')
-                                                تم الالغاء
+                                            @elseif($data->type == 'rejected')
+                                                {{__('lang.canceled')}}
                                             @endif
                                         </span>
                                     </div>
