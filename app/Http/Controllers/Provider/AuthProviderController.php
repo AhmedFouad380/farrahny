@@ -19,6 +19,7 @@ use App\Models\OrderDetails;
 use App\Models\Page;
 use App\Models\Product;
 use App\Models\Provider;
+use App\Models\ProviderSubscription;
 use App\Models\Service;
 use App\Models\Setting;
 use App\Models\Shape;
@@ -53,8 +54,27 @@ class AuthProviderController extends Controller
             'lat' => 'required|string|max:255',
             'lng' => 'required|string|max:255',
         ]);
-        Provider::create($data);
-        return redirect('/')->with('message', 'تم الاضتفة بنجاح ');
+        $data['password'] = Hash::make($request->password);
+        $provider = Provider::create($data);
+
+        //save provider subscription
+        $subscription_data['provider_id'] = $provider->id;
+        $subscription_data['subscription_id'] = $request->subscription_id;
+        $subscription_data['service_count'] = $provider->subscription->service_count;
+        $subscription_data['service_image_count'] = $provider->subscription->service_image_count;
+        $subscription_data['days_count'] = $provider->subscription->days_count;
+        $subscription_data['price'] = $provider->subscription->price;
+        $subscription_data['is_video'] = $provider->subscription->is_video;
+        $today = Carbon::now();
+        $subscription_data['from_date'] = $today;
+        $to_date = Carbon::now()->addDays($provider->subscription->days_count);
+        $subscription_data['to_date'] = $to_date;
+        $provider_subscription = ProviderSubscription::create($subscription_data);
+
+        $provider->current_provider_subscription_id = $provider_subscription->id;
+        $provider->save();
+
+        return redirect('/')->with('message', trans('lang.data_added_s'));
     }
 
 

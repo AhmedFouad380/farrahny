@@ -60,7 +60,7 @@
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.image')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <div class="col-md-7">
+                                <div class="col-md-12">
                                 <input type="file" name="image"
                                        class="dropify form-control form-control-solid mb-3 mb-lg-0"
                                        placeholder="" value="" required/>
@@ -72,7 +72,7 @@
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.cover')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <div class="col-md-7">
+                                <div class="col-md-12">
                                     <input type="file" name="cover"
                                            class="dropify form-control form-control-solid mb-3 mb-lg-0"
                                            placeholder="" value="" required/>

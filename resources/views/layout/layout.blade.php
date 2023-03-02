@@ -156,7 +156,7 @@ License: For each use you must have a valid license purchased only from above li
                         <div class="cursor-pointer symbol symbol-40px" data-kt-menu-trigger="click"
                              data-kt-menu-overflow="true" data-kt-menu-placement="top-start" data-bs-toggle="tooltip"
                              data-bs-placement="right" data-bs-dismiss="click" title="User profile">
-                            <img src="assets/media/avatars/150-26.jpg" alt="image"/>
+                            <img src="{{url('/')}}/assets/media/avatars/150-26.jpg" alt="image"/>
                         </div>
                         <!--begin::Menu-->
                         <div
@@ -167,7 +167,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="menu-content d-flex align-items-center px-3">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-50px me-5">
-                                        <img alt="Logo" src="assets/media/avatars/150-26.jpg"/>
+                                        <img alt="Logo" src="{{url('/')}}/assets/media/avatars/150-26.jpg"/>
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Username-->

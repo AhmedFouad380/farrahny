@@ -200,7 +200,7 @@
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.video')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="video"
+                                <input type="url" name="video"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
                                        placeholder="" value="{{$employee->video}}"/>
                                 <!--end::Input-->
