@@ -155,7 +155,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Menu wrapper-->
                         <div class="cursor-pointer symbol symbol-40px" data-kt-menu-trigger="click"
                              data-kt-menu-overflow="true" data-kt-menu-placement="top-start" data-bs-toggle="tooltip"
-                             data-bs-placement="right" data-bs-dismiss="click" title="User profile">
+                             data-bs-placement="right" data-bs-dismiss="click">
                             <img src="{{url('/')}}/assets/media/avatars/150-26.jpg" alt="image"/>
                         </div>
                         <!--begin::Menu-->
@@ -192,7 +192,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5">
                                     <a href="{{url('Setting')}}" class="menu-link px-5">
-                                        <span class="menu-text">{{__('Setting')}}</span>
+                                        <span class="menu-text">{{trans('lang.profile')}}</span>
                                     </a>
                                 </div>
                                 <!--end::Menu item-->
@@ -459,6 +459,28 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--end::Svg Icon-->
 															</span>
                                                         <span class="menu-title">{{__('lang.Providers')}}</span>
+                                                    </a>
+                                                </div>
+                                                <div class="menu-item">
+                                                    <a class="menu-link @if(request()->segment(1) == 'provider_subscriptions') active @endif" href="{{route('provider_subscriptions')}}">
+															<span class="menu-icon">
+																<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+																<span class="svg-icon svg-icon-2">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                         height="24" viewBox="0 0 24 24" fill="none">
+																		<rect x="2" y="2" width="9" height="9" rx="2"
+                                                                              fill="black"/>
+																		<rect opacity="0.3" x="13" y="2" width="9"
+                                                                              height="9" rx="2" fill="black"/>
+																		<rect opacity="0.3" x="13" y="13" width="9"
+                                                                              height="9" rx="2" fill="black"/>
+																		<rect opacity="0.3" x="2" y="13" width="9"
+                                                                              height="9" rx="2" fill="black"/>
+																	</svg>
+																</span>
+                                                                <!--end::Svg Icon-->
+															</span>
+                                                        <span class="menu-title">{{__('lang.provider_subscriptions')}}</span>
                                                     </a>
                                                 </div>
                                                 <div class="menu-item">
@@ -853,6 +875,32 @@ $error_message = session()->get("error_message");
         };
 
         toastr.error("{{$error_message}}", "عفوا !");
+    </script>
+
+@endif
+<?php
+$success_message = session()->get("success_message");
+?>
+@if( session()->has("success_message"))
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": false,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+
+        toastr.success("{{$success_message}}", "نجح !");
     </script>
 
 @endif

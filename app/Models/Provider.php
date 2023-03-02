@@ -71,4 +71,9 @@ class Provider extends Authenticatable
     {
         return $this->belongsTo(ProviderSubscription::class, 'current_provider_subscription_id');
     }
+
+    public function scopeActive($q)
+    {
+        $q->where('is_active', 'active');
+    }
 }

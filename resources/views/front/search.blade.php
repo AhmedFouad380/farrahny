@@ -46,21 +46,57 @@
 
                           <div class="d-flex justify-content-bettwen mb-3">
                               <div style="width: 80%;" class="d-flex">
-                                <span class="rating-item d-block">
-                                    <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
-                                  <span class="rating-item d-block">
-                                    <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
-                                  <span class="rating-item d-block">
-                                    <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
-                                  <span class="rating-item d-block">
-                                    <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
-                                  <span class="rating-item d-block">
-                                <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
+                                  @if($spo->rate == 1)
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                  @elseif($spo->rate == 2)
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                  @elseif($spo->rate == 3)
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                  @elseif($spo->rate == 4)
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                  @elseif($spo->rate == 5)
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="false"></i>
+                                            </span>
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                      <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                  @endif
                               </div>
                               <p class="price" style="width: 20%">
                               <div class="d-flex">
@@ -122,21 +158,57 @@
 
                                 <div class="d-flex justify-content-bettwen mb-3">
                                     <div style="width: 80%;" class="d-flex">
-                                <span class="rating-item d-block">
-                                    <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
-                                        <span class="rating-item d-block">
-                                    <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
-                                        <span class="rating-item d-block">
-                                    <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
-                                        <span class="rating-item d-block">
-                                    <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
-                                        <span class="rating-item d-block">
-                                <i class="fa fa-star gold" aria-hidden="true"></i>
-                                </span>
+                                        @if($service->rate == 1)
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                        @elseif($service->rate == 2)
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                        @elseif($service->rate == 3)
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                        @elseif($service->rate == 4)
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                        @elseif($service->rate == 5)
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="false"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                            <span class="rating-item d-block">
+                                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                                            </span>
+                                        @endif
                                     </div>
                                     <p class="price" style="width: 20%">
                                     <div class="d-flex">
