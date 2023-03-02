@@ -20,8 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b423340-8312-472b-82c9-2d81f359c609" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProviderSubscriptionsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/provider_subscriptions/button.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/provider_subscriptions/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/provider_subscriptions/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/frontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/frontController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Provider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Provider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,15 +181,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/pricing" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\projects\my projects\farrahny\resources\views\admin\pricing" />
       <recent name="D:\projects\my projects\farrahny\resources\views\admin" />
-      <recent name="D:\projects\my projects\farrahny\app\Http\Controllers\Provider" />
       <recent name="D:\projects\my projects\farrahny\app\Http\Controllers\Admin" />
+      <recent name="D:\projects\my projects\farrahny\resources\views\admin\pricing" />
+      <recent name="D:\projects\my projects\farrahny\app\Http\Controllers\Provider" />
       <recent name="C:\laravel\farrahny\resources\views\front" />
     </key>
   </component>
@@ -251,14 +260,19 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="163" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1676149377300">
-      <screen x="0" y="0" width="1536" height="816" />
+    <state x="499" y="165" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1677722456506">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="163" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.816@0.0.1536.816" timestamp="1676149377300" />
+    <state x="499" y="165" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1677722456506" />
     <state x="553" y="166" key="FileChooserDialogImpl" timestamp="1677499033668">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="553" y="166" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1677499033668" />
+    <state x="368" y="23" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1677722830369">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="368" y="23" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1677722830369" />
     <state x="478" y="147" width="579" height="530" key="find.popup" timestamp="1677692803011">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -274,7 +288,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/frontController.php</url>
-          <line>125</line>
+          <line>122</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">

@@ -1,9 +1,11 @@
 <?php
 
 return [
+    'choose_subscription' => 'choose subscription',
+    'choose_provider' => 'choose provider',
+    'provider_subscriptions' => 'Provider subscriptions',
     'subscription_ended_message' => 'Subscription has expired, please renew your subscription first',
     'subscription_done' => 'Subscription completed successfully',
-
     'count_days' => 'Count days',
     'subscribe' => 'Subscribe',
     'c_y_p' => 'Choose Your Plan',

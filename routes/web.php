@@ -90,6 +90,15 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/add-button-subscriptions', function () {
         return view('admin/subscriptions/button');
     });
+    Route::get('provider_subscriptions', [\App\Http\Controllers\Admin\ProviderSubscriptionsController::class, 'index'])->name('provider_subscriptions');
+    Route::get('provider_subscriptions_datatable', [\App\Http\Controllers\Admin\ProviderSubscriptionsController::class, 'datatable'])->name('provider_subscriptions.datatable.data');
+    Route::get('delete-provider_subscriptions', [\App\Http\Controllers\Admin\ProviderSubscriptionsController::class, 'destroy']);
+    Route::post('store-provider_subscriptions', [\App\Http\Controllers\Admin\ProviderSubscriptionsController::class, 'store']);
+    Route::get('provider_subscriptions-edit/{id}', [\App\Http\Controllers\Admin\ProviderSubscriptionsController::class, 'edit']);
+    Route::post('update-provider_subscriptions', [\App\Http\Controllers\Admin\ProviderSubscriptionsController::class, 'update']);
+    Route::get('/add-button-provider_subscriptions', function () {
+        return view('admin/provider_subscriptions/button');
+    });
 
 
     Route::get('Admin_setting', [\App\Http\Controllers\Admin\AdminController::class, 'index']);

@@ -85,7 +85,6 @@ class frontController extends Controller
     {
         if (Auth::guard('admin')->check()) {
             Auth::guard('admin')->logout();
-
         }
         if (Auth::guard('provider')->check()) {
             Auth::guard('provider')->logout();
@@ -93,9 +92,7 @@ class frontController extends Controller
         if (Auth::guard('web')->check()) {
             Auth::guard('web')->logout();
         }
-
-
-        return redirect('/')->with('message', 'success');
+        return redirect('/');
     }
 
     public function register()
@@ -195,16 +192,17 @@ class frontController extends Controller
         });
 
         $Products = $data->paginate(12);
-        $sponsored=Service::where('is_active', 'active')->where('is_recommend','active')->inRandomOrder()->limit(10)->get();
-        return view('front.search', compact('Products','sponsored'));
+        $sponsored = Service::where('is_active', 'active')->where('is_recommend', 'active')->inRandomOrder()->limit(10)->get();
+        return view('front.search', compact('Products', 'sponsored'));
     }
+
     public function Providers(Request $request)
     {
 
 
         $Providers = Provider::where('is_active', 'active')->paginate(12);
-        $sponsored=Service::where('is_active', 'active')->where('is_recommend','active')->inRandomOrder()->limit(10)->get();
-        return view('front.Providers', compact('Providers','sponsored'));
+        $sponsored = Service::where('is_active', 'active')->where('is_recommend', 'active')->inRandomOrder()->limit(10)->get();
+        return view('front.Providers', compact('Providers', 'sponsored'));
     }
 
     public function HotDeals(Request $request)
@@ -588,7 +586,9 @@ class frontController extends Controller
         Cart::where('user_id', Auth::guard('web')->id())->delete();
         return redirect()->back()->with('message', 'تم حفظ الفاتورة بنجاح ');
     }
-    public function store_contact(Request $request){
+
+    public function store_contact(Request $request)
+    {
         $this->validate(request(), [
             'name' => 'required',
             'phone' => 'required',
@@ -599,14 +599,14 @@ class frontController extends Controller
 
 
         $data = new Contact();
-        $data->name=$request->name;
-        $data->email=$request->email;
-        $data->phone=$request->phone;
-        $data->subject=$request->subject;
-        $data->message=$request->message;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->phone = $request->phone;
+        $data->subject = $request->subject;
+        $data->message = $request->message;
         $data->save();
 
-        return back()->with('message','success');
+        return back()->with('message', 'success');
     }
 
 }

@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'finished' => 'اشتراك منتهي',
+    'working' => 'اشتراك جاري',
+    'choose_subscription' => 'اختر الاشتراك',
+    'choose_provider' => 'اختر مقدم الخدمة',
+    'provider_subscriptions' => 'اشتراكات مقدمين الخدمة',
     'subscription_ended_message' => 'تم انتهاء الاشتراك يرجى تجديد الاشتراك اولا ',
     'subscription_done' => 'تم الاشتراك بنجاح',
     'count_days' => 'عدد الايام',
@@ -638,7 +643,7 @@ return [
     'Providers' => 'مقدمين الخدمة',
     'Events' => 'المناسبات',
     'event' => 'المناسبة',
-    'provider' => 'المورد',
+    'provider' => 'مقدم الخدمة',
     'category' => 'القسم',
     'Services' => 'الخدمات',
     'video' => 'الفيديو',
