@@ -28,6 +28,8 @@ class CheckSubscription
             } else {
                 return redirect()->route('ProviderDashboard')->with('error_message', trans('lang.subscription_ended_message'));
             }
+        }else{
+            return $next($request);
         }
     }
 }
