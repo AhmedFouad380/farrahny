@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'service_count' => 'عدد الايام',
+    'subscription_ended_message' => 'تم انتهاء الاشتراك يرجى تجديد الاشتراك اولا ',
+    'subscription_done' => 'تم الاشتراك بنجاح',
     'count_days' => 'عدد الايام',
     'subscribe' => 'اشترك',
     'c_y_p' => 'اختر الباقة المناسبة لك',

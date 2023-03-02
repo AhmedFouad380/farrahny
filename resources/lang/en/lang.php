@@ -1,8 +1,10 @@
 <?php
 
 return [
-    'count_days' => 'Count days',
+    'subscription_ended_message' => 'Subscription has expired, please renew your subscription first',
+    'subscription_done' => 'Subscription completed successfully',
 
+    'count_days' => 'Count days',
     'subscribe' => 'Subscribe',
     'c_y_p' => 'Choose Your Plan',
     'subscription_pricing' => 'Subscription pricing',

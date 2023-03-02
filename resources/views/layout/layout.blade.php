@@ -856,6 +856,32 @@ $error_message = session()->get("error_message");
     </script>
 
 @endif
+<?php
+$success_message = session()->get("success_message");
+?>
+@if( session()->has("success_message"))
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": false,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+
+        toastr.success("{{$success_message}}", "نجح !");
+    </script>
+
+@endif
 <!--end::Javascript-->
 </body>
 <!--end::Body-->

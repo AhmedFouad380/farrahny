@@ -203,36 +203,39 @@ Route::group(['middleware' => ['Provider']], function () {
 
     Route::get('ProviderDashboard', [\App\Http\Controllers\Provider\HomeController::class, 'index'])->name('ProviderDashboard');
     Route::get('provider/subscription/renew', [\App\Http\Controllers\Provider\HomeController::class, 'renewSubscription'])->name('provider.subscription.renew');
+    Route::get('provider/subscription/renew/now/{id}', [\App\Http\Controllers\Provider\HomeController::class, 'renewNow'])->name('provider.subscription.renew.now');
 
+    Route::group(['middleware' => ['CheckSubscription']], function () {
 
-    Route::get('Orders', [\App\Http\Controllers\Admin\OrderController::class, 'index']);
-    Route::get('Restaurants-Orders/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'Restaurants_Orders']);
-    Route::get('User-Orders/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'User_Orders']);
+        Route::get('Orders', [\App\Http\Controllers\Admin\OrderController::class, 'index']);
+        Route::get('Restaurants-Orders/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'Restaurants_Orders']);
+        Route::get('User-Orders/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'User_Orders']);
 
-    Route::get('Order_detail/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'Order_detail']);
-    Route::get('Order_datatable', [\App\Http\Controllers\Admin\OrderController::class, 'datatable'])->name('Order.datatable.data');
-    Route::get('delete-Order', [\App\Http\Controllers\Admin\OrderController::class, 'destroy']);
-    Route::get('/add-button-Order', function () {
-        return view('admin/Order/button');
-    });
-    Route::post('update-Order-states', [\App\Http\Controllers\Admin\OrderController::class, 'updateOrderStates']);
+        Route::get('Order_detail/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'Order_detail']);
+        Route::get('Order_datatable', [\App\Http\Controllers\Admin\OrderController::class, 'datatable'])->name('Order.datatable.data');
+        Route::get('delete-Order', [\App\Http\Controllers\Admin\OrderController::class, 'destroy']);
+        Route::get('/add-button-Order', function () {
+            return view('admin/Order/button');
+        });
+        Route::post('update-Order-states', [\App\Http\Controllers\Admin\OrderController::class, 'updateOrderStates']);
 
-    Route::get('Services_setting', [\App\Http\Controllers\Admin\ServiceController::class, 'index']);
-    Route::get('Service_datatable', [\App\Http\Controllers\Admin\ServiceController::class, 'datatable'])->name('Service.datatable.data');
-    Route::get('delete-Service', [\App\Http\Controllers\Admin\ServiceController::class, 'destroy']);
-    Route::post('store-Service', [\App\Http\Controllers\Admin\ServiceController::class, 'store']);
-    Route::get('Service-edit/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'edit']);
-    Route::post('update-Service', [\App\Http\Controllers\Admin\ServiceController::class, 'update']);
-    Route::get('/add-button-Service', function () {
-        return view('admin/Service/button');
-    });
+        Route::get('Services_setting', [\App\Http\Controllers\Admin\ServiceController::class, 'index']);
+        Route::get('Service_datatable', [\App\Http\Controllers\Admin\ServiceController::class, 'datatable'])->name('Service.datatable.data');
+        Route::get('delete-Service', [\App\Http\Controllers\Admin\ServiceController::class, 'destroy']);
+        Route::post('store-Service', [\App\Http\Controllers\Admin\ServiceController::class, 'store']);
+        Route::get('Service-edit/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'edit']);
+        Route::post('update-Service', [\App\Http\Controllers\Admin\ServiceController::class, 'update']);
+        Route::get('/add-button-Service', function () {
+            return view('admin/Service/button');
+        });
 
-    Route::get('ServiceImage/{id}', [\App\Http\Controllers\Admin\ServiceImageController::class, 'index']);
-    Route::get('ServiceImage_datatable', [\App\Http\Controllers\Admin\ServiceImageController::class, 'datatable'])->name('ServiceImage.datatable.data');
-    Route::get('delete-ServiceImage', [\App\Http\Controllers\Admin\ServiceImageController::class, 'destroy']);
-    Route::post('store-ServiceImage', [\App\Http\Controllers\Admin\ServiceImageController::class, 'store']);
-    Route::get('/add-button-ServiceImage/{id}', function ($id) {
-        return view('admin/ServiceImage/button', compact('id'));
+        Route::get('ServiceImage/{id}', [\App\Http\Controllers\Admin\ServiceImageController::class, 'index']);
+        Route::get('ServiceImage_datatable', [\App\Http\Controllers\Admin\ServiceImageController::class, 'datatable'])->name('ServiceImage.datatable.data');
+        Route::get('delete-ServiceImage', [\App\Http\Controllers\Admin\ServiceImageController::class, 'destroy']);
+        Route::post('store-ServiceImage', [\App\Http\Controllers\Admin\ServiceImageController::class, 'store']);
+        Route::get('/add-button-ServiceImage/{id}', function ($id) {
+            return view('admin/ServiceImage/button', compact('id'));
+        });
     });
 
     Route::get('get-Category/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'getCategory']);
