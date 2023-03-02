@@ -117,6 +117,12 @@
                                     <input type="checkbox" class="text-capitalize">
                                     <span class="text-capitalize form-login-color">{{__('lang.remember me')}}</span>
                                 </div>
+                            </div>
+                            <button
+                                class="btn my-4 text-uppercase d-block m-auto register-btttn">{{__('lang.Register')}}</button>
+
+                            <div class="d-sm-block d-md-flex justify-content-between">
+
                                 <div>
                                     <span class="text-capitalize form-login-color">
                                         {{__('lang.Already have account')}}?
@@ -124,8 +130,6 @@
                                     </span>
                                 </div>
                             </div>
-                            <button
-                                class="btn my-4 text-uppercase d-block m-auto register-btttn">{{__('lang.Register')}}</button>
                             {{--                            <div class="another-way-to-login">--}}
                             {{--                                <div class="d-flex align-items-center justify-content-between">--}}
                             {{--                                    <span class="or-line or-line2"></span>--}}

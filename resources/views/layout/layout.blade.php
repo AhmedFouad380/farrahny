@@ -155,7 +155,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Menu wrapper-->
                         <div class="cursor-pointer symbol symbol-40px" data-kt-menu-trigger="click"
                              data-kt-menu-overflow="true" data-kt-menu-placement="top-start" data-bs-toggle="tooltip"
-                             data-bs-placement="right" data-bs-dismiss="click" title="User profile">
+                             data-bs-placement="right" data-bs-dismiss="click">
                             <img src="{{url('/')}}/assets/media/avatars/150-26.jpg" alt="image"/>
                         </div>
                         <!--begin::Menu-->
@@ -192,7 +192,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5">
                                     <a href="{{url('Setting')}}" class="menu-link px-5">
-                                        <span class="menu-text">{{__('Setting')}}</span>
+                                        <span class="menu-text">{{trans('lang.profile')}}</span>
                                     </a>
                                 </div>
                                 <!--end::Menu item-->

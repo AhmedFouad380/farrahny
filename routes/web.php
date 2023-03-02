@@ -27,6 +27,8 @@ Route::get('/Admin/login', function () {
 });
 
 Route::post('Login', [\App\Http\Controllers\frontController::class, 'login']);
+Route::get('forget_password', [\App\Http\Controllers\frontController::class, 'forgetPassword'])->name('user.forget_password');
+Route::post('forget_password', [\App\Http\Controllers\frontController::class, 'forgetPasswordPost'])->name('user.forget_password.post');
 Route::get('logout', [\App\Http\Controllers\frontController::class, 'logout']);
 Route::post('LoginUser', [\App\Http\Controllers\frontController::class, 'LoginUser']);
 Route::post('registerUser', [\App\Http\Controllers\frontController::class, 'registerUser']);
@@ -54,6 +56,8 @@ Route::get('contact', function () {
 });
 
 Route::group(['middleware' => ['web']], function () {
+    Route::get('user/profile', [\App\Http\Controllers\frontController::class, 'profile'])->name('user.profile');
+    Route::post('user/profile/update', [\App\Http\Controllers\frontController::class, 'profilePost'])->name('profile.update');
     Route::get('cart', [\App\Http\Controllers\frontController::class, 'cart']);
     Route::post('cart/store', [\App\Http\Controllers\frontController::class, 'storeCart'])->name('cart.store');
     Route::get('add-cart', [\App\Http\Controllers\frontController::class, 'addCart']);

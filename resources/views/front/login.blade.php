@@ -33,7 +33,7 @@
                                     <input type="checkbox" class="text-capitalize">
                                     <span class="text-capitalize form-login-color">{{__('lang.remember me')}}</span>
                                 </div>
-                                <a href="#"
+                                <a href="{{route('user.forget_password')}}"
                                    class="text-capitalize form-login-color">{{__('lang.forget password ?')}}</a>
                             </div>
                             <a class="btn login-btn my-3 text-uppercase me-1"
@@ -41,22 +41,22 @@
                             <button type="submit"
                                     class="btn sign-btn my-3 text-uppercase me-1 ">{{__('lang.login')}}</button>
                             <div class="another-way-to-login">
-                                <div class="d-flex align-items-center">
-                                    <span class="or-line mt-4"></span>
-                                    <span class="text-uppercase span2 text-center d-block mt-4 px-2">or</span>
-                                    <span class="or-line mt-4"></span>
-                                </div>
+{{--                                <div class="d-flex align-items-center">--}}
+{{--                                    <span class="or-line mt-4"></span>--}}
+{{--                                    <span class="text-uppercase span2 text-center d-block mt-4 px-2">or</span>--}}
+{{--                                    <span class="or-line mt-4"></span>--}}
+{{--                                </div>--}}
 
-                                <div class="d-flex flex-coulmn justify-content-center">
-                                    <a href="#" class="border-link text-center me-3 mt-3">
-                                        <img src="{{asset('website/assets/img/Group 17800.png')}}" alt="" class="w-75">
-                                    </a>
-                                    <a href="#" class="border-link2 mt-3">
-                                        <img
-                                            src="{{asset('website/assets/img/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png')}}"
-                                            alt="" class="w-100">
-                                    </a>
-                                </div>
+{{--                                <div class="d-flex flex-coulmn justify-content-center">--}}
+{{--                                    <a href="#" class="border-link text-center me-3 mt-3">--}}
+{{--                                        <img src="{{asset('website/assets/img/Group 17800.png')}}" alt="" class="w-75">--}}
+{{--                                    </a>--}}
+{{--                                    <a href="#" class="border-link2 mt-3">--}}
+{{--                                        <img--}}
+{{--                                            src="{{asset('website/assets/img/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png')}}"--}}
+{{--                                            alt="" class="w-100">--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
                             </div>
                         </form>
                     </div>

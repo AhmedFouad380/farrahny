@@ -103,6 +103,8 @@
                                 <li><a class="dropdown-item text-capitalize"
                                        href="{{route('my_orders')}}">{{__('lang.my_orders')}}</a></li>
                                 <li><a class="dropdown-item text-capitalize"
+                                       href="{{route('user.profile')}}">{{__('lang.profile')}}</a></li>
+                                <li><a class="dropdown-item text-capitalize"
                                        href="{{url('logout')}}">{{__('lang.Logout')}}</a></li>
                             </ul>
                         </div>
@@ -125,7 +127,8 @@
                                     <i class="fa-solid fa-heart icon-first-nav"></i>
                                     @if(\App\Models\Favorite::where('user_id',Auth::guard('web')->id())->count() > 0)
                                         <span
-                                          id="CountFavorite"  class="counter">{{\App\Models\Favorite::where('user_id',Auth::guard('web')->id())->count()}}</span>
+                                            id="CountFavorite"
+                                            class="counter">{{\App\Models\Favorite::where('user_id',Auth::guard('web')->id())->count()}}</span>
                                     @endif
                                 </a>
                             </div>
@@ -245,7 +248,8 @@
                 <div class="m-top-sm">
                     <h5 class=" border-h text-break text-uppercase">{{__('lang.Events')}} </h5>
                     @foreach(\App\Models\Event::where('is_active','active')->limit(5)->get() as $event)
-                    <a href="{{url('event',$event->title)}}" class=" footer-text d-block text-break">{{$event->title}}</a>
+                        <a href="{{url('event',$event->title)}}"
+                           class=" footer-text d-block text-break">{{$event->title}}</a>
                     @endforeach
                 </div>
             </div>
@@ -253,7 +257,8 @@
                 <div class="m-top-sm">
                     <h5 class=" border-h text-break text-uppercase">{{__('lang.Categories')}}</h5>
                     @foreach(\App\Models\Category::where('is_active','active')->limit(5)->get() as $event)
-                        <a href="{{url('category',$event->title)}}" class=" footer-text d-block text-break">{{$event->title}}</a>
+                        <a href="{{url('category',$event->title)}}"
+                           class=" footer-text d-block text-break">{{$event->title}}</a>
                     @endforeach
                 </div>
             </div>
@@ -261,7 +266,8 @@
                 <div class="m-top-sm">
                     <h5 class=" border-h text-uppercase">{{__('lang.Pages')}}</h5>
                     @foreach(\App\Models\Page::where('place','!=','header')->limit(5)->get() as $event)
-                        <a href="{{url('event',$event->title)}}" class=" footer-text d-block text-break">{{$event->title}}</a>
+                        <a href="{{url('Page',$event->title)}}"
+                           class=" footer-text d-block text-break">{{$event->title}}</a>
                     @endforeach
                 </div>
             </div>

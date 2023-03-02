@@ -1,6 +1,11 @@
 <?php
 
 return [
+    "sent_reset_password_email" => "We have emailed your password reset link!",
+    "update" => "update",
+
+    'forget_password' => 'Forget password',
+    'profile' => 'profile',
     'choose_subscription' => 'choose subscription',
     'choose_provider' => 'choose provider',
     'provider_subscriptions' => 'Provider subscriptions',

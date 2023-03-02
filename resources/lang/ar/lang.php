@@ -1,6 +1,11 @@
 <?php
 
 return [
+    "update" => "تحديث",
+    "sent_reset_password_email" => "لقد أرسلنا عبر البريد الإلكتروني رابط إعادة تعيين كلمة المرور الخاصة بك!",
+    'forget_password' => 'نسيت كلمة المرور',
+    'request_change_password' => 'طلب كلمة مرور جديدة',
+    'profile' => 'الصفحة الشخصية',
     'finished' => 'اشتراك منتهي',
     'working' => 'اشتراك جاري',
     'choose_subscription' => 'اختر الاشتراك',
@@ -652,7 +657,7 @@ return [
     'see more' => 'المزيد',
     'more' => 'المزيد',
     'sponsored' => 'ممول',
-    'login' => 'تسجيل دخول ',
+    'login' => 'تسجيل الدخول ',
     'become a provider' => 'سجل كمقدم خدمة',
     'our events' => 'المناسبات',
     'recommended for you' => 'موصى به لك',
