@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\Order;
 use App\Models\Provider;
+use App\Models\ProviderSubscription;
 use App\Models\Service;
 use App\Models\Subscription;
 
@@ -14,10 +15,10 @@ class HomeController extends Controller
 
     public function index()
     {
-        $count['orders'] = Order::get()->count();
-        $count['services'] = Service::get()->count();
-        $count['events'] = Event::get()->count();
-        $count['providers'] = Provider::get()->count();
+        $count['completed_orders'] = Order::where('status','completed')->where('provider_id',Auth::guard('provider_id')->id())->count();
+        $count['uncompleted_orders'] = Order::where('status','!=','completed')->where('provider_id',Auth::guard('provider_id')->id())->count();
+        $count['services'] = Service::where('provider_id',Auth::guard('provider_id')->id())->count();
+        $count['subscription'] = ProviderSubscription::where('provider_id',Auth::guard('provider_id')->id())->count();
 
         return view('admin.index_provider',compact('count'));
     }

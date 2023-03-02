@@ -109,23 +109,23 @@
         </div>
         <div class="container">
             <div class="row m-0 p-0">
-                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper allSwiper">
+                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper roomsSwiper">
                     <div class="swiper-wrapper">
-                        @foreach($data->images as $Image)
-                            <div class="swiper-slide parent-swiper-slide">
-                                <img src="{{$Image->image}}"/>
+                        @foreach($data->images as $key => $Image)
+                            <div class="swiper-slide @if($key<2)  parent-swiper-slide  @endif"  @if($key== 0)  class="h-100" @endif>
+                                <img src="{{$Image->image}}" />
                             </div>
                         @endforeach
+
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </div>
-                <div thumbsSlider="" class="swiper myAllSwiper">
-                    <div class="swiper-wrapper">
-                        @foreach($data->images as $Image)
-
-                            <div class="swiper-slide child-swiper-slide">
-                                <img src="{{$Image->image}}"/>
+                <div thumbsSlider="" class="swiper myRoomsSwiper">
+                    <div class="swiper-wrapper ">
+                        @foreach($data->images as $key => $Image)
+                            <div class="swiper-slide  @if($key<2)  child-swiper-slide  @endif">
+                                <img src="{{$Image->image}}" class="swiper-height"/>
                             </div>
                         @endforeach
                     </div>
@@ -307,7 +307,7 @@
     <script src="https://cdn.jsdelivr.net/gh/CDNSFree2/Plyr/plyr.js"></script>
     <script>
         var swiper = new Swiper(".myAllSwiper", {
-            speed: 1500,
+            speed: 2500,
             spaceBetween: 10,
             slidesPerView: 4,
             freeMode: true,
@@ -315,6 +315,33 @@
             autoplay: {
                 delay: 1000,
                 disableOnInteraction: false,
+            },
+        });
+
+
+        var swiper = new Swiper(".myRoomsSwiper", {
+            speed: 2500,
+            spaceBetween: 10,
+            slidesPerView: 4,
+            freeMode: true,
+            watchSlidesProgress: true,
+            autoplay: {
+                delay: 1000,
+
+            },
+        });
+        var swiper2 = new Swiper(".roomsSwiper", {
+            spaceBetween: 10,
+            autoplay: {
+                delay: 1000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            thumbs: {
+                swiper: swiper,
             },
         });
     </script>

@@ -20,13 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b423340-8312-472b-82c9-2d81f359c609" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Provider/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/ProviderSubscription.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2023_03_01_181254_create_provider_subscriptions_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/index_provider.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/pricing/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Provider/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Provider/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/custom/widgets.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/custom/widgets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/widgets.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/widgets.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/website/assets/css/style En.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/website/assets/css/style En.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/website/assets/css/styleAR.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/website/assets/css/styleAR.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/index_provider.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/index_provider.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/service.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,6 +242,7 @@
       <workItem from="1677607831685" duration="525000" />
       <workItem from="1677608880205" duration="7476000" />
       <workItem from="1677688137993" duration="1302000" />
+      <workItem from="1677751598343" duration="1045000" />
     </task>
     <servers />
   </component>
@@ -286,6 +292,11 @@
           <url>file://$PROJECT_DIR$/resources/views/front/Providers.blade.php</url>
           <line>92</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/admin/index.blade.php</url>
+          <line>243</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

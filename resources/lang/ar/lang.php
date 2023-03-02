@@ -666,5 +666,12 @@ return [
     'order-details' => 'التفاصيل',
     'Subscribe Description' => 'اشترك في النشرة الإخبارية لدينا ، حتى تكون أول من يعرف العروض والعروض الترويجية الجديدة.',
     'SUBSCRIBE' => 'اشترك',
+    'Subscriptions' => 'الاشتراكات',
+    'RegisterCount'=>'عدد التسجيلات الجديده',
+    'Completed_orders'=>'الطلبات المكتملة',
+    'uncompleted_orders'=>'الطلبات الغير مكتملة',
+
+    'incomeYear'=>'اجمالي دخل السنة الحالي',
+    'incomeMonth'=>'اجمالي دخل الشهر الحالي',
 
 ];

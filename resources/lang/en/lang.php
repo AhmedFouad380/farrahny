@@ -670,5 +670,10 @@ return [
     'order-details' => 'Details',
     'Subscribe Description' => 'Subscribe to our newsletter, so that you can be the first to know about new offers and promotions',
     'SUBSCRIBE' => 'SUBSCRIBE',
-
+    'Subscriptions' => 'Subscriptions',
+    'RegisterCount'=>'New Registration Count',
+    'Completed_orders'=>'Completed Orders',
+    'uncompleted_orders'=>'not completed Orders',
+    'incomeYear'=>'Total Income On Current Year',
+    'incomeMonth'=>'Total Income On Current Month',
 ];

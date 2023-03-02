@@ -20,5 +20,14 @@ class HomeController extends Controller
 
         return view('admin.index',compact('count'));
     }
+    public function indexProvider()
+    {
+        $count['orders'] = Order::get()->count();
+        $count['services'] = Service::get()->count();
+        $count['events'] = Event::get()->count();
+        $count['providers'] = Provider::get()->count();
+
+        return view('admin.index',compact('count'));
+    }
 
 }
