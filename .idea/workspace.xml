@@ -19,7 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33ef5b4a-8ff8-4e9f-988a-eae388d73f55" name="Default Changelist" comment="">
+    <list default="true" id="1b423340-8312-472b-82c9-2d81f359c609" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Provider/HomeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/ProviderSubscription.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2023_03_01_181254_create_provider_subscriptions_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/index_provider.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/pricing/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" afterDir="false" />
     </list>
@@ -172,16 +177,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/pricing" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\my projects\farrahny\resources\views\admin\pricing" />
+      <recent name="D:\projects\my projects\farrahny\resources\views\admin" />
+      <recent name="D:\projects\my projects\farrahny\app\Http\Controllers\Provider" />
       <recent name="D:\projects\my projects\farrahny\app\Http\Controllers\Admin" />
       <recent name="C:\laravel\farrahny\resources\views\front" />
-      <recent name="C:\laravel\farrahny\public\website\assets\css" />
-      <recent name="C:\laravel\farrahny\resources\views\admin" />
-      <recent name="C:\laravel\Nebras\resources\views\admin" />
     </key>
   </component>
   <component name="RunManager">

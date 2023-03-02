@@ -61,4 +61,14 @@ class Provider extends Authenticatable
     {
         return $this->HasMany(Service::class, 'provider_id');
     }
+
+    public function subscription()
+    {
+        return $this->belongsTo(Subscription::class, 'subscription_id');
+    }
+
+    public function current_subscription()
+    {
+        return $this->belongsTo(ProviderSubscription::class, 'current_provider_subscription_id');
+    }
 }

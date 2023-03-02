@@ -170,7 +170,6 @@ Route::group(['middleware' => ['admin']], function () {
     });
 
 
-
     Route::get('Messages_setting', [\App\Http\Controllers\Admin\MessagesController::class, 'index']);
     Route::get('Messages_datatable', [\App\Http\Controllers\Admin\MessagesController::class, 'datatable'])->name('Messages.datatable.data');
     Route::get('delete-Messages', [\App\Http\Controllers\Admin\MessagesController::class, 'destroy']);
@@ -201,9 +200,10 @@ Route::group(['middleware' => ['admin']], function () {
 });
 
 Route::group(['middleware' => ['Provider']], function () {
-    Route::get('/ProviderDashboard', function () {
-        return view('admin.index');
-    });
+
+    Route::get('ProviderDashboard', [\App\Http\Controllers\Provider\HomeController::class, 'index'])->name('ProviderDashboard');
+    Route::get('provider/subscription/renew', [\App\Http\Controllers\Provider\HomeController::class, 'renewSubscription'])->name('provider.subscription.renew');
+
 
     Route::get('Orders', [\App\Http\Controllers\Admin\OrderController::class, 'index']);
     Route::get('Restaurants-Orders/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'Restaurants_Orders']);

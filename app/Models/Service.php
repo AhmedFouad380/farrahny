@@ -11,7 +11,7 @@ class Service extends Model
 {
     use HasFactory;
 
-
+    protected $guarded = [];
     protected $appends = ['title','description','is_favorite'];
 
 
