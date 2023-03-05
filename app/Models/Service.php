@@ -61,17 +61,26 @@ class Service extends Model
 
     public function Event()
     {
-        return $this->belongsTo(Event::class, 'event_id');
+        return $this->belongsTo(Event::class, 'event_id')->withDefault([
+            'id'=>0,
+            'name'=>'',
+        ]);
     }
 
     public function Category()
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(Category::class, 'category_id')->withDefault([
+            'id'=>0,
+            'name'=>'',
+        ]);
     }
 
     public function Provider()
     {
-        return $this->belongsTo(Provider::class, 'provider_id');
+        return $this->belongsTo(Provider::class, 'provider_id')->withDefault([
+            'id'=>0,
+            'name'=>'',
+        ]);
     }
 
     public function images()
