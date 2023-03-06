@@ -28,7 +28,7 @@ License: For each use you must have a valid license purchased only from above li
     <meta property="og:url" content="https://keenthemes.com/metronic"/>
     <meta property="og:site_name" content="Keenthemes | Metronic"/>
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8"/>
-    <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.png')}}"/>
+    <link rel="shortcut icon" href="{{asset('website/assets/img/icon.jpeg')}}"/>
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700"/>
     <!--end::Fonts-->
@@ -65,7 +65,7 @@ License: For each use you must have a valid license purchased only from above li
                 <div class="aside-logo d-none d-lg-flex flex-column align-items-center flex-column-auto py-10"
                      id="kt_aside_logo">
                     <a href="{{url('/')}}">
-                        <img alt="Logo" src="{{asset('assets/media/logos/logo-demo7.svg')}}" class="h-35px"/>
+                        <img alt="Logo" src="{{asset('website/assets/img/icon.jpeg')}}" class="h-35px"/>
                     </a>
                 </div>
                 <!--end::Logo-->
@@ -747,8 +747,8 @@ License: For each use you must have a valid license purchased only from above li
                     <!--begin::Copyright-->
                     <div class="text-dark order-2 order-md-1">
                         <span class="text-gray-400 fw-bold me-1">Created by</span>
-                        <a href="https://corebugs.com" target="_blank"
-                           class="text-muted text-hover-primary fw-bold me-2 fs-6">Corebugs</a>
+                        <a href="http://farrahny.net/" target="_blank"
+                           class="text-muted text-hover-primary fw-bold me-2 fs-6">Farrahny</a>
                     </div>
                     <!--end::Copyright-->
                     <!--begin::Menu-->

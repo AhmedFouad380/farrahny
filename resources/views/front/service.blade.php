@@ -320,20 +320,21 @@
 
 
         var swiper = new Swiper(".myRoomsSwiper", {
-            speed: 2500,
+            speed: 1500,
             spaceBetween: 10,
             slidesPerView: 4,
             freeMode: true,
             watchSlidesProgress: true,
             autoplay: {
-                delay: 1000,
+                delay: 2000,
 
             },
         });
         var swiper2 = new Swiper(".roomsSwiper", {
+            speed: 1500,
             spaceBetween: 10,
             autoplay: {
-                delay: 1000,
+                delay: 2000,
                 disableOnInteraction: false,
             },
             navigation: {

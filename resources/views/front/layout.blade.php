@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="{{asset('website/assets/img/icon.jpeg')}}">
+
     <link
         href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Itim&family=Poppins:wght@300&family=Source+Sans+Pro&display=swap"
         rel="stylesheet">
@@ -34,7 +36,11 @@
             <div class=" row nav-logo">
                 <div class="col-md-12 col-lg-6 col-12 d-flex align-items-center">
                     <a href="{{url('/')}}" class="navbar-brand d-block">
+                        @if(Session('lang')=='en')
                         <img src="{{asset('website/assets/img/Farrahny logo English type.png')}}" alt="">
+                        @else
+                            <img src="{{asset('website/assets/img/arabic_logo.jpeg')}}"  width="150px" alt="">
+                        @endif
                     </a>
                     <div class="d-flex ms-auto">
                         <form class="d-flex mobile-none" method="get" action="{{url('search')}}">
@@ -286,7 +292,7 @@
         </div>
         <div class="row mt-5">
             <div class="col-md-6 col-sm-6 col-lg-6">
-                <p class="text-capitalize fw-bolder">&copy; 2023 <span class="text-uppercase">farahny</span>. all rights
+                <p class="text-capitalize fw-bolder">&copy; 2023 <span class="text-uppercase">Farrahny</span>. all rights
                     reserved</p>
             </div>
             <div class="col-md-6 col-sm-6 col-lg-6">
