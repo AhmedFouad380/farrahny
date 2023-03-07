@@ -19,14 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b423340-8312-472b-82c9-2d81f359c609" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/website/assets/css/style En.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/website/assets/css/style En.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/website/assets/css/styleAR.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/website/assets/css/styleAR.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/service.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="1b423340-8312-472b-82c9-2d81f359c609" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -238,7 +231,7 @@
       <workItem from="1677688137993" duration="1302000" />
       <workItem from="1677751598343" duration="1045000" />
       <workItem from="1678052044909" duration="906000" />
-      <workItem from="1678061128674" duration="1271000" />
+      <workItem from="1678061128674" duration="1403000" />
     </task>
     <servers />
   </component>
