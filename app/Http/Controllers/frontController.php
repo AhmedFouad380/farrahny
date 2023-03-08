@@ -23,6 +23,7 @@ use App\Models\Page;
 use App\Models\PasswordReset;
 use App\Models\Product;
 use App\Models\Provider;
+use App\Models\Region;
 use App\Models\Service;
 use App\Models\ServiceRate;
 use App\Models\Setting;
@@ -34,10 +35,43 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Laravel\Socialite\Facades\Socialite;
 use Session;
 
 class frontController extends Controller
 {
+
+    public function facebookRedirect()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function loginWithFacebook()
+    {
+        try {
+
+            $user = Socialite::driver('facebook')->user();
+            $isUser = User::where('fb_id', $user->id)->first();
+
+            if ($isUser) {
+                Auth::login($isUser);
+                return redirect('/dashboard');
+            } else {
+                $createUser = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'fb_id' => $user->id,
+                    'password' => encrypt('admin@123')
+                ]);
+
+                Auth::login($createUser);
+                return redirect('/');
+            }
+
+        } catch (Exception $exception) {
+            dd($exception->getMessage());
+        }
+    }
 
     public function home()
     {
@@ -345,7 +379,7 @@ class frontController extends Controller
 
     public function Page($id)
     {
-        $data = Page::where('en_title', $id)->orWhere('ar_title',$id)->firstOrFail();
+        $data = Page::where('en_title', $id)->orWhere('ar_title', $id)->firstOrFail();
         return view('front.about', compact('data'));
     }
 
@@ -653,6 +687,13 @@ class frontController extends Controller
         $data->save();
 
         return back()->with('message', 'success');
+    }
+
+
+    public function getRegion($id)
+    {
+        $data = Region::where('city_id', $id)->get();
+        return view('front.provider.regions', compact('data'));
     }
 
 }

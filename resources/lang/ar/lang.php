@@ -1,6 +1,10 @@
 <?php
 
 return [
+    "no_regions" => "لا يوجد مناطق",
+    "choose_region" => "اختر المنطقة",
+    "choose_city" => "اختر المدينة",
+    "regions" => "المناطق",
     "update" => "تحديث",
     "sent_reset_password_email" => "لقد أرسلنا عبر البريد الإلكتروني رابط إعادة تعيين كلمة المرور الخاصة بك!",
     'forget_password' => 'نسيت كلمة المرور',

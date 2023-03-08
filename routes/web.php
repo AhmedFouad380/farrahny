@@ -15,6 +15,7 @@ use App\Http\Controllers\Provider\AuthProviderController;
 */
 
 Route::post('store_contact', [\App\Http\Controllers\frontController::class, 'store_contact']);
+Route::get('get-regions/{city_id}', [\App\Http\Controllers\frontController::class, 'getRegion']);
 
 
 Route::get('/', function () {
@@ -27,6 +28,10 @@ Route::get('/Admin/login', function () {
 });
 
 Route::post('Login', [\App\Http\Controllers\frontController::class, 'login']);
+
+Route::get('auth/facebook', [\App\Http\Controllers\frontController::class, 'facebookRedirect']);
+Route::get('auth/facebook/callback', [\App\Http\Controllers\frontController::class, 'loginWithFacebook']);
+
 Route::get('forget_password', [\App\Http\Controllers\frontController::class, 'forgetPassword'])->name('user.forget_password');
 Route::post('forget_password', [\App\Http\Controllers\frontController::class, 'forgetPasswordPost'])->name('user.forget_password.post');
 Route::get('logout', [\App\Http\Controllers\frontController::class, 'logout']);
@@ -36,6 +41,7 @@ Route::post('registerUser', [\App\Http\Controllers\frontController::class, 'regi
 //provider
 Route::get('provider/register', [AuthProviderController::class, 'registerPage'])->name('provider.register');
 Route::post('provider/register/store', [AuthProviderController::class, 'register'])->name('provider.register.store');
+//Route::get('provider/register/verify_email', [AuthProviderController::class, 'verifyEmail'])->name('provider.register.verify_email');
 
 
 Route::get('event/{title}', [\App\Http\Controllers\frontController::class, 'event']);
@@ -152,6 +158,25 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/add-button-Slider', function () {
         return view('admin/Slider/button');
     });
+
+    Route::get('cities_setting', [\App\Http\Controllers\Admin\CitiesController::class, 'index']);
+    Route::get('cities_datatable', [\App\Http\Controllers\Admin\CitiesController::class, 'datatable'])->name('cities.datatable.data');
+    Route::get('delete-cities', [\App\Http\Controllers\Admin\CitiesController::class, 'destroy']);
+    Route::post('store-cities', [\App\Http\Controllers\Admin\CitiesController::class, 'store']);
+    Route::get('cities-edit/{id}', [\App\Http\Controllers\Admin\CitiesController::class, 'edit']);
+    Route::post('update-cities', [\App\Http\Controllers\Admin\CitiesController::class, 'update']);
+    Route::get('/add-button-cities', function () {
+        return view('admin/cities/button');
+    });
+
+    Route::get('regions_setting/{city_id}', [\App\Http\Controllers\Admin\RegionsController::class, 'index']);
+    Route::get('regions_datatable', [\App\Http\Controllers\Admin\RegionsController::class, 'datatable'])->name('regions.datatable.data');
+    Route::get('delete-regions', [\App\Http\Controllers\Admin\RegionsController::class, 'destroy']);
+    Route::post('store-regions', [\App\Http\Controllers\Admin\RegionsController::class, 'store']);
+    Route::get('regions-edit/{id}', [\App\Http\Controllers\Admin\RegionsController::class, 'edit']);
+    Route::post('update-regions', [\App\Http\Controllers\Admin\RegionsController::class, 'update']);
+    Route::get('/add-button-regions/{city_id}', [\App\Http\Controllers\Admin\RegionsController::class, 'buttons']);
+
 
     Route::get('Pages_setting', [\App\Http\Controllers\Admin\PageController::class, 'index']);
     Route::get('Page_datatable', [\App\Http\Controllers\Admin\PageController::class, 'datatable'])->name('Page.datatable.data');
