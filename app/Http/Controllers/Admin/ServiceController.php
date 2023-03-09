@@ -90,10 +90,8 @@ class ServiceController extends Controller
             'ar_title' => 'required|string',
             'en_title' => 'required|string',
             'is_active' => 'nullable|string',
-
+            'video_type' => 'required|in:url,file',
         ]);
-
-
         $user = new Service();
         $user->ar_title = $request->ar_title;
         $user->en_title = $request->en_title;
@@ -101,7 +99,12 @@ class ServiceController extends Controller
         $user->en_description = $request->en_description;
         $user->deposit = $request->deposit;
         $user->price = $request->price;
+        //Begin video type
+        $user->video_type = $request->video_type;
         $user->video = $request->video;
+        $user->video_file = $request->video_file;
+        //End video type
+
         $user->category_id = $request->category_id;
         $user->is_active = $request->is_active;
         if ($request->is_sponsored) {
@@ -163,6 +166,7 @@ class ServiceController extends Controller
             'ar_title' => 'required|string',
             'en_title' => 'required|string',
             'is_active' => 'nullable|string',
+            'video_type' => 'required|in:url,file',
 
         ]);
 
@@ -174,7 +178,13 @@ class ServiceController extends Controller
         $user->en_description = $request->en_description;
         $user->deposit = $request->deposit;
         $user->price = $request->price;
+
+        //Begin video type
+        $user->video_type = $request->video_type;
         $user->video = $request->video;
+        $user->video_file = $request->video_file;
+        //End video type
+
         $user->category_id = $request->category_id;
         $user->is_active = $request->is_active;
         if ($request->is_sponsored) {

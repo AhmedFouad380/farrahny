@@ -102,7 +102,7 @@
                             <button class="btn btn-lang dropdown-toggle" type="button" id="dropdownMenuButton1"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                <span class="user-img">
-                                  <img src="{{asset('website/assets/img/Max-R_Headshot (1).jpg')}}" class="user">
+                                  <img src="{{auth('web')->user()->image}}" class="user">
                                </span>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -363,7 +363,7 @@ $lng = '46.709548950195305';
 <script src="{{asset('website/assets/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('website/assets/js/owl.carousel.min.js')}}"></script>
 <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
-<script src="{{asset('website/assets/js/script.js')}}"></script>
+{{--<script src="{{asset('website/assets/js/script.js')}}"></script>--}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function myMap() {

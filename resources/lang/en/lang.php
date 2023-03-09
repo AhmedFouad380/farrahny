@@ -1,13 +1,16 @@
 <?php
 
 return [
+    "change_image" => "change image",
+    "video_url" => "video url",
+    "video_file" => "video file",
+    "video_type" => "video type",
     "no_regions" => "no_regions",
     "choose_region" => "choose_region",
     "choose_city" => "choose city",
     "sent_reset_password_email" => "We have emailed your password reset link!",
     "regions" => "regions",
     "update" => "update",
-
     'forget_password' => 'Forget password',
     'profile' => 'profile',
     'choose_subscription' => 'choose subscription',

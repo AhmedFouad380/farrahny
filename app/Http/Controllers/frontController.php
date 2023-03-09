@@ -228,9 +228,19 @@ class frontController extends Controller
 
     public function service($title)
     {
+        $reviews = [];
         $data = Service::findOrFail($title);
-
-        return view('front.service', compact('data'));
+        if (count($data->Reviews) > 0) {
+            foreach ($data->Reviews as $key => $row) {
+                $reviews[$key]['id'] = $row->id;
+                $reviews[$key]['name'] = $row->user->name;
+                $reviews[$key]['job'] = 'job';
+                $reviews[$key]['img'] = $row->user->image;
+                $reviews[$key]['text'] = 'text';
+            }
+        }
+        $reviews = json_encode($reviews);
+        return view('front.service', compact('data', 'reviews'));
     }
 
     public function product_model(Request $request)
@@ -530,10 +540,17 @@ class frontController extends Controller
     public function profilePost(Request $request)
     {
         $this->validate(request(), [
+            'image' => 'nullable|image|mimes:png,jpg,jpeg,svg,webp',
             'name' => 'required',
             'password' => 'nullable|confirmed',
         ]);
         $data['name'] = $request->name;
+        if ($request->image) {
+            if (is_file($request->image)) {
+                $imageFields = upload($request->image, 'users');
+                $data['image'] = $imageFields;
+            }
+        }
         if ($request->password) {
             $data['password'] = Hash::make($request->password);
         }

@@ -90,9 +90,67 @@
                                        placeholder="" value="" required/>
                                 <!--end::Input-->
                             </div>
-                            <div class="fv-row mb-7">
+
+{{--                            //Begin video type--}}
+                            <div class="fv-row mb-12">
+                                <label class="required fw-bold fs-6 mb-2">{{__('lang.video_type')}}</label>
+                                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 g-9"
+                                     data-kt-buttons="true"
+                                     data-kt-buttons-target="[data-kt-button='true']">
+
+                                    <!--begin::Col-->
+                                    <div class="col-md-6" style="width: 229px;">
+                                        <!--begin::Option-->
+                                        <label
+                                            class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6 active"
+                                            data-kt-button="true">
+                                            <!--begin::Radio-->
+                                            <span
+                                                class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
+                                                <input class="form-check-input" type="radio" name="video_type" id="video_type_url"
+                                                       checked="checked"
+                                                       value="url">
+                                            </span>
+                                            <!--end::Radio-->
+                                            <!--begin::Info-->
+                                            <span class="ms-5">
+                                                <span
+                                                    class="fs-4 fw-bolder text-gray-800 d-block">{{__('lang.url')}}</span>
+                                            </span>
+                                            <!--end::Info-->
+                                        </label>
+                                        <!--end::Option-->
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-md-6" style="width: 229px;">
+                                        <!--begin::Option-->
+                                        <label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6
+                                            " style="width: 229px;"
+                                               data-kt-button="true">
+                                            <!--begin::Radio-->
+                                            <span
+                                                class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
+                                                <input class="form-check-input" type="radio" name="video_type" id="video_type_file"
+
+                                                       value="file">
+                                            </span>
+                                            <!--end::Radio-->
+                                            <!--begin::Info-->
+                                            <span class="ms-5">
+                                                <span
+                                                    class="fs-4 fw-bolder text-gray-800 d-block">{{__('lang.file')}}</span>
+                                            </span>
+                                            <!--end::Info-->
+                                        </label>
+                                        <!--end::Option-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                            </div>
+                            <div class="fv-row mb-7" id="video_url_container">
                                 <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">{{__('lang.video')}}</label>
+                                <label class="required fw-bold fs-6 mb-2">{{__('lang.video_url')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="url" name="video"
@@ -100,6 +158,18 @@
                                        placeholder="" value="{{old('video')}}"/>
                                 <!--end::Input-->
                             </div>
+                            <div class="fv-row mb-7" id="video_file_container" style="display: none;">
+                                <!--begin::Label-->
+                                <label class="required fw-bold fs-6 mb-2">{{__('lang.video_file')}}</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="file" name="video_file" required
+                                       class="form-control form-control-solid mb-3 mb-lg-0"
+                                       placeholder="" value="{{old('video_file')}}"/>
+                                <!--end::Input-->
+                            </div>
+{{--                            //End video type--}}
+
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.deposit')}}</label>
@@ -126,15 +196,14 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <select name="event_id" id="event_id" class="form-control select2" required>
-                                    <option >{{__('lang.choose_event')}}</option>
+                                    <option>{{__('lang.choose_event')}}</option>
 
-                                @foreach(\App\Models\Event::all()  as $event)
+                                    @foreach(\App\Models\Event::all()  as $event)
                                         <option value="{{$event->id}}">{{$event->title}}</option>
                                     @endforeach
                                 </select>
                                 <!--end::Input-->
                             </div>
-
                             <div class="fv-row mb-7" id="category_cont" style="display: none;">
                                 <!--begin::Label-->
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.category')}}</label>
@@ -161,9 +230,6 @@
                             @else
                                 <input type="hidden" value="{{auth('provider')->user()->id}}" name="provider_id">
                             @endif
-                        <!--end::Input group--> <!--begin::Input group-->
-
-
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.ar_description')}}</label>
@@ -239,9 +305,6 @@
                                     </div>
                                 </div>
                         @endif
-                        <!--end::Input group-->
-
-
                         </div>
                         <!--end::Scroll-->
                         <!--begin::Actions-->
@@ -269,16 +332,9 @@
     <!--end::Modal - Add task-->
 </div>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-<script>
-
-
-</script>
 <script>
     $('.dropify').dropify();
-
 </script>
-
 <script type="text/javascript">
 
     $("#delete").on("click", function () {
@@ -330,6 +386,25 @@
 </script>
 
 <script>
+    $('input[id="video_type_file"]').click(function(){
+        if($(this).prop("checked") == true){
+            $('#video_url_container').hide();
+            $('#video_file_container').show();
+        }else if($(this).prop("checked") == false){
+            $('#video_url_container').show();
+            $('#video_file_container').hide();
+        }
+    });
+
+    $('input[id="video_type_url"]').click(function(){
+        if($(this).prop("checked") == true){
+            $('#video_url_container').show();
+            $('#video_file_container').hide();
+        }else if($(this).prop("checked") == false){
+            $('#video_url_container').hide();
+            $('#video_file_container').show();
+        }
+    });
     $('#phone').change(function () {
         var val = $(this).val();
 
