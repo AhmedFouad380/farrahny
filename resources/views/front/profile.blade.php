@@ -2,6 +2,57 @@
 
 @section('title',__('lang.profile'))
 
+@section('css')
+    <style>
+        .profile-pic {
+            color: transparent;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .profile-pic input {
+            display: none;
+        }
+
+        .profile-pic img {
+            position: absolute;
+            object-fit: cover;
+            width: 165px;
+            height: 165px;
+            box-shadow: 0 0 10px 0 rgba(255, 255, 255, .35);
+            border-radius: 100px;
+            z-index: 0;
+        }
+
+        .profile-pic .-label {
+            cursor: pointer;
+            height: 165px;
+            width: 165px;
+        }
+
+        .profile-pic:hover .-label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, .8);
+            z-index: 10000;
+            color: #fafafa;
+            transition: background-color 0.2s ease-in-out;
+            border-radius: 100px;
+            margin-bottom: 0;
+        }
+
+        .profile-pic span {
+            display: inline-flex;
+            padding: 0.2em;
+            height: 2em;
+        }
+    </style>
+    @endsection
 @section('content')
     <div class="carousel-line"></div>
     <!-- <<<<<< end nav bar >>>>>> -->
@@ -19,8 +70,18 @@
                             <h3>{{__('lang.profile')}}</h3>
 
                         </div>
-                        <form action="{{route('profile.update')}}" method="post" class="form-register">
+                        <form action="{{route('profile.update')}}" method="post" class="form-register" enctype="multipart/form-data">
                             @csrf
+                            <div class="profile-pic">
+                                <label class="-label" for="file">
+                                    <span class="glyphicon glyphicon-camera"></span>
+                                    <span>{{trans('lang.change_image')}}</span>
+                                </label>
+                                <input id="file" name="image" type="file" onchange="loadFile(event)"/>
+                                <img class="profile-user-img img-fluid img-circle"
+                                     src="{{old('image',$data->image )}}"
+                                     id="output" width="200"/>
+                            </div>
                             <div class="d-flex position-relative">
                                 <span class="sign-form d-block position-absolute">
                                     <i class="fa-solid fa-user"></i>
@@ -54,6 +115,14 @@
         </div>
     </div>
 
+@endsection
+@section('js')
+    <script>
+        var loadFile = function (event) {
+            var image = document.getElementById("output");
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
 @endsection
 
 

@@ -12,7 +12,7 @@ class Service extends Model
     use HasFactory;
 
     protected $guarded = [];
-    protected $appends = ['title','description','is_favorite'];
+    protected $appends = ['title', 'description', 'is_favorite'];
 
 
     public function getTitleAttribute()
@@ -34,7 +34,7 @@ class Service extends Model
 
     public function getIsFavoriteAttribute()
     {
-        if (Auth::guard('web')->check() && Favorite::where('user_id',Auth::guard('web')->id())->where('service_id',$this->id)->count() >0) {
+        if (Auth::guard('web')->check() && Favorite::where('user_id', Auth::guard('web')->id())->where('service_id', $this->id)->count() > 0) {
             return 1;
         } else {
             return 0;
@@ -67,27 +67,44 @@ class Service extends Model
         }
     }
 
+    public function getVideoFileAttribute($image)
+    {
+        if (!empty($image)) {
+            return asset('uploads/Service_videos') . '/' . $image;
+        }
+        return "";
+    }
+
+
+    public function setVideoFileAttribute($image)
+    {
+        if (is_file($image)) {
+            $imageFields = upload($image, 'Service_videos');
+            $this->attributes['video_file'] = $imageFields;
+        }
+    }
+
     public function Event()
     {
         return $this->belongsTo(Event::class, 'event_id')->withDefault([
-            'id'=>0,
-            'name'=>'',
+            'id' => 0,
+            'name' => '',
         ]);
     }
 
     public function Category()
     {
         return $this->belongsTo(Category::class, 'category_id')->withDefault([
-            'id'=>0,
-            'name'=>'',
+            'id' => 0,
+            'name' => '',
         ]);
     }
 
     public function Provider()
     {
         return $this->belongsTo(Provider::class, 'provider_id')->withDefault([
-            'id'=>0,
-            'name'=>'',
+            'id' => 0,
+            'name' => '',
         ]);
     }
 

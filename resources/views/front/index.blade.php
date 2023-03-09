@@ -104,8 +104,12 @@
                             <img src="{{$recommend->image}}" alt="">
                         </div>
                         <div class="reco-content">
-                            <p class="fs-p">{{$recommend->title}}</p>
-                            <span>{{$recommend->Category->title}}</span>
+                            <p class="fs-p">
+                                {{ Str::limit($recommend->title, 15) }}
+                                </p>
+                            <span>{
+                                {{ Str::limit($recommend->Category->title, 20) }}
+                            </span>
                         </div>
                     </div>
                     <div class="text-center order">

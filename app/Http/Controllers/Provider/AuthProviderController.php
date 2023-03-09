@@ -51,6 +51,8 @@ class AuthProviderController extends Controller
             'phone' => 'required|unique:providers,phone|min:8',
             'password' => 'required|confirmed',
             'address' => 'required|string|max:255',
+            'city_id' => 'required|exists:cities,id',
+            'region_id' => 'required|exists:regions,id',
             'lat' => 'required|string|max:255',
             'lng' => 'required|string|max:255',
         ]);
@@ -77,5 +79,9 @@ class AuthProviderController extends Controller
         return redirect('/')->with('message', trans('lang.data_added_s'));
     }
 
+//    public function verifyEmail()
+//    {
+//        return view('front.provider.verify_email');
+//    }
 
 }

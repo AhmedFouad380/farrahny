@@ -109,11 +109,13 @@
         </div>
         <div class="container">
             <div class="row m-0 p-0">
-                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper roomsSwiper">
+                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+                     class="swiper roomsSwiper">
                     <div class="swiper-wrapper">
                         @foreach($data->images as $key => $Image)
-                            <div class="swiper-slide @if($key<2)  parent-swiper-slide  @endif"  @if($key== 0)  class="h-100" @endif>
-                                <img src="{{$Image->image}}" />
+                            <div class="swiper-slide @if($key<2)  parent-swiper-slide  @endif"
+                                 @if($key== 0)  class="h-100" @endif>
+                                <img src="{{$Image->image}}"/>
                             </div>
                         @endforeach
 
@@ -149,7 +151,9 @@
         </div>
 
 
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/5oH9Nr3bKfw" title="YouTube video player"
+        <iframe width="100%" height="315" @if($data->video_type == 'url') src="{{$data->video}}" @else
+        src="{{$data->video_file}}"
+                @endif title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
@@ -167,76 +171,69 @@
         </div>
         <p class="gray mt-5"></p>
     </section>
-
-    <!-- reviews -->
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-12 col-lg-12 mb-5 over-xx" data-aos="fade-down">
-                <div class="m-auto w-50 text-center mt-4">
-                    <h2 class="events text-capitalize position-relative">{{__('lang.Reviews')}}</h2>
-                    <div class="events-line m-auto">
-                        <div class="dott"></div>
+    @if(count($data->Reviews) > 0)
+        <!-- reviews -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-12 mb-5 over-xx" data-aos="fade-down">
+                    <div class="m-auto w-50 text-center mt-4">
+                        <h2 class="events text-capitalize position-relative">{{__('lang.Reviews')}}</h2>
+                        <div class="events-line m-auto">
+                            <div class="dott"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <main class="main">
+        <main class="main">
+            <section class="containerr">
+                <article class="review">
+                    <div class="img-container">
+                        <img alt=""
+                             id="person-img"/>
+                    </div>
 
-        <section class="containerr">
-
-            <!-- <div class="title">
-              <h2>reviews</h2>
-              <div class="underline"></div>
-            </div> -->
-
-            <article class="review">
-                <div class="img-container">
-                    <img src="https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg" alt=""
-                         id="person-img"/>
-                </div>
-
-                <h4 id="author">sara jones</h4>
-                <p id="job">ux designer</p>
-                <div>
+                    <h4 id="author">sara jones</h4>
+                    <p id="job">ux designer</p>
+                    <div>
                     <span class="rating-item">
                         <i class="fa fa-star gold" aria-hidden="true"></i>
                     </span>
-                    <span class="rating-item">
+                        <span class="rating-item">
                         <i class="fa fa-star gold" aria-hidden="true"></i>
                     </span>
-                    <span class="rating-item">
+                        <span class="rating-item">
                         <i class="fa fa-star gold" aria-hidden="true"></i>
                     </span>
-                    <span class="rating-item">
+                        <span class="rating-item">
                         <i class="fa fa-star gold" aria-hidden="true"></i>
                     </span>
-                    <span class="rating-item">
-                    <i class="fa fa-star gold" aria-hidden="true"></i>
+                        <span class="rating-item">
+                    <i class="fa fa-star gold" aria-hidden="false"></i>
                     </span>
-                </div>
-                <p id="info">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-                    asperiores debitis incidunt, eius earum ipsam cupiditate libero?
-                    Iste, doloremque nihil?
-                </p>
+                    </div>
+                    <p id="info">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
+                        asperiores debitis incidunt, eius earum ipsam cupiditate libero?
+                        Iste, doloremque nihil?
+                    </p>
 
-                <!-- prev next buttons-->
-                <div class="button-container">
-                    <button class="prev-btn btttn">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="next-btn btttn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
+                    <!-- prev next buttons-->
+                    <div class="button-container">
+                        <button class="prev-btn btttn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="next-btn btttn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
 
-            </article>
+                </article>
 
-        </section>
-    </main>
-
+            </section>
+        </main>
+    @endif
 
     <div class="container-fluied reco-over over-xx bg-hhh" data-aos="fade-up-left">
         <div class="m-auto w-50 text-center mt-4">
@@ -252,12 +249,17 @@
                         <div class="carsouel-content">
                             <div class="bg-content">
                                 <div class="img-box-owl">
+                                    <a href="{{url('service',$Service->id)}}">
                                     <img src="{{$Service->image}}" alt="">
+                                    </a>
                                 </div>
                                 <div class="padding-p d-flex justify-content-between">
                                     <div>
-                                        <h6>{{$Service->title}}</h6>
-                                        <span class="gray-text">{{$Service->Provider->name}}</span>
+                                        <h6>    {{ Str::limit($Service->title, 15) }}
+                                            </h6>
+                                        <span class="gray-text">
+                                              {{ Str::limit($Service->Provider->name, 20) }}
+                                  </span>
                                     </div>
                                     <div class="">
                                         <i class="fa-solid fa-heart  addtowishlist " data-id="{{$Service->id}}"></i>
@@ -345,5 +347,125 @@
                 swiper: swiper,
             },
         });
+    </script>
+    <script>
+        // owlCarousel
+        $(document).ready(function () {
+            $(".owl-carousel").owlCarousel();
+        });
+
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true
+                },
+                600: {
+                    items: 3,
+                    nav: false
+                },
+                1000: {
+                    items: 4,
+                    nav: true,
+                    loop: false
+                }
+            }
+        });
+        //   nav bar menu mobile
+
+
+        $('.navbar-toggler').click(function () {
+            $('.nav-bar-2').addClass('nav-bar-mobile');
+
+        });
+
+        // animation laibirary
+
+        //   AOS.init();
+
+
+        // this is login
+
+
+        $('.login-form').click(function () {
+            $(".span-form").css({
+                "display": "block",
+                "background-color": "var(--color-o)",
+                "width": "0.8rem",
+                "height": "3.6rem"
+            });
+            $(".span-form2").css("display", "none");
+        });
+
+        $('.login-form2').click(function () {
+            $(".span-form2").css({
+                "display": "block",
+                "background-color": "var(--color-o)",
+                "width": "0.8rem",
+                "height": "3.6rem",
+                "position": "absolute"
+            });
+            $(".span-form").css("display", "none");
+        });
+
+
+        // reviews
+
+        // local reviews data
+        const reviews = {!! $reviews !!};
+
+        const img = document.getElementById("person-img");
+        const author = document.getElementById("author");
+        const job = document.getElementById("job");
+        const info = document.getElementById("info");
+
+        const prevBtn = document.querySelector(".prev-btn");
+        const nextBtn = document.querySelector(".next-btn");
+
+        let currentItem = 0;
+
+        // load initial item
+        window.addEventListener("DOMContentLoaded", () => {
+            const item = reviews[currentItem];
+            img.src = item.img;
+            author.textContent = item.name;
+            job.textContent = item.job;
+            info.textContent = item.text;
+        });
+
+        // show person based on item
+        function showPerson(person) {
+            const item = reviews[person];
+            img.src = item.img;
+            author.textContent = item.name;
+            job.textContent = item.job;
+            info.textContent = item.text;
+        }
+
+        // show next person
+        nextBtn.addEventListener("click", () => {
+            currentItem++;
+            if (currentItem > reviews.length - 1) {
+                currentItem = 0;
+            }
+            showPerson(currentItem);
+        });
+
+        // show prev person
+        prevBtn.addEventListener("click", () => {
+            currentItem--;
+            if (currentItem < 0) {
+                currentItem = reviews.length - 1;
+            }
+            showPerson(currentItem);
+        });
+
+
+        //   wall paper gallary
+
+
     </script>
 @endsection

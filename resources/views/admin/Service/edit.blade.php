@@ -66,61 +66,6 @@
                 <!--end::Logo-->
             </div>
             <!--end::Wrapper-->
-            <!--begin::Toolbar wrapper-->
-        {{--            <div class="d-flex flex-shrink-0">--}}
-        {{--                <!--begin::Invite user-->--}}
-        {{--                <div class="d-flex ms-3">--}}
-        {{--                    <a href="#" class="btn btn-flex flex-center bg-body btn-color-gray-700 btn-active-color-primary w-40px w-md-auto h-40px px-0 px-md-6" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">--}}
-        {{--                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->--}}
-        {{--                        <span class="svg-icon svg-icon-2 svg-icon-primary me-0 me-md-2">--}}
-        {{--											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">--}}
-        {{--												<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />--}}
-        {{--												<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />--}}
-        {{--											</svg>--}}
-        {{--										</span>--}}
-        {{--                        <!--end::Svg Icon-->--}}
-        {{--                        <span class="d-none d-md-inline">New Member</span>--}}
-        {{--                    </a>--}}
-        {{--                </div>--}}
-        {{--                <!--end::Invite user-->--}}
-        {{--                <!--begin::Create app-->--}}
-        {{--                <div class="d-flex ms-3">--}}
-        {{--                    <a href="#" class="btn btn-flex flex-center bg-body btn-color-gray-700 btn-active-color-primary w-40px w-md-auto h-40px px-0 px-md-6" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app" id="kt_toolbar_primary_button">--}}
-        {{--                        <!--begin::Svg Icon | path: icons/duotune/general/gen005.svg-->--}}
-        {{--                        <span class="svg-icon svg-icon-2 svg-icon-primary me-0 me-md-2">--}}
-        {{--											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">--}}
-        {{--												<path opacity="0.3" d="M19 22H5C4.4 22 4 21.6 4 21V3C4 2.4 4.4 2 5 2H14L20 8V21C20 21.6 19.6 22 19 22ZM12.5 18C12.5 17.4 12.6 17.5 12 17.5H8.5C7.9 17.5 8 17.4 8 18C8 18.6 7.9 18.5 8.5 18.5L12 18C12.6 18 12.5 18.6 12.5 18ZM16.5 13C16.5 12.4 16.6 12.5 16 12.5H8.5C7.9 12.5 8 12.4 8 13C8 13.6 7.9 13.5 8.5 13.5H15.5C16.1 13.5 16.5 13.6 16.5 13ZM12.5 8C12.5 7.4 12.6 7.5 12 7.5H8C7.4 7.5 7.5 7.4 7.5 8C7.5 8.6 7.4 8.5 8 8.5H12C12.6 8.5 12.5 8.6 12.5 8Z" fill="black" />--}}
-        {{--												<rect x="7" y="17" width="6" height="2" rx="1" fill="black" />--}}
-        {{--												<rect x="7" y="12" width="10" height="2" rx="1" fill="black" />--}}
-        {{--												<rect x="7" y="7" width="6" height="2" rx="1" fill="black" />--}}
-        {{--												<path d="M15 8H20L14 2V7C14 7.6 14.4 8 15 8Z" fill="black" />--}}
-        {{--											</svg>--}}
-        {{--										</span>--}}
-        {{--                        <!--end::Svg Icon-->--}}
-        {{--                        <span class="d-none d-md-inline">New App</span>--}}
-        {{--                    </a>--}}
-        {{--                </div>--}}
-        {{--                <!--end::Create app-->--}}
-        {{--                <!--begin::Chat-->--}}
-        {{--                <div class="d-flex align-items-center ms-3">--}}
-        {{--                    <!--begin::Menu wrapper-->--}}
-        {{--                    <div class="btn btn-icon btn-primary w-40px h-40px pulse pulse-white" id="kt_drawer_chat_toggle">--}}
-        {{--                        <!--begin::Svg Icon | path: icons/duotune/communication/com012.svg-->--}}
-        {{--                        <span class="svg-icon svg-icon-2">--}}
-        {{--											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">--}}
-        {{--												<path opacity="0.3" d="M20 3H4C2.89543 3 2 3.89543 2 5V16C2 17.1046 2.89543 18 4 18H4.5C5.05228 18 5.5 18.4477 5.5 19V21.5052C5.5 22.1441 6.21212 22.5253 6.74376 22.1708L11.4885 19.0077C12.4741 18.3506 13.6321 18 14.8167 18H20C21.1046 18 22 17.1046 22 16V5C22 3.89543 21.1046 3 20 3Z" fill="black" />--}}
-        {{--												<rect x="6" y="12" width="7" height="2" rx="1" fill="black" />--}}
-        {{--												<rect x="6" y="7" width="12" height="2" rx="1" fill="black" />--}}
-        {{--											</svg>--}}
-        {{--										</span>--}}
-        {{--                        <!--end::Svg Icon-->--}}
-        {{--                        <span class="pulse-ring"></span>--}}
-        {{--                    </div>--}}
-        {{--                    <!--end::Menu wrapper-->--}}
-        {{--                </div>--}}
-        {{--                <!--end::Chat-->--}}
-        {{--            </div>--}}
-        <!--end::Toolbar wrapper-->
         </div>
         <!--end::Container-->
     </div>
@@ -195,16 +140,99 @@
                                        placeholder="" value="{{$employee->en_title}}" required/>
                                 <!--end::Input-->
                             </div>
-                            <div class="fv-row mb-7">
+                            {{--                            //Begin video type--}}
+                            <div class="fv-row mb-12">
+                                <label class="required fw-bold fs-6 mb-2">{{__('lang.video_type')}}</label>
+                                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 g-9"
+                                     data-kt-buttons="true"
+                                     data-kt-buttons-target="[data-kt-button='true']">
+
+                                    <!--begin::Col-->
+                                    <div class="col-md-6" style="width: 229px;">
+                                        <!--begin::Option-->
+                                        <label
+                                            class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6
+                                            @if($employee->video_type == 'url') active @endif "
+                                            data-kt-button="true">
+                                            <!--begin::Radio-->
+                                            <span
+                                                class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
+                                                <input class="form-check-input" type="radio" name="video_type"
+                                                       id="video_type_url"
+
+                                                       @if($employee->video_type == 'url') checked="checked" @endif
+                                                       value="url">
+                                            </span>
+                                            <!--end::Radio-->
+                                            <!--begin::Info-->
+                                            <span class="ms-5">
+                                                <span
+                                                    class="fs-4 fw-bolder text-gray-800 d-block">{{__('lang.url')}}</span>
+                                            </span>
+                                            <!--end::Info-->
+                                        </label>
+                                        <!--end::Option-->
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-md-6" style="width: 229px;">
+                                        <!--begin::Option-->
+                                        <label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6
+                                        @if($employee->video_type == 'file') active @endif
+                                            " style="width: 229px;"
+                                               data-kt-button="true">
+                                            <!--begin::Radio-->
+                                            <span
+                                                class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
+                                                <input class="form-check-input" type="radio" name="video_type"
+                                                       id="video_type_file"
+                                                       @if($employee->video_type == 'file') checked="checked" @endif
+                                                       value="file">
+                                            </span>
+                                            <!--end::Radio-->
+                                            <!--begin::Info-->
+                                            <span class="ms-5">
+                                                <span
+                                                    class="fs-4 fw-bolder text-gray-800 d-block">{{__('lang.file')}}</span>
+                                            </span>
+                                            <!--end::Info-->
+                                        </label>
+                                        <!--end::Option-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                            </div>
+                            <div class="fv-row mb-7" id="video_url_container"
+                                 @if($employee->video_type != 'url') style="display: none;" @endif >
                                 <!--begin::Label-->
-                                <label class="required fw-bold fs-6 mb-2">{{__('lang.video')}}</label>
+                                <label class="required fw-bold fs-6 mb-2">{{__('lang.video_url')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="url" name="video"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                       placeholder="" value="{{$employee->video}}"/>
+                                       placeholder="" value="{{old('video',$employee->video)}}"/>
                                 <!--end::Input-->
                             </div>
+                            <div class="fv-row mb-7" id="video_file_container"
+                                 @if($employee->video_type != 'file') style="display: none;" @endif>
+                                <!--begin::Label-->
+                                @if($employee->video_file)
+                                    <video width="400" height="400" controls>
+                                        <source src="{{$employee->video_file}}" type="video/mp4">
+                                        <source src="{{$employee->video_file}}" type="video/ogg">
+                                        Your browser does not support HTML video.
+                                    </video>
+                                @endif
+                                <br>
+                                <label class="required fw-bold fs-6 mb-2">{{__('lang.video_file')}}</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="file" name="video_file"
+                                       class="form-control form-control-solid mb-3 mb-lg-0"
+                                       placeholder="" value="{{old('video_file')}}"/>
+                                <!--end::Input-->
+                            </div>
+                            {{--                            //End video type--}}
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.deposit')}}</label>
@@ -385,6 +413,25 @@
     <script>
         $('.dropify').dropify();
 
+        $('input[id="video_type_file"]').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#video_url_container').hide();
+                $('#video_file_container').show();
+            } else if ($(this).prop("checked") == false) {
+                $('#video_url_container').show();
+                $('#video_file_container').hide();
+            }
+        });
+
+        $('input[id="video_type_url"]').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#video_url_container').show();
+                $('#video_file_container').hide();
+            } else if ($(this).prop("checked") == false) {
+                $('#video_url_container').hide();
+                $('#video_file_container').show();
+            }
+        });
     </script>
     <script>
         $('#phone').change(function () {

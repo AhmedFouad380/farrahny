@@ -1,6 +1,16 @@
 <?php
 
 return [
+    "change_image" => "تغيير الصورة",
+
+    "video_url" => "رابط الفيديو",
+    "video_file" => "ملف الفيديو",
+    "video_type" => "نوع الفيديو",
+
+    "no_regions" => "لا يوجد مناطق",
+    "choose_region" => "اختر المنطقة",
+    "choose_city" => "اختر المدينة",
+    "regions" => "المناطق",
     "update" => "تحديث",
     "sent_reset_password_email" => "لقد أرسلنا عبر البريد الإلكتروني رابط إعادة تعيين كلمة المرور الخاصة بك!",
     'forget_password' => 'نسيت كلمة المرور',
@@ -678,11 +688,11 @@ return [
     'Subscribe Description' => 'اشترك في النشرة الإخبارية لدينا ، حتى تكون أول من يعرف العروض والعروض الترويجية الجديدة.',
     'SUBSCRIBE' => 'اشترك',
     'Subscriptions' => 'الاشتراكات',
-    'RegisterCount'=>'عدد التسجيلات الجديده',
-    'Completed_orders'=>'الطلبات المكتملة',
-    'uncompleted_orders'=>'الطلبات الغير مكتملة',
+    'RegisterCount' => 'عدد التسجيلات الجديده',
+    'Completed_orders' => 'الطلبات المكتملة',
+    'uncompleted_orders' => 'الطلبات الغير مكتملة',
 
-    'incomeYear'=>'اجمالي دخل السنة الحالي',
-    'incomeMonth'=>'اجمالي دخل الشهر الحالي',
+    'incomeYear' => 'اجمالي دخل السنة الحالي',
+    'incomeMonth' => 'اجمالي دخل الشهر الحالي',
 
 ];
