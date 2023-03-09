@@ -156,7 +156,7 @@ License: For each use you must have a valid license purchased only from above li
                         <div class="cursor-pointer symbol symbol-40px" data-kt-menu-trigger="click"
                              data-kt-menu-overflow="true" data-kt-menu-placement="top-start" data-bs-toggle="tooltip"
                              data-bs-placement="right" data-bs-dismiss="click">
-                            <img src="{{url('/')}}/assets/media/avatars/150-26.jpg" alt="image"/>
+                            <img src="{{url('/')}}/assets/media/avatars/blank.png" alt="image"/>
                         </div>
                         <!--begin::Menu-->
                         <div

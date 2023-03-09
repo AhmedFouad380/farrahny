@@ -269,7 +269,7 @@ return [
     'rate' => 'rate ',
     'MainHome' => "Home ",
     "CONTACT US" => " CONTACT US",
-    'currency' => 'SAR ',
+    'currency' => 'EGP ',
     'advertising' => 'ad',
     'favourite_advertising' => 'favourite ads',
     'view_all' => 'view all',

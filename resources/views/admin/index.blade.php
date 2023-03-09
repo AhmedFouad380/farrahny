@@ -367,7 +367,7 @@
                             </div>
                             <!--end::Stats-->
                             <!--begin::Chart-->
-                            <div class="mixed-widget-7-chart card-rounded-bottom" data-kt-chart-color="primary" style="height: 155px"></div>
+                            <div id="mixed-widget-7-chart" class="mixed-widget-7-chart card-rounded-bottom" data-kt-chart-color="primary" style="height: 155px"></div>
                             <!--end::Chart-->
                         </div>
                         <!--end::Body-->
@@ -404,56 +404,54 @@
 @section('script')
     <script>
         (function () {
-            var e = document.querySelectorAll(".mixed-widget-7-chart");
-            [].slice.call(e).map(function (e) {
-                var t = parseInt(KTUtil.css(e, "height"));
-                if (e) {
-                    var a = e.getAttribute("data-kt-chart-color"),
-                        o = KTUtil.getCssVariableValue("--bs-gray-800"),
-                        s = KTUtil.getCssVariableValue("--bs-gray-300"),
-                        r = KTUtil.getCssVariableValue("--bs-" + a),
-                        i = KTUtil.getCssVariableValue("--bs-light-" + a);
-                    new ApexCharts(e, {
-                        series: [{
-                            name: "{{__('lang.Subscriptions')}}", data: [
-                                @for($x = 1; $x <= 12; $x++)
-                                {{\App\Models\ProviderSubscription::whereYear('created_at',date('Y'))->whereMonth('created_at',$x)->sum('price')}},
-                                @endfor
-                            ] }
-                            ],
-                        chart: { fontFamily: "inherit", type: "area", height: t, toolbar: { show: !1 }, zoom: { enabled: !1 }, sparkline: { enabled: !0 } },
-                        plotOptions: {},
-                        legend: { show: !1 },
-                        dataLabels: { enabled: !1 },
-                        fill: { type: "solid", opacity: 1 },
-                        stroke: { curve: "smooth", show: !0, width: 3, colors: [r] },
-                        xaxis: {
-                            categories: [
-                                @for($x = 1; $x <= 12; $x++)
-                                "{{date('Y').'-'.$x}}",
-                                @endfor],
-                            axisBorder: { show: !1 },
-                            axisTicks: { show: !1 },
-                            labels: { show: !1, style: { colors: o, fontSize: "12px" } },
-                            crosshairs: { show: !1, position: "front", stroke: { color: s, width: 1, dashArray: 3 } },
-                            tooltip: { enabled: !0, formatter: void 0, offsetY: 0, style: { fontSize: "12px" } },
+            var e = document.getElementById("mixed-widget-7-chart"),
+                t = (parseInt(KTUtil.css(e, "height")), KTUtil.getCssVariableValue("--bs-gray-500")),
+                a = KTUtil.getCssVariableValue("--bs-gray-200"),
+                o = KTUtil.getCssVariableValue("--bs-info"),
+                s = KTUtil.getCssVariableValue("--bs-light-info");
+            e &&
+            new ApexCharts(e, {
+                series: [{
+                    name: "{{__('lang.Subscriptions')}}", data: [
+                        @for($x = 1; $x <= 12; $x++)
+                        {{\App\Models\ProviderSubscription::whereYear('created_at',date('Y'))->whereMonth('created_at',$x)->sum('price')}},
+                        @endfor
+                    ]  }
+                ],
+                chart: { fontFamily: "inherit", type: "area", height: 210, toolbar: { show: !1 } },
+                plotOptions: {},
+                legend: { show: !1 },
+                dataLabels: { enabled: !1 },
+                fill: { type: "solid", opacity: 1 },
+                stroke: { curve: "smooth", show: !0, width: 2, colors: [o] },
+                xaxis: {
+                    categories: [
+                        @for($x=1; $x<=12; $x++)
+                        {{$x}},
+                        @endfor
+                    ],
+                    axisBorder: { show: !1 },
+                    axisTicks: { show: !1 },
+                    labels: { style: { colors: t, fontSize: "12px" } },
+                    crosshairs: { position: "front", stroke: { color: o, width: 1, dashArray: 3 } },
+                    tooltip: { enabled: !0, formatter: void 0, offsetY: 0, style: { fontSize: "12px" } },
+                },
+                yaxis: { labels: { style: { colors: t, fontSize: "12px" } } },
+                states: { normal: { filter: { type: "none", value: 0 } }, hover: { filter: { type: "none", value: 0 } }, active: { allowMultipleDataPointsSelection: !1, filter: { type: "none", value: 0 } } },
+                tooltip: {
+                    style: { fontSize: "12px" },
+                    y: {
+                        formatter: function (e) {
+                            return "" + e + " ";
                         },
-                        yaxis: { min: 0, max: 60, labels: { show: !1, style: { colors: o, fontSize: "12px" } } },
-                        states: { normal: { filter: { type: "none", value: 0 } }, hover: { filter: { type: "none", value: 0 } }, active: { allowMultipleDataPointsSelection: !1, filter: { type: "none", value: 0 } } },
-                        tooltip: {
-                            style: { fontSize: "12px" },
-                            y: {
-                                formatter: function (e) {
-                                    return e ;
-                                },
-                            },
-                        },
-                        colors: [i],
-                        markers: { colors: [i], strokeColor: [r], strokeWidth: 3 },
-                    }).render();
-                }
-            });
-        })(),
+                    },
+                },
+                colors: [s],
+                grid: { borderColor: a, strokeDashArray: 4, yaxis: { lines: { show: !0 } } },
+                markers: { strokeColor: o, strokeWidth: 3 },
+            }).render();
+        })()
+
 
         (function () {
             var e,
@@ -480,7 +478,8 @@
                                     @for($x = 1; $x <= 12; $x++)
                                     {{\App\Models\User::whereYear('created_at',date('Y'))->whereMonth('created_at',$x)->count()}},
                                     @endfor
-                                ] },
+                                ]
+                            },
                         ],
                         chart: { fontFamily: "inherit", type: "bar", height: t, toolbar: { show: !1 } },
                         plotOptions: { bar: { horizontal: !1, columnWidth: ["50%"], borderRadius: 4 } },
@@ -529,7 +528,7 @@
                         name:"{{__('lang.Completed_orders')}}",
                         data: [
                             @for($x=1; $x<=12; $x++)
-                                "{{\App\Models\Order::where('status','completed')->whereYear('created_at',date('Y'))->whereMonth('created_at',date('m'))->count()}}",
+                                "{{\App\Models\Order::where('status','completed')->whereYear('created_at',date('Y'))->whereMonth('created_at',$x)->count()}}",
                             @endfor
                         ]
 
@@ -538,7 +537,7 @@
                         name: "{{__('lang.uncompleted_orders')}}",
                         data: [
                             @for($x=1; $x<=12; $x++)
-                                "{{\App\Models\Order::where('status','!=','completed')->whereYear('created_at',date('Y'))->whereMonth('created_at',date('m'))->count()}}",
+                                "{{\App\Models\Order::where('status','!=','completed')->whereYear('created_at',date('Y'))->whereMonth('created_at',$x)->count()}}",
                             @endfor
                         ]
                     }

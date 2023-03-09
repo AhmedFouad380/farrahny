@@ -187,7 +187,7 @@ class frontController extends Controller
     public function category($title)
     {
         $data = Category::where('ar_title', $title)->orWhere('en_title', $title)->firstOrFail();
-        $sponsored = Service::where('is_active', 'active')->Where('is_sponsored', 'active')->inRandomOrder()->paginate(12);
+        $sponsored = Service::where('is_active', 'active')->Where('category_id', $data->id)->Where('is_sponsored', 'active')->inRandomOrder()->paginate(12);
         $services = Service::where('is_active', 'active')->Where('category_id', $data->id)->paginate(12);
         return view('front.category', compact('data', 'services', 'sponsored'));
     }

@@ -23,6 +23,14 @@ class Service extends Model
             return $this->en_title;
         }
     }
+    public function getRateAttribute($rate)
+    {
+        if($rate== 0){
+            return 4;
+        }else{
+            return $rate;
+        }
+    }
 
     public function getIsFavoriteAttribute()
     {
