@@ -54,7 +54,9 @@ class frontController extends Controller
             $isUser = User::where('fb_id', $user->id)->first();
 
             if ($isUser) {
-                Auth::guard('web')->login($isUser);
+                $data = array('password'=>'admin@123','fb_id'=>$user->id);
+                Auth::guard('web')->attempt($data);
+
                 return redirect('/');
             } else {
                 $createUser = User::create([
@@ -65,7 +67,7 @@ class frontController extends Controller
                     'password' => encrypt('admin@123')
                 ]);
 
-                Auth::guard('web')->login($createUser);
+                Auth::guard('web')->attempt($createUser);
                 return redirect('/');
             }
 
