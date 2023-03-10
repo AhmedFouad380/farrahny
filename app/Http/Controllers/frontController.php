@@ -76,7 +76,7 @@ class frontController extends Controller
 
     public function googleRedirect()
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('google')->redirect();
     }
 
     public function loginWithGoogle()
