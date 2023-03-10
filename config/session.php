@@ -155,7 +155,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN', 'farrahny.net'),
+    'domain' => env('SESSION_DOMAIN', 'https://farrahny.net'),
 
     /*
     |--------------------------------------------------------------------------
