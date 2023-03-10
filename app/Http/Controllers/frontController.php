@@ -55,6 +55,7 @@ class frontController extends Controller
 
             if ($isUser) {
                 Auth::guard('web')->login($isUser);
+                dd(Auth::guard('web')->id());
                 return redirect('/');
             } else {
                 $createUser = User::create([
@@ -65,7 +66,7 @@ class frontController extends Controller
                     'password' => encrypt('admin@123')
                 ]);
 
-                Auth::gaurd('web')->login($createUser);
+                Auth::guard('web')->login($createUser);
                 return redirect('/');
             }
 
