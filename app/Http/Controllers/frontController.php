@@ -74,6 +74,39 @@ class frontController extends Controller
         }
     }
 
+    public function googleRedirect()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function loginWithGoogle()
+    {
+        try {
+
+            $user = Socialite::driver('google')->user();
+            $isUser = User::where('google_id', $user->id)->first();
+
+            if ($isUser) {
+                Auth::guard('web')->login($isUser);
+                return redirect('/');
+            } else {
+                $createUser = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'phone' => $user->phone,
+                    'google_id' => $user->id,
+                    'password' => encrypt('admin@123')
+                ]);
+
+                Auth::guard('web')->attempt($createUser);
+                return redirect('/');
+            }
+
+        } catch (Exception $exception) {
+            dd($exception->getMessage());
+        }
+    }
+
     public function home()
     {
         return view('front.index');

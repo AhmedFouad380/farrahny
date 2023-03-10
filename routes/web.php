@@ -31,7 +31,10 @@ Route::post('Login', [\App\Http\Controllers\frontController::class, 'login']);
 
 Route::get('auth/facebook', [\App\Http\Controllers\frontController::class, 'facebookRedirect']);
 Route::get('auth/facebook/callback', [\App\Http\Controllers\frontController::class, 'loginWithFacebook']);
+Route::get('auth/google', [\App\Http\Controllers\frontController::class, 'googleRedirect']);
+Route::get('auth/google/callback', [\App\Http\Controllers\frontController::class, 'loginWithGoogle']);
 
+https://farrahny.net/auth/google
 Route::get('forget_password', [\App\Http\Controllers\frontController::class, 'forgetPassword'])->name('user.forget_password');
 Route::post('forget_password', [\App\Http\Controllers\frontController::class, 'forgetPasswordPost'])->name('user.forget_password.post');
 Route::get('logout', [\App\Http\Controllers\frontController::class, 'logout']);
