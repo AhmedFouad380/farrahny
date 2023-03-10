@@ -35,7 +35,6 @@ return [
         'client_id' => '5862281883869801',
         'client_secret' => 'cbfe6c1622852d28c7438b4ed467374d',
         'redirect' => 'https://farrahny.net/auth/facebook/callback',
-
     ],
 
     'google' => [

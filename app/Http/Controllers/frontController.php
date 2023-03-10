@@ -55,7 +55,6 @@ class frontController extends Controller
 
             if ($isUser) {
                 Auth::guard('web')->login($isUser);
-                dd(Auth::guard('web')->id());
                 return redirect('/');
             } else {
                 $createUser = User::create([
