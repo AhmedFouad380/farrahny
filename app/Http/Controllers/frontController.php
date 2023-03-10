@@ -65,7 +65,7 @@ class frontController extends Controller
                     'password' => encrypt('admin@123')
                 ]);
 
-                Auth::guard('web')->attempt($createUser);
+                Auth::guard('web')->login($createUser);
                 return redirect('/');
             }
 
@@ -98,7 +98,7 @@ class frontController extends Controller
                     'password' => encrypt('admin@123')
                 ]);
 
-                Auth::guard('web')->attempt($createUser);
+                Auth::guard('web')->login($createUser);
                 return redirect('/');
             }
 
