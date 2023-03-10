@@ -38,9 +38,9 @@ return [
     ],
 
     'google' => [
-        'client_id' => 'Facebook app id',
-        'client_secret' => 'Facebook add secret',
-        'redirect' => 'http://localhost:8000/auth/facebook/callback',
+        'client_id' => '620641455756-plae4bi6aomvc77mg4mp9qn11v76d1bq.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'https://farrahny.net/auth/google/callback',
         ],
 
 ];
