@@ -36,7 +36,9 @@ class Service extends Model
     {
         if (Auth::guard('web')->check() && Favorite::where('user_id', Auth::guard('web')->id())->where('service_id', $this->id)->count() > 0) {
             return 1;
-        } else {
+        } elseif(Auth::guard('api')->check() && Favorite::where('user_id', Auth::guard('api')->id())->where('service_id', $this->id)->count() > 0){
+
+        }else {
             return 0;
         }
     }
@@ -88,7 +90,7 @@ class Service extends Model
     {
         return $this->belongsTo(Event::class, 'event_id')->withDefault([
             'id' => 0,
-            'name' => '',
+            'name' => 'Halls',
         ]);
     }
 

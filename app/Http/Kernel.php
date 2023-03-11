@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\ProviderMiddleware;
+use App\Http\Middleware\UserApiMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -49,6 +50,9 @@ class Kernel extends HttpKernel
         ],
         'Provider'=>[
             ProviderMiddleware::class,
+        ],
+        'UserApi'=>[
+            UserApiMiddleware::class,
         ],
         'api' => [
             'throttle:api',

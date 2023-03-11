@@ -50,8 +50,13 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'users',
+            'hash' => false,
+        ],
+        'providerApi' => [
+            'driver' => 'jwt',
+            'provider' => 'providers',
             'hash' => false,
         ],
     ],

@@ -453,7 +453,7 @@ if (!function_exists('admin')) {
 }
 
 
-function msgdata($request, $status, $key, $data)
+function msgdata($request, $status, $key, $data = null)
 {
     $language = request()->header('lang');
 

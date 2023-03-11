@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\App;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Provider extends Authenticatable
+class Provider extends Authenticatable implements JWTSubject
 {
     use HasFactory;
 
-    protected $appends = ['name'];
+    protected $appends = ['name','rate'];
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     public function getNameAttribute()
@@ -21,6 +22,10 @@ class Provider extends Authenticatable
         } else {
             return $this->en_name;
         }
+    }
+    public function getRateAttribute()
+    {
+            return 5;
     }
 
     public function getImageAttribute($image)
@@ -72,8 +77,36 @@ class Provider extends Authenticatable
         return $this->belongsTo(ProviderSubscription::class, 'current_provider_subscription_id');
     }
 
+    public function Event()
+    {
+        return $this->belongsTo(Event::class, 'event_id')->withDefault([
+            'id' => 0,
+            'title' => 'Halls',
+        ]);
+    }
+
     public function scopeActive($q)
     {
         $q->where('is_active', 'active');
     }
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
 }

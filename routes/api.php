@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\User\AuthController;
+use App\Http\Controllers\Api\User\HomeController;
+use App\Http\Controllers\Api\User\CartController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,3 +26,36 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::get('client_mages',[\App\Http\Controllers\Api\ClientImagesController::class,'index']);
     Route::get('about',[\App\Http\Controllers\Api\AboutController::class,'index']);
     Route::get('Setting',[\App\Http\Controllers\Api\SettingController::class,'index']);
+
+
+
+Route::prefix('user')->group(function () {
+
+        Route::prefix('auth')->group(function () {
+            Route::post('/login', [AuthController::class, 'login']);
+            Route::post('/register', [AuthController::class, 'Store']);
+            Route::post('forget-password', [AuthController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+            Route::post('reset-password', [AuthController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
+        });
+    Route::middleware(['UserApi'])->group(function (){
+        Route::get('/profile', [AuthController::class, 'profile']);
+        Route::post('/update-profile', [AuthController::class, 'updateProfile']);
+
+        Route::get('/home', [HomeController::class, 'home']);
+        Route::post('/categories', [HomeController::class, 'Categories']);
+        Route::post('/services', [HomeController::class, 'Services']);
+        Route::post('/service', [HomeController::class, 'Service']);
+
+        Route::prefix('cart')->group(function (){
+            Route::get('/',[CartController::class,'index']);
+            Route::post('/store',[CartController::class,'store']);
+            Route::post('remove',[CartController::class,'cartRemove']);
+        });
+    });
+
+
+
+
+
+});
