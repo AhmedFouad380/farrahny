@@ -108,10 +108,10 @@
                         </div>
                         <div class="reco-content">
                             <p class="fs-p">
-                                {{ Str::limit($recommend->title, 15) }}
+                                {{ Str::limit($recommend->title, 35) }}
                                 </p>
-                            <span>{
-                                {{ Str::limit($recommend->Category->title, 20) }}
+                            <span>
+                                {{ Str::limit($recommend->Category->title, 35) }}
                             </span>
                         </div>
                     </div>
