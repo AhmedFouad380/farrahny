@@ -51,7 +51,7 @@
                                     <a href="{{ url('auth/facebook') }}" class="border-link text-center me-3 mt-3">
                                         <img src="{{asset('website/assets/img/Group 17800.png')}}" alt="" class="w-75">
                                     </a>
-                                    <a href="#" class="border-link2 mt-3">
+                                    <a href="{{ url('auth/google') }}" class="border-link2 mt-3">
                                         <img
                                             src="{{asset('website/assets/img/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png')}}"
                                             alt="" class="w-100">
