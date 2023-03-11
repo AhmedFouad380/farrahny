@@ -41,14 +41,14 @@ $('.navbar-toggler').click( function(){
 //   AOS.init();
 
 
-// this is login 
+// this is login
 
 
 $('.login-form').click(function(){
     $(".span-form").css({"display" :"block" , "background-color": "var(--color-o)" , "width" : "0.8rem" , "height" : "3.6rem" });
     $(".span-form2").css("display", "none");
  });
- 
+
  $('.login-form2').click(function(){
    $(".span-form2").css({"display" :"block" , "background-color": "var(--color-o)" , "width" : "0.8rem" , "height" : "3.6rem" , "position" : "absolute" });
    $(".span-form").css("display", "none");
@@ -96,17 +96,17 @@ const reviews = [
         "Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. "
     }
   ];
-  
+
   const img = document.getElementById("person-img");
   const author = document.getElementById("author");
   const job = document.getElementById("job");
   const info = document.getElementById("info");
-  
+
   const prevBtn = document.querySelector(".prev-btn");
   const nextBtn = document.querySelector(".next-btn");
-  
+
   let currentItem = 0;
-  
+
   // load initial item
   window.addEventListener("DOMContentLoaded", () => {
     const item = reviews[currentItem];
@@ -115,7 +115,7 @@ const reviews = [
     job.textContent = item.job;
     info.textContent = item.text;
   });
-  
+
   // show person based on item
   function showPerson(person) {
     const item = reviews[person];
@@ -124,7 +124,7 @@ const reviews = [
     job.textContent = item.job;
     info.textContent = item.text;
   }
-  
+
   // show next person
   nextBtn.addEventListener("click", () => {
     currentItem++;
@@ -133,7 +133,7 @@ const reviews = [
     }
     showPerson(currentItem);
   });
-  
+
   // show prev person
   prevBtn.addEventListener("click", () => {
     currentItem--;
@@ -144,6 +144,6 @@ const reviews = [
   });
 
 
-//   wall paper gallary 
+//   wall paper gallary
 
 

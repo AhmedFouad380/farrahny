@@ -363,7 +363,7 @@ $lng = '46.709548950195305';
 <script src="{{asset('website/assets/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('website/assets/js/owl.carousel.min.js')}}"></script>
 <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
-{{--<script src="{{asset('website/assets/js/script.js')}}"></script>--}}
+<script src="{{asset('website/assets/js/script.js')}}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function myMap() {
@@ -573,7 +573,7 @@ $lng = '46.709548950195305';
                 }
             }
         )
-    };
+    }
 </script>
 
 <?php

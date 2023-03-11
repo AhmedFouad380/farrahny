@@ -10,6 +10,7 @@ class Event extends Model
 {
     use HasFactory;
 
+
     protected $appends = ['title'];
     public function getTitleAttribute()
     {

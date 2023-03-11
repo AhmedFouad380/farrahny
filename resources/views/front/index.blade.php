@@ -43,7 +43,7 @@
         <div class="row mt-5">
             <div class="col-12 col-md-12 col-lg-12 mb-5 over-xx" data-aos="fade-down">
                 <div class="m-auto w-50 text-center">
-                    <h2 class="events text-capitalize position-relative">{{__('lang.our events')}}</h2>
+                    <h2 class="events text-capitalize position-relative">{{__('lang.our events')}} </h2>
                     <div class="events-line m-auto">
                         <div class="dott"></div>
                     </div>
@@ -51,6 +51,7 @@
             </div>
             <div class="">
                 <div class="owl-carousel owl-carousel-p">
+
                     @foreach(\App\Models\Event::where('is_active','active')->get() as $event)
                         <div class="carsouel-content over-xx" data-aos="fade-right">
                             <a href="{{url('event',$event->title)}}">
@@ -69,6 +70,8 @@
                         </div>
                     @endforeach
                 </div>
+
+
             </div>
 
         </div>
