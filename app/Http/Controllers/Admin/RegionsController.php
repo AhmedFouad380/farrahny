@@ -17,7 +17,7 @@ class RegionsController extends Controller
 
     public function datatable(Request $request)
     {
-        $data = Region::orderBy('id', 'desc');
+        $data = Region::orderBy('id', 'desc')->where('city_id',$request->id);
         return DataTables::of($data)
             ->addColumn('checkbox', function ($row) {
                 $checkbox = '';

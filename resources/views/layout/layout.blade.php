@@ -167,7 +167,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="menu-content d-flex align-items-center px-3">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-50px me-5">
-                                        <img alt="Logo" src="{{url('/')}}/assets/media/avatars/150-26.jpg"/>
+                                        <img alt="Logo" src="{{url('/')}}/assets/media/avatars/_blank.png"/>
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Username-->

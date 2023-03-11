@@ -202,7 +202,7 @@
                 ajax: {
                     url: '{{ route('regions.datatable.data') }}',
                     data: {
-
+                    id:'{{$city_id}}',
                     }
                 },
                 columns: [
