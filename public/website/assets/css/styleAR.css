@@ -39,7 +39,7 @@ body{
 
 
 .over-xx {
-    overflow-x: hidden !important;
+    /*overflow-x: hidden !important;*/
 }
 
 a {
