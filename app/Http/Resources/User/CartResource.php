@@ -19,8 +19,8 @@ class CartResource extends JsonResource
             'service'=>ServicesResource::make($this->Service),
             'date'=>$this->date,
             'time'=>$this->time,
-            'lng'=>$this->lng,
-            'lat'=>$this->lat,
+            'lng'=>(string)$this->lng,
+            'lat'=>(string)$this->lat,
         ];
     }
 }
