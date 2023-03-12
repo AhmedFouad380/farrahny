@@ -7,7 +7,7 @@ use App\Models\OfferSlider;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
-
+use Auth;
 class OfferSliderController extends Controller
 {
     public function index()
