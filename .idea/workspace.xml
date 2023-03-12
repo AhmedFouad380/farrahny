@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b423340-8312-472b-82c9-2d81f359c609" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/website/assets/css/styleAR.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/website/assets/css/styleAR.css" afterDir="false" />
-    </list>
+    <list default="true" id="1b423340-8312-472b-82c9-2d81f359c609" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -250,7 +247,7 @@
       <workItem from="1678635711586" duration="6035000" />
       <workItem from="1678642709450" duration="1108000" />
       <workItem from="1678656181356" duration="2853000" />
-      <workItem from="1678659562151" duration="582000" />
+      <workItem from="1678659562151" duration="893000" />
     </task>
     <servers />
   </component>
