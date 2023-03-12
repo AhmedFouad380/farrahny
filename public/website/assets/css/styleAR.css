@@ -1105,7 +1105,7 @@ footer {
     background-attachment: fixed;
     display: flex;
     flex-direction: column-reverse;
-    padding-left: 2rem;
+    padding-right: 2rem;
     color: var(--color-w);
     text-transform: capitalize;
 }
