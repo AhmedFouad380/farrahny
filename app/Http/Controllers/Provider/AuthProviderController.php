@@ -49,6 +49,7 @@ class AuthProviderController extends Controller
             'subscription_id' => 'required|exists:subscriptions,id',
             'email' => 'required|email|unique:providers,email',
             'phone' => 'required|unique:providers,phone|min:8',
+            'username' => 'required|unique:providers,username|min:6',
             'password' => 'required|confirmed',
             'address' => 'required|string|max:255',
             'city_id' => 'required|exists:cities,id',

@@ -275,7 +275,7 @@
                                         </div>
                                         <div class="parent-box-content text-center">
                                             <h5 class="text-capitalize text-break fw-bolder">{{$Provider->name}}</h5>
-                                            <a class="btn user-link">ID : {{$Provider->id}}</a>
+                                            <a class="btn user-link">{{__('lang.UserName')}} : {{$Provider->username}}</a>
 
                                             <!-- <a class="link-a text-uppercase mt-3 d-block w-75 m-auto p-1">open account</a> -->
 

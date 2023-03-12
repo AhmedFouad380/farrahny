@@ -46,6 +46,7 @@
                                        value="{{old('owner_name')}}"
                                        class="form-control mb-3 login-form text-capitalize">
                             </div>
+
                             <div class="d-flex position-relative">
                                   <span class="sign-form d-block position-absolute">
                                     <i class="fa-solid fa-airbnb"></i>
@@ -62,6 +63,15 @@
                                         </option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="d-flex position-relative">
+                                <span class="sign-form d-block position-absolute">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <input type="text" placeholder="{{__('lang.UserName')}}" maxlength="255"
+                                       name="username"
+                                       value="{{old('username')}}"
+                                       class="form-control mb-3 login-form text-capitalize">
                             </div>
                             <div class="d-flex position-relative">
                                 <span class="sign-form d-block position-absolute">

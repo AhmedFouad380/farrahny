@@ -20,7 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b423340-8312-472b-82c9-2d81f359c609" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/User/CartResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/User/CartResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Provider/AuthProviderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Provider/AuthProviderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/provider/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/provider/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/service.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +248,8 @@
       <workItem from="1678286681148" duration="183000" />
       <workItem from="1678303147123" duration="605000" />
       <workItem from="1678396005936" duration="3353000" />
-      <workItem from="1678530778533" duration="18473000" />
+      <workItem from="1678530778533" duration="18871000" />
+      <workItem from="1678625411672" duration="3417000" />
     </task>
     <servers />
   </component>

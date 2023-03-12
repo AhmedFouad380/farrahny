@@ -6,6 +6,7 @@
 @section('css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/CDNSFree2/Plyr/plyr.css"/>
+    <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
 
 @endsection
 @section('content')
@@ -115,7 +116,9 @@
                         @foreach($data->images as $key => $Image)
                             <div class="swiper-slide @if($key<2)  parent-swiper-slide  @endif"
                                  @if($key== 0)  class="h-100" @endif>
-                                <img src="{{$Image->image}}"/>
+                                <a class="test-popup-link" href="{{$Image->image}}">
+                                <img  src="{{$Image->image}}"/>
+                                </a>
                             </div>
                         @endforeach
 
@@ -307,6 +310,17 @@
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/CDNSFree2/Plyr/plyr.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- Magnific Popup core JS file -->
+    <script src="magnific-popup/jquery.magnific-popup.js"></script>
+<script>
+    $('.test-popup-link').magnificPopup({
+        type: 'image'
+        // other options
+    });
+
+</script>
     <script>
         var swiper = new Swiper(".myAllSwiper", {
             speed: 2500,
