@@ -359,7 +359,7 @@ nav {
 
 .heading{
     color: var(--color-w);
-    font-family: 'Itim', cursive;
+    font-family: 'Cairo', cursive;
     width: 100%;
     display: flex;
     flex-direction: column;
