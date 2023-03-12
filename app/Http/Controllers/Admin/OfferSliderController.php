@@ -81,11 +81,12 @@ class OfferSliderController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [
-            'ar_title' => 'required|string',
-            'en_title' => 'required|string',
+            'ar_button' => 'required|string',
+            'en_button' => 'required|string',
             'ar_description' => 'required|string',
             'en_description' => 'required|string',
-            'is_active' => 'nullable|string',
+            'offer' => 'required',
+            'is_active' => 'required|string',
             'image'=>'required|mimes:png,jpeg,jpg'
 
         ]);
