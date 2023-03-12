@@ -692,4 +692,9 @@ return [
     'uncompleted_orders'=>'not completed Orders',
     'incomeYear'=>'Total Income On Current Year',
     'incomeMonth'=>'Total Income On Current Month',
+    'ar_button'=>'arabic button',
+    'en_button'=>'english button',
+    'button'=>'button',
+    'OfferSlider'=>'Offers Slider',
+    'offer'=>'discount ',
 ];
