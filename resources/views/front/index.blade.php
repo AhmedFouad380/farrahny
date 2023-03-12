@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            @foreach(\App\Models\Service::where('is_active','active')->Orderby('id','desc')->where('is_recommend','active')->inRandomOrder()->limit(2)->get() as $key => $recommend)
+            @foreach(\App\Models\Service::where('is_active','active')->Orderby('id','desc')->where('is_banner','active')->inRandomOrder()->limit(2)->get() as $key => $recommend)
 
                 <div class="col-md-6 col-lg-6 col-12 over-xx" @if($key == 0) data-aos="fade-left"
                      @else data-aos="fade-right" @endif>
@@ -104,7 +104,9 @@
                             <div class="layer4-reco"></div>
                         </div>
                         <div class="reco-img">
+                            <a href="{{url('service',$recommend->id)}}">
                             <img src="{{$recommend->image}}" alt="">
+                            </a>
                         </div>
                         <div class="reco-content">
                             <p class="fs-p">
@@ -266,12 +268,14 @@
                     </div>
                     <div class="col-md-10 col-lg-7 col-12 tab-m">
                         <div class="row">
-                            @foreach(\App\Models\Provider::where('is_active','active')->where('is_top','active')->limit(9)->inRandomOrder()->get() as  $Provider)
+                            @foreach(\App\Models\Provider::whereHas('current_subscription')->where('is_active','active')->where('is_top','active')->limit(9)->inRandomOrder()->get() as  $Provider)
 
                                 <div class="col-md-6 col-lg-4 col-12 mb-4">
                                     <div class="parent-box">
                                         <div class="parent-box-img">
+                                            <a href="{{url('Provider',$Provider->id)}}">
                                             <img src="{{$Provider->image}}" alt="{{$Provider->name}}">
+                                            </a>
                                         </div>
                                         <div class="parent-box-content text-center">
                                             <h5 class="text-capitalize text-break fw-bolder">{{$Provider->name}}</h5>

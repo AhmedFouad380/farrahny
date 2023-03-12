@@ -191,6 +191,29 @@
                                 <!--end::Input-->
                             </div>
                             <div class="fv-row mb-7">
+                                <div
+                                    class="form-check form-switch form-check-custom form-check-solid">
+                                    <label class="form-check-label"
+                                           for="flexSwitchDefault">{{__('lang.is_discount')}}
+                                        ؟</label>
+                                    <input class="form-check-input" name="is_discount" type="hidden"
+                                           value="inactive" id="flexSwitchDefault"/>
+                                    <input
+                                        class="form-check-input form-control form-control-solid mb-3 mb-lg-0"
+                                        name="is_discount" type="checkbox"
+                                        value="active" id="flexSwitchDefault" checked/>
+                                </div>
+                                <div class="fv-row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="required fw-bold fs-6 mb-2">{{__('lang.offer')}}</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input type="number" name="discount"
+                                           class="form-control form-control-solid mb-3 mb-lg-0"
+                                           placeholder="" value="0" required/>
+                                    <!--end::Input-->
+                                </div>
+                            <div class="fv-row mb-7">
                                 <!--begin::Label-->
                                 <label class="required fw-bold fs-6 mb-2">{{__('lang.event')}}</label>
                                 <!--end::Label-->
@@ -261,7 +284,20 @@
                             </div>
                             <!--end::Input group-->
                             @if(Auth::guard('admin')->check())
-
+                                    <div class="fv-row mb-7">
+                                        <div
+                                            class="form-check form-switch form-check-custom form-check-solid">
+                                            <label class="form-check-label"
+                                                   for="flexSwitchDefault">{{__('lang.is_banner')}}
+                                                ؟</label>
+                                            <input class="form-check-input" name="is_banner" type="hidden"
+                                                   value="inactive" id="flexSwitchDefault"/>
+                                            <input
+                                                class="form-check-input form-control form-control-solid mb-3 mb-lg-0"
+                                                name="is_banner" type="checkbox"
+                                                value="active" id="flexSwitchDefault" checked/>
+                                        </div>
+                                    </div>
                                 <div class="fv-row mb-7">
                                     <div
                                         class="form-check form-switch form-check-custom form-check-solid">

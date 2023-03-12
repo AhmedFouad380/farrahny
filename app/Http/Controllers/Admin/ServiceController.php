@@ -90,6 +90,7 @@ class ServiceController extends Controller
             'ar_title' => 'required|string',
             'en_title' => 'required|string',
             'is_active' => 'nullable|string',
+            'is_discount' => 'required',
             'video_type' => 'required|in:url,file',
         ]);
         $user = new Service();
@@ -99,6 +100,8 @@ class ServiceController extends Controller
         $user->en_description = $request->en_description;
         $user->deposit = $request->deposit;
         $user->price = $request->price;
+        $user->is_discount = $request->is_discount;
+        $user->discount = $request->discount;
         //Begin video type
         $user->video_type = $request->video_type;
         $user->video = $request->video;
@@ -178,6 +181,8 @@ class ServiceController extends Controller
         $user->en_description = $request->en_description;
         $user->deposit = $request->deposit;
         $user->price = $request->price;
+        $user->is_discount = $request->is_discount;
+        $user->discount = $request->discount;
 
         //Begin video type
         $user->video_type = $request->video_type;
