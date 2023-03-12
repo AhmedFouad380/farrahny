@@ -162,6 +162,17 @@ Route::group(['middleware' => ['admin']], function () {
         return view('admin/Slider/button');
     });
 
+    Route::get('OfferSlider_setting', [\App\Http\Controllers\Admin\SliderController::class, 'index']);
+    Route::get('OfferSlider_datatable', [\App\Http\Controllers\Admin\SliderController::class, 'datatable'])->name('OfferSlider.datatable.data');
+    Route::get('delete-OfferSlider', [\App\Http\Controllers\Admin\SliderController::class, 'destroy']);
+    Route::post('store-OfferSlider', [\App\Http\Controllers\Admin\SliderController::class, 'store']);
+    Route::get('OfferSlider-edit/{id}', [\App\Http\Controllers\Admin\SliderController::class, 'edit']);
+    Route::post('update-OfferSlider', [\App\Http\Controllers\Admin\SliderController::class, 'update']);
+    Route::get('/add-button-OfferSlider', function () {
+        return view('admin/OfferSlider/button');
+    });
+
+
     Route::get('cities_setting', [\App\Http\Controllers\Admin\CitiesController::class, 'index']);
     Route::get('cities_datatable', [\App\Http\Controllers\Admin\CitiesController::class, 'datatable'])->name('cities.datatable.data');
     Route::get('delete-cities', [\App\Http\Controllers\Admin\CitiesController::class, 'destroy']);
