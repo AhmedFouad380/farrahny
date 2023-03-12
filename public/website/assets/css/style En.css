@@ -951,7 +951,7 @@ nav {
     border: none ;
     background-color: var(--color-o);
     color: #fff;
-    padding: 17px 60px;
+    padding: 10px 60px;
     border-radius: 5px;
     text-transform: uppercase;
     font-size: 0.9rem;
@@ -975,7 +975,7 @@ nav {
 }
 
 .btn-layer {
-    background-image: url('../img/rose-ga5d197282_640.jpg');
+    /*background-image: url('../img/rose-ga5d197282_640.jpg');*/
     background-position: top center;
     background-size: contain;
     Color: transparent;
@@ -1736,7 +1736,6 @@ footer {
 .section1 {
 
     background: linear-gradient(90deg,#e9f2fd 0%, #ffeefc 80%);
-    clip-path: polygon(0 0,100% 0,100% 80%,0 100%);
     padding-bottom: 10%;
 }
 
