@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="{{asset('website/assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('website/assets/css/owl.carousel.min.css')}}">
     <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
-    @if(Session('lang') == 'ar')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+@if(Session('lang') == 'ar')
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
               integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N"
               crossorigin="anonymous">

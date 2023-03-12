@@ -46,6 +46,23 @@ Route::prefix('user')->group(function () {
         Route::post('/categories', [HomeController::class, 'Categories']);
         Route::post('/services', [HomeController::class, 'Services']);
         Route::post('/service', [HomeController::class, 'Service']);
+        Route::post('/service', [HomeController::class, 'Service']);
+        Route::post('/fa', [HomeController::class, 'addFavorite']);
+        Route::post('/add-favorite', [HomeController::class, 'addFavorite']);
+        Route::post('/remove-favorite', [HomeController::class, 'Service']);
+
+        Route::prefix('orders')->group(function (){
+            Route::get('/',[HomeController::class,'index']);
+            Route::post('/details',[HomeController::class,'details']);
+            Route::post('/store',[HomeController::class,'store']);
+            Route::post('remove',[HomeController::class,'delete']);
+        });
+
+        Route::prefix('favorite-services')->group(function (){
+            Route::get('/',[HomeController::class,'favoriteServices']);
+            Route::post('/store',[HomeController::class,'addFavorite']);
+            Route::post('remove',[HomeController::class,'RemoveFavorite']);
+        });
 
         Route::prefix('cart')->group(function (){
             Route::get('/',[CartController::class,'index']);

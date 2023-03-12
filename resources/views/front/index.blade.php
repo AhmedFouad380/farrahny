@@ -1,40 +1,52 @@
 @extends('front.layout')
 @section('title',__('lang.Home'))
+@section('css')
+
+
+@endsection
 @section('content')
+
 
     <!--<<<<<< this is slider >>>>>> -->
     <div class="carousel-line"></div>
 
-    <div class="slider">
-        @foreach(\App\Models\Slider::where('is_active','active')->get()  as $key  => $Slider)
-            <input type="radio" name="slider" @if($key ==  0) checked class="m-left-radio" @endif/>
-            <div class="slider__content">
-                <img src="{{$Slider->image}}"/>
-                <div class="slider__description">
-                    <div class="move-slide-text">
-                        <div class="heading over-xx" data-aos="fade-left">
-                            <h1 class="text-uppercase text-break">{{$Slider->title}}</h1>
-                            <h1 class="text-break">{{$Slider->description}}</h1>
-                            <h1></h1>
-                            @if($Slider->link)
-                                <div class="d-flex mt-5">
-                                    <div class="btn-jobs">
-                                        <form action="{{$Slider->link}}">
-                                            <button type="submit" class="apply-btn-slide">
-                                                <span>{{__('lang.more')}}</span>
-                                                <div class="btn-layer222"></div>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            @endif
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            @foreach(\App\Models\Slider::where('is_active','active')->get()  as $key  => $Slider)
+
+            <div class="swiper-slide">
+                <div class="slide-image">
+                    <img src="{{$Slider->image}}" alt="{{$Slider->title}}">
+                </div>
+                <div class="content-sliderr">
+                    <div class="heading">
+                        <h1 class="text-uppercase text-break v">{{$Slider->title}}</h1>
+                        <h1 class="text-break v">{{$Slider->description}}</h1>
+                        <!-- <button class="btn btn-order text-uppercase">order now</button> -->
+                        <div class="d-flex mt-5" >
+                            <div class="btn-jobs">
+                                <form action="{{$Slider->link}}">
+                                    <button type="submit" class="apply-btn-slide">
+                                        <span>{{__('lang.more')}}</span>
+                                        <div class="btn-layer222"></div>
+                                    </button>
+                                </form>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        @endforeach
-
+            @endforeach
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
     </div>
+    <!-- <<<<<< end slider >>>>>>>>-->
+
+    <!--<<<<<< this is slider >>>>>> -->
 
     <!-- <<<<<< end slider >>>>>>>>-->
 
@@ -224,24 +236,31 @@
 
                 </div>
             </div>
-            <div class="col-md-12 col-lg-12 col-12 trans " data-aos="fade-left" style="margin-top: 61px;">
-                <div class="bg-mosqu">
-                    <div class="img-layer">
-                        <div class="text-mosqu">
-                            <span class="num-size">35%</span>
-                            <span class="text-size text-uppercase">off</span>
-                            <span class="d-block"></span>
-                            <span class="orang-text text-capitalize">all</span>
-                            <span class="text2-size text-uppercase ">skincer</span>
-                            <span class="orang-text text-capitalize">items</span>
+            <div class="col-md-12 col-lg-12 col-12 trans "data-aos="fade-left">
+                <div class="swiper bg-mosqu mySwiper">
+                    <div class="swiper-wrapper">
+                        @foreach(\App\Models\OfferSlider::where('is_active','active')->get() as $Slider)
+                        <div class="swiper-slide">
+                            <div class="img-layer">
+                                <div class="text-mosqu">
+                                    <span class="num-size">{{$Slider->offer}} %</span>
+                                    <span class="text-size text-uppercase">{{__('lang.offer')}}</span>
+                                    <span class="d-block"></span>
+                                    <span class="text2-size text-uppercase ">{{$Slider->description}}</span>
+                                </div>
+                                <div class="btn-link">
+                                    <a href="" class=" btn link-a">{{$Slider->button}}</a>
+                                </div>
+                            </div>
+                            <div class="bg-mosqu2">
+                                <img src="{{$Slider->image}}">
+                            </div>
                         </div>
-                        <div class="btn-link">
-                            <a href="" class=" btn link-a">book now</a>
-                        </div>
+                        @endforeach
                     </div>
-                    <div class="bg-mosqu2">
-                        <img src="{{asset('website/assets/img/mosque-g1eeee6fa8_1920.png')}}">
-                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination d-none"></div>
                 </div>
             </div>
         </div>
@@ -317,7 +336,32 @@
 @endsection
 
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        // swiper slider
+        var swiper = new Swiper(".mySwiper", {
+            spaceBetween: 30,
+            effect: "fade",
+            centeredSlides: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
 
+    </script>
     <script>
         $(document).ready(function(){
             $(".owl-carousel").owlCarousel();

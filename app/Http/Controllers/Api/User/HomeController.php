@@ -11,12 +11,13 @@ use App\Http\Resources\User\ServicesResource;
 use App\Http\Resources\User\SliderResource;
 use App\Models\Category;
 use App\Models\Event;
+use App\Models\Favorite;
 use App\Models\Provider;
 use App\Models\Service;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use Auth;
 class HomeController extends Controller
 {
     public function home(Request $request){
@@ -72,5 +73,48 @@ class HomeController extends Controller
 
 
         return response()->json(msgdata($request, success(), 'success', ServiceResource::make($data)));
+    }
+
+    public function favoriteServices(Request $request){
+
+
+        $Services = Service::where('is_active','active')->join('favorites','favorites.service_id','services.id')->where('favorites.user_id',Auth::guard('api')->id());
+        $data = $Services->paginate(10);
+        $data = ServicesResource::collection($data);
+
+        return response()->json(msgdata($request, success(), 'success', $data));
+
+    }
+
+    public function addFavorite(Request $request){
+        $validator = Validator::make($request->all(), [
+            'service_id' => 'required|exists:services,id',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 401, 'msg' => $validator->messages()->first(), 'data' => (object)[]]);
+        }
+        if(Favorite::where('service_id',$request->service_id)->where('user_id',Auth::guard('api')->id())->count() > 0 ){
+            return response()->json(msgdata($request, success(), 'success'));
+
+        }else{
+
+            $data = new Favorite();
+            $data->service_id=$request->service_id;
+            $data->user_id=Auth::guard('api')->id();
+            $data->save();
+            return response()->json(msgdata($request, success(), 'success'));
+
+        }
+    }
+    public function RemoveFavorite(Request $request){
+        $validator = Validator::make($request->all(), [
+            'service_id' => 'required|exists:services,id',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 401, 'msg' => $validator->messages()->first(), 'data' => (object)[]]);
+        }
+        Favorite::where('service_id',$request->service_id)->where('user_id',Auth::guard('api')->id())->delete();
+
+            return response()->json(msgdata($request, success(), 'success'));
     }
 }
