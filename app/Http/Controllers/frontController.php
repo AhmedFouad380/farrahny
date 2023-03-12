@@ -607,7 +607,7 @@ class frontController extends Controller
 
     public function Provider($id)
     {
-        $data = Provider::findOrFail($id);
+        $data = Provider::where('username',$id)->firstOrFail();
         $Services = Service::where('provider_id',$data->id)->where('is_active','active')->limit($data->current_subscription->service_count)->paginate(12);
         return view('front.Provider', compact('data','Services'));
     }

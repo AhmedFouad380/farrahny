@@ -273,7 +273,7 @@
                                 <div class="col-md-6 col-lg-4 col-12 mb-4">
                                     <div class="parent-box">
                                         <div class="parent-box-img">
-                                            <a href="{{url('Provider',$Provider->id)}}">
+                                            <a href="{{url('Provider',$Provider->username)}}">
                                             <img src="{{$Provider->image}}" alt="{{$Provider->name}}">
                                             </a>
                                         </div>
@@ -284,7 +284,7 @@
                                             <!-- <a class="link-a text-uppercase mt-3 d-block w-75 m-auto p-1">open account</a> -->
 
                                             <div class="btn-jobs mt-0">
-                                                <a href="{{url('Provider',$Provider->id)}}">
+                                                <a href="{{url('Provider',$Provider->username)}}">
                                                     <button href="" class="apply-btn-slide apply-btn-slide2 link-aa">
                                                         <span>{{__('lang.more')}}</span>
                                                         <div class="btn-layer222"></div>

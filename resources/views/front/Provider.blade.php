@@ -1,5 +1,5 @@
 @extends('front.layout')
-@section('title',$data->title)
+@section('title',$data->name)
 <!-- <<<<<<<<< start weding header >>>>>>>>>>>>-->
 
 <!-- <<<<<<<<< start weding header >>>>>>>>>>>>-->
