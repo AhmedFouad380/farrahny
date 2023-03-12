@@ -10,7 +10,7 @@ class OfferSlider extends Model
 {
     use HasFactory;
 
-    protected $appends = ['description'];
+    protected $appends = ['button','description'];
 
     public function getDescriptionAttribute()
     {
@@ -20,6 +20,15 @@ class OfferSlider extends Model
             return $this->en_description;
         }
     }
+    public function getButtonAttribute()
+    {
+        if ($locale = App::currentLocale() == "ar") {
+            return $this->ar_button;
+        } else {
+            return $this->en_button;
+        }
+    }
+
     public function getImageAttribute($image)
     {
         if (!empty($image)) {
