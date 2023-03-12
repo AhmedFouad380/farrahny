@@ -788,11 +788,11 @@ nav {
 
 
 .bg-mosqu {
-    width: 85%;
-    height: 300px;
-    position: relative;
-    margin: auto;
-    top: -40px;
+    width: 85%!important;
+    height: 300px!important;
+    position: relative!important;
+    margin: auto!important;
+    top: -40px!important;
     font-family: 'Source Sans Pro', sans-serif;
 }
 
