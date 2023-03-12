@@ -1310,7 +1310,7 @@ footer {
     border-left: none;
     border-right: none;
     padding: 1rem;
-    padding-left: 45px;
+    padding-right: 45px;
     background-color: transparent;
 }
 
@@ -1320,7 +1320,7 @@ footer {
     border-left: none;
     border-right: none;
     padding: 1rem;
-    padding-left: 45px;
+    padding-right: 45px;
     background-color: transparent;
 }
 .sign-form {
