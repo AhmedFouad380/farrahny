@@ -22,7 +22,7 @@
                 <div class="content-sliderr">
                     <div class="heading">
                         <h1 class="text-uppercase text-break v">{{$Slider->title}}</h1>
-                        <h1 class="text-break v">{{$Slider->description}}</h1>
+                        <h1 class="text-break v" style="font-size: 18px!important;">{{$Slider->description}}</h1>
                         <!-- <button class="btn btn-order text-uppercase">order now</button> -->
                         <div class="d-flex mt-5" >
                             <div class="btn-jobs">
